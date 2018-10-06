@@ -1,0 +1,22 @@
+.addnewpart-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 5px 50px;
+}
+
+.addnewpart-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addnewpart-container input {
+  width: 100%;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+}
+.input{
+  max-width: 200px;
+}

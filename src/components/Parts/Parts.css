@@ -1,0 +1,161 @@
+#main {
+  background-image:url(../images/repair.jpg);
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+#main2 {
+  margin: 15px auto;
+  align-content: center;
+}
+
+#title {
+  margin-left:25px;
+  color: white;
+}
+
+#box {
+  margin:5px 50px;
+}
+
+#list_name{
+  color: white;
+}
+
+#top {
+  background-color:#282d32;
+  /* border-radius: 15px; */
+}
+
+#part {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+#model {
+  font-size:large;
+  font-weight:600;
+}
+
+#price {
+  float:right;
+  font-weight:700;
+  font-size: 200%;
+}
+
+#condition {
+  font-size:larger;
+}
+
+#photo {
+  max-width:300px;
+}
+
+#searchBox {
+  display: flex;
+}
+
+#searchInput {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.parts-main-container {
+  min-height: 92vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.parts-item-container img {
+  background-color: yellow;
+}
+
+.parts-img {
+  max-height: 150px;
+}
+
+.emptyParts {
+  height: 75vh;
+}
+
+.emptyParts-box{
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+.switch input { 
+  display:none;
+}
+
+.switch {
+  display:inline-block;
+  width:60px;
+  height:30px;
+  margin:8px;
+  transform:translateY(50%);
+  position:relative;
+}
+
+.slider {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  border-radius:30px;
+  box-shadow:0 0 0 2px #777, 0 0 4px #777;
+  cursor:pointer;
+  border:4px solid transparent;
+  overflow:hidden;
+  transition:.4s;
+}
+
+.slider:before {
+  position:absolute;
+  content:"";
+  width:100%;
+  height:100%;
+  background:red;
+  border-radius:30px;
+  transform:translateX(-30px);
+  transition:.4s;
+}
+
+input:checked + .slider:before {
+  transform:translateX(30px);
+  background:red;
+}
+
+input:checked + .slider {
+  box-shadow:0 0 0 2px red,0 0 2px blue;
+}
+
+.searchBoxButtons {
+  margin-top: 19px;
+}
+
+h3.switch {
+  color: #fcc500;
+}
+
+@media (max-width: 991px) {
+  #photo {
+    max-width:210px;
+  }
+
+  #top {
+    height:38px;
+  }
+
+  #title {
+    font-size:larger;
+    margin-top:10px;
+  }
+
+  #box {
+    margin:0px 0px;
+    border:1px solid silver;
+  }
+}

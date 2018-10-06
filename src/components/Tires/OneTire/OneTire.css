@@ -1,0 +1,150 @@
+.container {
+  width: 80%;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* height: 500px; */
+}
+
+.slider-container > img {
+  max-height: 500px;
+}
+
+.slider-parent-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.slide-container-img {
+  max-height: 500px;
+}
+
+.parts-main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.parts-main-container h1 {
+  align-self: center;
+}
+
+.parts-item-container img {
+  background-color: yellow;
+}
+
+.parts-img {
+  max-height: 150px;
+}
+
+.empty-tire-img {
+  max-width: 90%;
+}
+
+#title {
+  margin-left: 25px;
+  color: white;
+}
+
+#oneTire {
+  margin: 5px 50px;
+  height: 90vh;
+  margin-bottom: -20px;
+}
+
+#top {
+  background-color: #282d32;
+  border-radius: 15px;
+}
+
+#tire {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+#model {
+  font-size: large;
+  font-weight: 600;
+}
+
+#price {
+  float: right;
+  font-weight: 700;
+  font-size: 200%;
+}
+
+#condition {
+  font-size: larger;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* height: 500px; */
+}
+
+.slider-container > img {
+  max-height: 400px;
+}
+
+.slider-parent-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.slide-container-img {
+  max-height: 500px;
+}
+
+.parts-main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.parts-main-container h1 {
+  align-self: center;
+}
+
+.parts-item-container img {
+  background-color: yellow;
+}
+
+.parts-img {
+  max-height: 150px;
+}
+
+.slick-arrow,
+.slick-prev:before,
+.slick-next:before {
+  color: blue
+}
+
+@media (max-width: 991px) {
+  #top {
+    height: 38px;
+  }
+
+  #title {
+    font-size: larger;
+    margin-top: 10px;
+  }
+
+  #box {
+    margin: 0px 0px;
+    border: 1px solid silver;
+  }
+
+  .slider-parent-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
