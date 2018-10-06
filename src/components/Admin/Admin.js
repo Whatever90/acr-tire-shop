@@ -17,7 +17,7 @@ class Admin extends Component {
     super(props);
     this.state = {
       requests: [],
-      cars: [],
+      tires: [],
       parts: [],
       temp_id: '',
       title: "",
@@ -49,12 +49,12 @@ class Admin extends Component {
     console.log(window.location);
     axios.all([
       axios.get(`/requests/all`),
-      axios.get(`/cars/all`),
+      axios.get(`/tires/all`),
       axios.get(`/parts/all`)
-    ]).then(axios.spread((requests, cars, parts) => {
+    ]).then(axios.spread((requests, tires, parts) => {
       this.setState({
         requests: requests.data,
-        cars: cars.data,
+        tires: tires.data,
         parts: parts.data
       })
     })).catch(err => console.log(err));
@@ -85,19 +85,19 @@ class Admin extends Component {
 
 
   // Cars functions --------------------------------------------
-  edit_car(car) {
-    if (this.state.temp_id === car._id) {
+  edit_car(tire) {
+    if (this.state.temp_id === tire._id) {
       this.clearState();
     } else {
       this.setState({
-        temp_id: car._id,
-        brand: car.brand,
-        model: car.model,
-        year: car.year,
-        price: car.price,
-        description: car.description,
-        mileage: car.mileage,
-        photos: car.photos,
+        temp_id: tire._id,
+        brand: tire.brand,
+        model: tire.model,
+        year: tire.year,
+        price: tire.price,
+        description: tire.description,
+        mileage: tire.mileage,
+        photos: tire.photos,
         files: [],
         photos_to_delete: []
       })
@@ -112,19 +112,19 @@ class Admin extends Component {
     } = this.state;
     
     axios
-      .post("/cars/edit", {
+      .post("/tires/edit", {
         temp_id, brand, model, price, year, description, mileage, photos
       })
       .then(response => {
         if (response.data) {
-          this.upload(this.state.temp_id, "cars");
-          this.photos_deletion_submitted("cars", temp_id);
+          this.upload(this.state.temp_id, "tires");
+          this.photos_deletion_submitted("tires", temp_id);
           this.edit_cancel();
-          alert("the car was updated");
-          // console.log("the car was updated"); /// ++++++++++++++++++ ADD A MESSAGE!
+          alert("the tire was updated");
+          // console.log("the tire was updated"); /// ++++++++++++++++++ ADD A MESSAGE!
         } else {
-          alert("can't update this car");
-          // console.log("can't update this car") /// ++++++++++++++++++ ADD A MESSAGE!
+          alert("can't update this tire");
+          // console.log("can't update this tire") /// ++++++++++++++++++ ADD A MESSAGE!
         }
       })
       .catch(error => console.log("BLYAAAD'", error)); /// ++++++++++++++++++ ADD A MESSAGE!
@@ -135,14 +135,14 @@ class Admin extends Component {
     var id = {
       _id: id
     }
-    var tempArr = this.state.cars;
-    axios.post('/cars/find/', id)
+    var tempArr = this.state.tires;
+    axios.post('/tires/find/', id)
       .then(res => {
         for (let i = 0; i < tempArr.length; i++) {
           if (tempArr[i]._id === id._id) {
             tempArr[i] = res.data;
             this.setState({
-              cars: tempArr
+              tires: tempArr
             })
             break;
           }
@@ -151,7 +151,7 @@ class Admin extends Component {
   }
 
   cars_list_remove(id) {
-    var carArray = this.state.cars;
+    var carArray = this.state.tires;
     for(let i = 0; i< carArray.length; i++){
       if(carArray[i]._id === id){
         for(let k = i; k<carArray.length; k++){
@@ -162,11 +162,11 @@ class Admin extends Component {
       }
     }
     this.setState({
-      cars: carArray
+      tires: carArray
     })
   }
 
-  // end of cars functions ----------------------
+  // end of tires functions ----------------------
 
 
   // Parts functions  ------------------------
@@ -228,7 +228,7 @@ class Admin extends Component {
             console.log("YES!", res.data);
             tempArr[i] = res.data;
             this.setState({
-              cars: tempArr
+              tires: tempArr
             })
             break;
           }
@@ -248,7 +248,7 @@ class Admin extends Component {
       }
     }
     this.setState({
-      cars: carArray
+      tires: carArray
     })
   }
 
@@ -268,12 +268,12 @@ class Admin extends Component {
 
   }
 
-  upload(id, x) { // x - is either "car" or "part", and by using id we add photos to a specific car of part
+  upload(id, x) { // x - is either "tire" or "part", and by using id we add photos to a specific tire of part
     var filesToUpload = this.state.files;
     var counter = 0;
     console.log(id, x);
     if (filesToUpload.length === 0) {
-      if (x === "cars") {
+      if (x === "tires") {
         console.log("1 lol", x, id);
         this.refreshCarById(id)
       } else if (x === "parts") {
@@ -290,7 +290,7 @@ class Admin extends Component {
           if (error) console.log(error);
           counter++;
           if (counter === filesToUpload.length) {
-            if(x === "cars"){
+            if(x === "tires"){
               console.log("1 lol", x, id);
               this.refreshCarById(id)
             }else if(x === "parts"){
@@ -325,7 +325,7 @@ class Admin extends Component {
     this.clearState();  // canceling editor and clearing this.state
   }
 
-  handleDelete(i, x) { // Deleting car or part (is "x") by ID
+  handleDelete(i, x) { // Deleting tire or part (is "x") by ID
     var id = {
       id: i
     }
@@ -333,7 +333,7 @@ class Admin extends Component {
       .then(res => {
         if (res.data) {
           this.clearState();
-          if(x === "cars"){
+          if(x === "tires"){
             this.cars_list_remove(i)
           }else if(x === "parts"){
             this.parts_list_remove(i)
@@ -395,7 +395,7 @@ class Admin extends Component {
           console.log(arrToDelete[i], "is deleted");
         }).catch(err => console.log(err));
       if(counter === arrToDelete.length){
-        if(x === "cars"){
+        if(x === "tires"){
           this.refreshCarById(id)
         } else if(x === "parts"){
           this.refreshPartById(id)
@@ -453,48 +453,48 @@ class Admin extends Component {
       </div>
     ));
 
-    const listOfCars = this.state.cars.map((car, index) => (
-      <div id="part_box" key={car._id}>
+    const listOfCars = this.state.tires.map((tire, index) => (
+      <div id="part_box" key={tire._id}>
       <div className="row" >
           <div className="col-lg-5">
               <label className="switch">
-                <input type="checkbox" id="part_edit_switcher" checked={this.state.temp_id === car._id} onClick={() => this.edit_car(car)} />
+                <input type="checkbox" id="part_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_car(tire)} />
                 <span className="slider"></span>
               </label>
               Edit
-            <button className="btn btn-danger part-btn" onClick={() => this.handleDelete(car._id, "cars")} disabled={this.state.temp_id !== car._id}>Delete</button>
-            <button className="btn btn-primary part-btn" onClick={(event) => this.edit_car_submit(event, car._id)} disabled={this.state.temp_id !== car._id}>Submit</button>
+            <button className="btn btn-danger part-btn" onClick={() => this.handleDelete(tire._id, "tires")} disabled={this.state.temp_id !== tire._id}>Delete</button>
+            <button className="btn btn-primary part-btn" onClick={(event) => this.edit_car_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
           </div>
           <div className="col-md-4">
           </div>
         </div>
       <div className="row" >
         <div className="col-md-3"> 
-          <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={car.brand} disabled={this.state.temp_id !== car._id} />
-          <label>Model : </label><input type='text' className='form-control' onChange={event => this.handleChange("model", event)} placeholder="Model" defaultValue={car.model} disabled={this.state.temp_id !== car._id} />
-          <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={car.price} disabled={this.state.temp_id !== car._id} />
-          <label>Year :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("year", event)} placeholder="Year" defaultValue={car.year} disabled={this.state.temp_id !== car._id} />
+          <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={tire.brand} disabled={this.state.temp_id !== tire._id} />
+          <label>Model : </label><input type='text' className='form-control' onChange={event => this.handleChange("model", event)} placeholder="Model" defaultValue={tire.model} disabled={this.state.temp_id !== tire._id} />
+          <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
+          <label>Year :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("year", event)} placeholder="Year" defaultValue={tire.year} disabled={this.state.temp_id !== tire._id} />
            </div>
         <div className="col-md-3">
-          <label>Color : </label><input type='text' className='form-control' onChange={event => this.handleChange("color", event)} placeholder="Color" defaultValue={car.color} disabled={this.state.temp_id !== car._id} />
-          <label>Mileage :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("mileage", event)} placeholder="Mileage" defaultValue={car.mileage} disabled={this.state.temp_id !== car._id} />
-          <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={car.description} rows="4" disabled={this.state.temp_id !==car._id} />
+          <label>Color : </label><input type='text' className='form-control' onChange={event => this.handleChange("color", event)} placeholder="Color" defaultValue={tire.color} disabled={this.state.temp_id !== tire._id} />
+          <label>Mileage :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("mileage", event)} placeholder="Mileage" defaultValue={tire.mileage} disabled={this.state.temp_id !== tire._id} />
+          <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !==tire._id} />
         </div>
         <div className="col-md-3">
-            <ul>  {car.photos && car.photos.length > 0 && car.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-                <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(car._id, e)} disabled={this.state.temp_id !== car._id}>x</button>
+            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+                <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(tire._id, e)} disabled={this.state.temp_id !== tire._id}>x</button>
               </li>)}
             </ul>
         </div>
         <div className="col-md-3">
             <div className="uploader">
-              <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true} disabled={this.state.temp_id !== car._id}>
-                <button className="btn btn-warning btn-xs" disabled={this.state.temp_id !== car._id} onClick={(event) => event.preventDefault()} >+</button>
+              <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true} disabled={this.state.temp_id !== tire._id}>
+                <button className="btn btn-warning btn-xs" disabled={this.state.temp_id !== tire._id} onClick={(event) => event.preventDefault()} >+</button>
               </Dropzone>
-              {this.state.temp_id === car._id && <p>Chosen photos</p>}
-              {this.state.temp_id === car._id && this.state.files.length > 0 && this.state.files.map((e, i) =>
+              {this.state.temp_id === tire._id && <p>Chosen photos</p>}
+              {this.state.temp_id === tire._id && this.state.files.length > 0 && this.state.files.map((e, i) =>
                 <small key={i}><p>{e.name} - <img src={e.preview} className="prevImg" alt="img" />
-                  <button type="button" className="btn btn-danger btn-xs" onClick={() => this.delete(e)} disabled={this.state.temp_id !== car._id}>x</button></p>
+                  <button type="button" className="btn btn-danger btn-xs" onClick={() => this.delete(e)} disabled={this.state.temp_id !== tire._id}>x</button></p>
                 </small>)}
             </div>
         </div>
@@ -564,7 +564,7 @@ class Admin extends Component {
             </div>
             
             <AddNewCar />
-            {this.state.cars.length && <div className="parts">
+            {this.state.tires.length && <div className="parts">
               <h2>Cars</h2>
               {listOfCars}
             </div>}
