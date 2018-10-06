@@ -3,7 +3,7 @@ import './Top.css';
 import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll-to-element';
 // import aws from '../images/aws.png';
-import parts from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-parts-1.jpg";
+import rims from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-rims-1.jpg";
 import repair from "../images/Car-Engine-Maintenance-cropped_iStock.png";
 import cars from "../images/Carr Parking Gl .jpg"
 import "./Footer-Dark.css";
@@ -38,9 +38,9 @@ export default class Top extends Component {
                                 </div>
                             </Link>
 
-                            <Link className="links" to="/parts"><div className="col-sm-6 col-lg-4 item">
-                                <img className="img-fluid" src={parts} alt="hui3"></img>
-                                <h3 className="name">Parts</h3>
+                            <Link className="links" to="/rims"><div className="col-sm-6 col-lg-4 item">
+                                <img className="img-fluid" src={rims} alt="hui3"></img>
+                                <h3 className="name">Rims</h3>
                                 <p className="description" style={{ color: "black" }}>Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
                             </div></Link>
                         </div>

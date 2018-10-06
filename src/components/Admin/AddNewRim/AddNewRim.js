@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./AddNewPart.css";
+import "./AddNewRim.css";
 import superagent  from 'superagent';
 import Dropzone from 'react-dropzone';
 
-export default class AddNewPart extends Component {
+export default class AddNewRim extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ export default class AddNewPart extends Component {
     this.setState({ [property]: event.target.value }); // directly changing state's values
   }
 
-  handleSubmit(event) { //adding a new part
+  handleSubmit(event) { //adding a new rim
     event.preventDefault();
     let {
       title,
@@ -37,7 +37,7 @@ export default class AddNewPart extends Component {
       description
     } = this.state;
     axios
-      .post("/parts/new", {
+      .post("/rims/new", {
         title,
         brand,
         model,
@@ -49,7 +49,7 @@ export default class AddNewPart extends Component {
       .then(response => {
         console.log(response);
         this.upload(response.data._id);
-        alert("New part was created!");
+        alert("New rim was created!");
         this.setState({
           formShowself: false //Refreshing the form
         }, function () {
@@ -75,7 +75,7 @@ export default class AddNewPart extends Component {
     for (let i = 0; i < this.state.files.length; i++) {
       if (this.state.files[i]) {
         superagent
-          .post(`/api/upload/parts/${id}`)
+          .post(`/api/upload/rims/${id}`)
           .attach('item', this.state.files[i])
           .end((error, response) => {
             if (error) console.log(error);
@@ -104,11 +104,11 @@ export default class AddNewPart extends Component {
   }
   render() {
     return (
-      <div className="addnewpart-container">
-        <h2>Add a new part</h2>
+      <div className="addnewrim-container">
+        <h2>Add a new rim</h2>
         {this.state.formShowself &&
           <form
-            className="addnewpart-form"
+            className="addnewrim-form"
             onSubmit={event => this.handleSubmit(event)}
           >
             <table>

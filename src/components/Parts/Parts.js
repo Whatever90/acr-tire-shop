@@ -3,13 +3,13 @@ import axios from 'axios';
 import aws from '../images/aws.png';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
-import './Parts.css';
+import './Rims.css';
 
-export default class Parts extends Component {
+export default class Rims extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      parts : [],
+      rims : [],
       search: false,
       inputSearch: {
         title: "",
@@ -21,17 +21,17 @@ export default class Parts extends Component {
         priceMax: Number.MAX_VALUE,
         listOfModels: []
       },
-      copyParts: [],
+      copyRims: [],
       filterResult: true,
       filterShowself: true
     };
   }
 
   componentWillMount(){
-    axios.get('/parts/all')
+    axios.get('/rims/all')
       .then(res => {
         console.log(res);
-        this.setState({ parts: res.data, copyParts: res.data })
+        this.setState({ rims: res.data, copyRims: res.data })
       })
       .catch(error => console.log(error));
   }
@@ -47,30 +47,30 @@ export default class Parts extends Component {
     console.log(event.target.value);
   }
   searchSubmit(){
-    var copyParts = this.state.copyParts;
-    var resultParts = [];
+    var copyRims = this.state.copyRims;
+    var resultRims = [];
     var searchOptions = this.state.inputSearch;
-    copyParts.forEach(function(part){
-      console.log(part._id);
+    copyRims.forEach(function(rim){
+      console.log(rim._id);
       if(searchOptions.brand !== null){
-        if(part.brand === searchOptions.brand){
+        if(rim.brand === searchOptions.brand){
           if(searchOptions.model !== null){
-            if(part.model === searchOptions.model){
-              if(part.year>=searchOptions.yearMin && part.year<=searchOptions.yearMax && part.price>=searchOptions.priceMin && part.price<=searchOptions.priceMax){
-                resultParts.push(part)
+            if(rim.model === searchOptions.model){
+              if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
+                resultRims.push(rim)
               }
             }
-          }else if(part.year>=searchOptions.yearMin && part.year<=searchOptions.yearMax && part.price>=searchOptions.priceMin && part.price<=searchOptions.priceMax){
-            resultParts.push(part);
+          }else if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
+            resultRims.push(rim);
           }
         }
       }else{
-        if(part.year>=searchOptions.yearMin && part.year<=searchOptions.yearMax && part.price>=searchOptions.priceMin && part.price<=searchOptions.priceMax){
-          resultParts.push(part);
+        if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
+          resultRims.push(rim);
         }
       }
     })
-    if(resultParts.length<1){
+    if(resultRims.length<1){
       this.setState({
         filterResult: false
       })
@@ -80,13 +80,13 @@ export default class Parts extends Component {
       })
     }
     this.setState({
-      parts: resultParts
+      rims: resultRims
     })
 
   }
   searchCancel(){
     this.setState({
-      parts: this.state.copyParts,
+      rims: this.state.copyRims,
       filterResult: true,
       filterShowself: false
     }, function(){
@@ -106,15 +106,15 @@ export default class Parts extends Component {
       })
       return;
     }
-    var parts = [];
+    var rims = [];
     var temp = this.state.inputSearch;
     temp.brand = brand;
-    this.state.copyParts.forEach(function(part){
-      if(part.brand===brand){
-        parts.push(part)
+    this.state.copyRims.forEach(function(rim){
+      if(rim.brand===brand){
+        rims.push(rim)
       }
     })
-    var tempModels = parts.filter(function (item, pos, self) {
+    var tempModels = rims.filter(function (item, pos, self) {
       return self.indexOf(item) === pos;
     }).sort().map((c, index) => {
       return (
@@ -144,30 +144,30 @@ export default class Parts extends Component {
 
 
   render() {
-    let listOfParts = null;
-    if(this.state.parts.length>0){
-      listOfParts = this.state.parts.map((part, index) => {
+    let listOfRims = null;
+    if(this.state.rims.length>0){
+      listOfRims = this.state.rims.map((rim, index) => {
         return (
-          <Link to={`/part/${ part._id }`} key={index}>
+          <Link to={`/rim/${ rim._id }`} key={index}>
             <div>
               <div id="box" key={index}>
-                <div className="container" id="part">
+                <div className="container" id="rim">
                   <div className="row">
                       <div className="col-md-12" id="top" >
-                          <h1 id="title">{ part.title }</h1>
+                          <h1 id="title">{ rim.title }</h1>
                       </div>
                   </div>
                   <div className="row">
                       <div className="col-md-4">
-                        {part.photos.length === 0 && <img src={aws} alt="part" id="photo" className="photos" />}
-                        {part.photos.length > 0 && <img src={part.photos[0]} alt="part" id="photo" className="photos" />}
+                        {rim.photos.length === 0 && <img src={aws} alt="rim" id="photo" className="photos" />}
+                        {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
                       </div>
                       <div className="col-md-4">
-                          <p id="model">{ part.year } { part.brand } { part.model }</p>
-                          <p id="condition">Condition: { part.condition} </p>
+                          <p id="model">{ rim.year } { rim.brand } { rim.model }</p>
+                          <p id="condition">Condition: { rim.condition} </p>
                       </div>
                       <div className="col-md-4">
-                          <p id="price">${ part.price }</p>
+                          <p id="price">${ rim.price }</p>
                       </div>
                   </div>
                 </div>
@@ -176,11 +176,11 @@ export default class Parts extends Component {
           </Link>
         )})
       } else {
-        listOfParts = '';
+        listOfRims = '';
       }
     var listOfBrands = [];
-    this.state.copyParts.forEach(function (part) {
-      listOfBrands.push(part.brand)
+    this.state.copyRims.forEach(function (rim) {
+      listOfBrands.push(rim.brand)
     })
     listOfBrands = listOfBrands.filter(function (item, pos, self) {
       return self.indexOf(item) === pos;
@@ -194,8 +194,8 @@ export default class Parts extends Component {
     return (
       <div>
       < Navbar />
-      <div className="parts-main-container" id="main">
-        <h1 id="list_name">List of parts</h1>
+      <div className="rims-main-container" id="main">
+        <h1 id="list_name">List of rims</h1>
         <div className="container">
             <div id="searchBox" className="col-sm-3">
               <label className="switch">
@@ -260,17 +260,17 @@ export default class Parts extends Component {
             </div>
         }
         <div id="main2">
-        { listOfParts }
+        { listOfRims }
         </div>
-        {this.state.parts.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptyParts">
-               <div className="col-sm-6 col-sm-offset-3 emptyParts-box">
+        {this.state.rims.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
+               <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
                   <h1>Sorry, we have nothing to sell at the moment</h1>
                   <h4>Please, come back later to check new offers!</h4>
                 </div>
               </div>
                 }
-        {!this.state.filterResult && <div className="row text-center margin-b-40 emptyParts">
-               <div className="col-sm-6 col-sm-offset-3 emptyParts-box">
+        {!this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
+               <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
                   <h1>Sorry, we have nothing according filter settings</h1>
                   <h4>Please, come back later to check new offers!</h4>
                 </div>

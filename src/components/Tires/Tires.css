@@ -1,18 +1,18 @@
-.parts-main-container {
+.rims-main-container {
   min-height: 92vh;
   width: 100%;
   display: flex;
   flex-direction: column;    
 }
-.parts-main-container h1{
+.rims-main-container h1{
   align-self: center;
 }
 
-.parts-item-container img {
+.rims-item-container img {
   background-color: yellow;
 }
 
-.parts-img {
+.rims-img {
   max-height: 150px;
 }
 

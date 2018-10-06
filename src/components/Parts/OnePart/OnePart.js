@@ -3,13 +3,13 @@ import axios from 'axios';
 import aws from "../../images/aws.png"
 import Navbar from "../../Navbar/Navbar";
 import Slider from 'react-slick';
-import "./OnePart.css";
+import "./OneRim.css";
 
 export default class OneCar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      part: {},
+      rim: {},
       photos: []
     };
   }
@@ -19,11 +19,11 @@ export default class OneCar extends Component {
     let id = {
       _id: this.props.match.params._id
     }
-    axios.post('/parts/find/', id)
+    axios.post('/rims/find/', id)
       .then(res => {
-        this.setState({ part: res.data, photos: res.data.photos })
-        console.log(this.state.part);
-        console.log(this.state.part.photos);
+        this.setState({ rim: res.data, photos: res.data.photos })
+        console.log(this.state.rim);
+        console.log(this.state.rim.photos);
       })
       .catch(error => console.log(error));
   }
@@ -57,27 +57,27 @@ export default class OneCar extends Component {
         < Navbar />
         <div id="main">
           <div id="oneCar">
-            <div className="container" id="part">
+            <div className="container" id="rim">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.part.year} {this.state.part.brand} {this.state.part.model}</h1>
+                  <h1 id="title">{this.state.rim.year} {this.state.rim.brand} {this.state.rim.model}</h1>
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-part-img" src={aws} alt="default image of a car" id="noImage"/>}
-                  {this.state.part.photos && <Slider className="slider-component" {...settings}>
+                  {this.state.photos.length === 0 && <img className="empty-rim-img" src={aws} alt="default image of a car" id="noImage"/>}
+                  {this.state.rim.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-4">
-                  <p id="model">Mileage: {this.state.part.mileage} Color: {this.state.part.color}</p>
-                  <p id="condition">{this.state.part.description}</p>
+                  <p id="model">Mileage: {this.state.rim.mileage} Color: {this.state.rim.color}</p>
+                  <p id="condition">{this.state.rim.description}</p>
                 </div>
                 <div className="col-md-4">
-                  <p id="price">${this.state.part.price}</p>
+                  <p id="price">${this.state.rim.price}</p>
                 </div>
               </div>   
             </div>

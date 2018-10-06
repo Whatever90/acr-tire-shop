@@ -156,8 +156,8 @@ export default class Tires extends Component {
                         {tire.photos.length === 0 && <img src={aws} alt="tire" id="tire-photo"/>} 
                         {tire.photos.length>0 && <img src={tire.photos[0]} alt="tire" id="tire-photo"/>}
                       */}
-                        {tire.photos.length === 0 && <img src={aws} alt="part" className="photos"/>} 
-                        {tire.photos.length>0 && <img src={tire.photos[0]} alt="part" className="photos"/>}
+                        {tire.photos.length === 0 && <img src={aws} alt="rim" className="photos"/>} 
+                        {tire.photos.length>0 && <img src={tire.photos[0]} alt="rim" className="photos"/>}
                       </div>
                       <div className="col-md-4">
                           <p id="model">{ tire.mileage } miles, Color: { tire.color }</p>
@@ -192,7 +192,7 @@ export default class Tires extends Component {
     return (
       <div id="body_list_tires">
         < Navbar />
-        <div className="parts-main-container">
+        <div className="rims-main-container">
           <h1 id="page_title">List of tires</h1>
           <div className="container">
             <div id="searchBox" className="col-sm-3">

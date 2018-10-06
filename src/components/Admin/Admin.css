@@ -11,7 +11,7 @@
   margin-top: 10px;
   border-bottom: 1px solid brown; 
 }
-.admin-parts-container.container {
+.admin-rims-container.container {
   /* display: flex; */
   /* width: 50vh; */
 }
@@ -29,7 +29,7 @@ border: 1px solid GREY;
   margin-bottom: 25px; 
   text-align: center;
 }
-/* #part_box{
+/* #rim_box{
   max-width: 400px;
 } */
 .form-area{
@@ -84,19 +84,19 @@ input:checked + .slider:before {
 input:checked + .slider {
   box-shadow:0 0 0 2px limeGreen,0 0 2px limeGreen;
 }
-#list_of_parts{
+#list_of_rims{
   -moz-column-width: 19em;
     -webkit-column-width: 19em;
     -moz-column-gap: 1em;
     -webkit-column-gap:1em; 
     height: 100%
 }
-#list_of_parts{
+#list_of_rims{
   display: table-row-group;
     /* padding:  .5rem; */
     width:  100%;
 }
-.part_cont{
+.rim_cont{
   max-width: 350px;
 }
 .col-md-4{
@@ -117,13 +117,13 @@ input:checked + .slider {
     align-content: center;
     background-color: azure;
 }
-#part_box{
+#rim_box{
     border-bottom:  1px silver groove;
     /* padding: auto; */
     margin-bottom: 15px; 
     /* margin: auto; */
 }
-.parts{
+.rims{
     margin: auto;
     width: 70%;
     border: 1px solid green;
@@ -132,7 +132,7 @@ input:checked + .slider {
     background-color: azure;
     border-radius: 10px;
 }
-.part-btn{
+.rim-btn{
   margin-left: 15px;
   margin-top: -25px;
 }
