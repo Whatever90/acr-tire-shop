@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Admin.css';
-import AddNewCar from './AddNewCar/AddNewCar';
+import AddNewTire from './AddNewTire/AddNewTire';
 import AddNewRim from './AddNewRim/AddNewRim';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -84,8 +84,8 @@ class Admin extends Component {
   // END OF REQUESTS -------------------------------------
 
 
-  // Cars functions --------------------------------------------
-  edit_car(tire) {
+  // Tires functions --------------------------------------------
+  edit_tire(tire) {
     if (this.state.temp_id === tire._id) {
       this.clearState();
     } else {
@@ -104,7 +104,7 @@ class Admin extends Component {
     }
   }
 
-  edit_car_submit(event, index) {
+  edit_Tire_submit(event, index) {
     event.preventDefault();
     
     let {
@@ -131,7 +131,7 @@ class Admin extends Component {
     
   }
 
-  refreshCarById(id) {
+  refreshTireById(id) {
     var id = {
       _id: id
     }
@@ -150,19 +150,19 @@ class Admin extends Component {
       })
   }
 
-  cars_list_remove(id) {
-    var carArray = this.state.tires;
-    for(let i = 0; i< carArray.length; i++){
-      if(carArray[i]._id === id){
-        for(let k = i; k<carArray.length; k++){
-          carArray[k] = carArray[k+1];
+  tires_list_remove(id) {
+    var tireArray = this.state.tires;
+    for(let i = 0; i< tireArray.length; i++){
+      if(tireArray[i]._id === id){
+        for(let k = i; k<tireArray.length; k++){
+          tireArray[k] = tireArray[k+1];
         }
-        carArray.pop();
+        tireArray.pop();
         break;
       }
     }
     this.setState({
-      tires: carArray
+      tires: tireArray
     })
   }
 
@@ -237,18 +237,18 @@ class Admin extends Component {
   }
 
   rims_list_remove(id) {
-    var carArray = this.state.rims;
-    for(let i = 0; i< carArray.length; i++){
-      if(carArray[i]._id === id){
-        for(let k = i; k<carArray.length; k++){
-          carArray[k] = carArray[k+1];
+    var tireArray = this.state.rims;
+    for(let i = 0; i< tireArray.length; i++){
+      if(tireArray[i]._id === id){
+        for(let k = i; k<tireArray.length; k++){
+          tireArray[k] = tireArray[k+1];
         }
-        carArray.pop();
+        tireArray.pop();
         break;
       }
     }
     this.setState({
-      tires: carArray
+      tires: tireArray
     })
   }
 
@@ -257,7 +257,7 @@ class Admin extends Component {
 
 
 
-  // LOCAL UPLOADER FOR CARS AND RIMS ++++++++++++++++
+  // LOCAL UPLOADER FOR TIRES AND RIMS ++++++++++++++++
   onDrop(photo) {
     console.log("PHOTO!", photo);
     var tempArr = this.state.files;
@@ -275,7 +275,7 @@ class Admin extends Component {
     if (filesToUpload.length === 0) {
       if (x === "tires") {
         console.log("1 lol", x, id);
-        this.refreshCarById(id)
+        this.refreshTireById(id)
       } else if (x === "rims") {
         console.log("1 lol", x, id);
         this.refreshRimById(id)
@@ -292,7 +292,7 @@ class Admin extends Component {
           if (counter === filesToUpload.length) {
             if(x === "tires"){
               console.log("1 lol", x, id);
-              this.refreshCarById(id)
+              this.refreshTireById(id)
             }else if(x === "rims"){
               console.log("1 lol", x, id);
               this.refreshRimById(id)
@@ -325,7 +325,7 @@ class Admin extends Component {
     this.clearState();  // canceling editor and clearing this.state
   }
 
-  handleDelete(i, x) { // Deleting car or rim (is "x") by ID
+  handleDelete(i, x) { // Deleting tire or rim (is "x") by ID
     var id = {
       id: i
     }
@@ -334,7 +334,7 @@ class Admin extends Component {
         if (res.data) {
           this.clearState();
           if(x === "tires"){
-            this.cars_list_remove(i)
+            this.tires_list_remove(i)
           }else if(x === "rims"){
             this.rims_list_remove(i)
           }
@@ -396,7 +396,7 @@ class Admin extends Component {
         }).catch(err => console.log(err));
       if(counter === arrToDelete.length){
         if(x === "tires"){
-          this.refreshCarById(id)
+          this.refreshTireById(id)
         } else if(x === "rims"){
           this.refreshRimById(id)
         }
@@ -453,17 +453,17 @@ class Admin extends Component {
       </div>
     ));
 
-    const listOfCars = this.state.tires.map((tire, index) => (
+    const listOfTires = this.state.tires.map((tire, index) => (
       <div id="rim_box" key={tire._id}>
       <div className="row" >
           <div className="col-lg-5">
               <label className="switch">
-                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_car(tire)} />
+                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_tire(tire)} />
                 <span className="slider"></span>
               </label>
               Edit
             <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(tire._id, "tires")} disabled={this.state.temp_id !== tire._id}>Delete</button>
-            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_car_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
+            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_tire_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
           </div>
           <div className="col-md-4">
           </div>
@@ -563,10 +563,10 @@ class Admin extends Component {
               {listOfRequests}
             </div>
             
-            <AddNewCar />
+            <AddNewTire />
             {this.state.tires.length && <div className="rims">
-              <h2>Cars</h2>
-              {listOfCars}
+              <h2>Tires</h2>
+              {listOfTires}
             </div>}
             
             <AddNewRim />
