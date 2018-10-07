@@ -1,4 +1,4 @@
-.addnewcar-container {
+.addnewtire-container {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -6,13 +6,13 @@
   padding: 5px 50px;
 }
 
-.addnewcar-form {
+.addnewtire-form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.addnewcar-container input {
+.addnewtire-container input {
   width: 100%;
   border: 1px solid #ced4da;
   box-sizing: border-box;

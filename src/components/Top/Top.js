@@ -3,9 +3,9 @@ import './Top.css';
 import { Link } from 'react-router-dom';
 import Scroll from 'react-scroll-to-element';
 // import aws from '../images/aws.png';
-import rims from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-rims-1.jpg";
+import rims from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-parts-1.jpg";
 import repair from "../images/Car-Engine-Maintenance-cropped_iStock.png";
-import cars from "../images/Carr Parking Gl .jpg"
+import tires from "../images/Carr Parking Gl .jpg"
 import "./Footer-Dark.css";
 import "./Map-Clean.css";
 import "./Projects-Clean.css";
@@ -26,14 +26,14 @@ export default class Top extends Component {
                                 <div className="col-sm-6 col-lg-4 item scrolling-item" style={{ color: "black" }}>
                                     <img className="img-fluid" src={repair} alt="hui1"></img>
                                     <h3 className="name">Repair/Maintenance</h3>
-                                    <p className="description" style={{ color: "black" }}>We provide a large spectrum of car service</p>
+                                    <p className="description" style={{ color: "black" }}>We provide a large spectrum of wheel service</p>
                                 </div>
                             </Scroll>
 
-                            <Link className="links" to="/cars">
+                            <Link className="links" to="/tires">
                                 <div className="col-sm-6 col-lg-4 item">
-                                    <img className="img-fluid" src={cars} alt="hui2" ></img>
-                                    <h3 className="name">Used Cars</h3>
+                                    <img className="img-fluid" src={tires} alt="hui2" ></img>
+                                    <h3 className="name">Used Tires</h3>
                                     <p className="description" style={{ color: "black" }}>Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
                                 </div>
                             </Link>

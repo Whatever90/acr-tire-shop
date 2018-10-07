@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import aws from "../../images/aws.png"
+import React, { Component } from "react";
+import axios from "axios";
+import aws from "../../images/aws.png";
 import Navbar from "../../Navbar/Navbar";
 import Slider from 'react-slick';
 import "./OneRim.css";
 
-export default class OneCar extends Component {
+export default class OneRim extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ export default class OneCar extends Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     // console.log("ONE PART!")
     let id = {
       _id: this.props.match.params._id
@@ -41,20 +41,19 @@ export default class OneCar extends Component {
       pauseOnHover: true
     };
 
-    const display = this.state.photos
-    .map((element, index) => {
+    const display = this.state.photos.map((element, index) => {
       return (
-        <div key={ index }>
+        <div key={index}>
           <div className="slider-container">
-            <img className="slider-container-img" src={ element } alt="hui"/>
+            <img className="slider-container-img" src={element} alt="hui" />
           </div>
         </div>
-      )
-    })
+      );
+    });
 
     return (
       <div>
-        < Navbar />
+        <Navbar />
         <div id="main">
           <div id="oneCar">
             <div className="container" id="rim">
@@ -79,7 +78,7 @@ export default class OneCar extends Component {
                 <div className="col-md-4">
                   <p id="price">${this.state.rim.price}</p>
                 </div>
-              </div>   
+              </div>
             </div>
           </div>
         </div>

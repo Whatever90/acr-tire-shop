@@ -1,9 +1,12 @@
-var mongoose = require('mongoose');
-// 
+var mongoose = require("mongoose");
+//
 
-var userSchema = new mongoose.Schema({
-    username:  { type: String, required: [true, 'Username is required']},
-    password:  { type: String, required: [true, 'Password is required']},
-}, {timestamps: true });
+var userSchema = new mongoose.Schema(
+  {
+    username: { type: String, required: [true, "Username is required"] },
+    password: { type: String, required: [true, "Password is required"] }
+  },
+  { timestamps: true }
+);
 
-var Car = mongoose.model('User', userSchema) 
+var Tire = mongoose.model("User", userSchema);

@@ -70,7 +70,7 @@ module.exports = {
     res.json({ user: req.session.user })
   },
   all: (req, res) => {
-    // console.log("all cars")
+    // console.log("all tires")
     User.find({})
       .then(data => {
         // console.log(data);
