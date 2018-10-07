@@ -17,13 +17,8 @@ class Admin extends Component {
     super(props);
     this.state = {
       requests: [],
-<<<<<<< HEAD
-      cars: [],
-      rims: [],
-=======
       tires: [],
-      parts: [],
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
+      rims: [],
       temp_id: '',
       title: "",
       brand: "",
@@ -54,23 +49,13 @@ class Admin extends Component {
     console.log(window.location);
     axios.all([
       axios.get(`/requests/all`),
-<<<<<<< HEAD
-      axios.get(`/cars/all`),
-      axios.get(`/rims/all`)
-    ]).then(axios.spread((requests, cars, rims) => {
-      this.setState({
-        requests: requests.data,
-        cars: cars.data,
-        rims: rims.data
-=======
       axios.get(`/tires/all`),
-      axios.get(`/parts/all`)
-    ]).then(axios.spread((requests, tires, parts) => {
+      axios.get(`/rims/all`)
+    ]).then(axios.spread((requests, tires, rims) => {
       this.setState({
         requests: requests.data,
         tires: tires.data,
-        parts: parts.data
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
+        rims: rims.data
       })
     })).catch(err => console.log(err));
 
@@ -283,11 +268,7 @@ class Admin extends Component {
 
   }
 
-<<<<<<< HEAD
-  upload(id, x) { // x - is either "car" or "rim", and by using id we add photos to a specific car of rim
-=======
-  upload(id, x) { // x - is either "tire" or "part", and by using id we add photos to a specific tire of part
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
+  upload(id, x) { // x - is either "tire" or "rim", and by using id we add photos to a specific tire of rim
     var filesToUpload = this.state.files;
     var counter = 0;
     console.log(id, x);
@@ -344,11 +325,7 @@ class Admin extends Component {
     this.clearState();  // canceling editor and clearing this.state
   }
 
-<<<<<<< HEAD
   handleDelete(i, x) { // Deleting car or rim (is "x") by ID
-=======
-  handleDelete(i, x) { // Deleting tire or part (is "x") by ID
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
     var id = {
       id: i
     }
@@ -476,31 +453,17 @@ class Admin extends Component {
       </div>
     ));
 
-<<<<<<< HEAD
-    const listOfCars = this.state.cars.map((car, index) => (
-      <div id="rim_box" key={car._id}>
-      <div className="row" >
-          <div className="col-lg-5">
-              <label className="switch">
-                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === car._id} onClick={() => this.edit_car(car)} />
-                <span className="slider"></span>
-              </label>
-              Edit
-            <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(car._id, "cars")} disabled={this.state.temp_id !== car._id}>Delete</button>
-            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_car_submit(event, car._id)} disabled={this.state.temp_id !== car._id}>Submit</button>
-=======
     const listOfCars = this.state.tires.map((tire, index) => (
-      <div id="part_box" key={tire._id}>
+      <div id="rim_box" key={tire._id}>
       <div className="row" >
           <div className="col-lg-5">
               <label className="switch">
-                <input type="checkbox" id="part_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_car(tire)} />
+                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_car(tire)} />
                 <span className="slider"></span>
               </label>
               Edit
-            <button className="btn btn-danger part-btn" onClick={() => this.handleDelete(tire._id, "tires")} disabled={this.state.temp_id !== tire._id}>Delete</button>
-            <button className="btn btn-primary part-btn" onClick={(event) => this.edit_car_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
+            <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(tire._id, "tires")} disabled={this.state.temp_id !== tire._id}>Delete</button>
+            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_car_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
           </div>
           <div className="col-md-4">
           </div>
@@ -601,11 +564,7 @@ class Admin extends Component {
             </div>
             
             <AddNewCar />
-<<<<<<< HEAD
-            {this.state.cars.length && <div className="rims">
-=======
-            {this.state.tires.length && <div className="parts">
->>>>>>> 5ffaa0978e82adbb558d0287983a32c0119afcd9
+            {this.state.tires.length && <div className="rims">
               <h2>Cars</h2>
               {listOfCars}
             </div>}
