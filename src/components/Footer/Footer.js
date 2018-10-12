@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <div className="footer-container">
         <footer>
-          <p class="copyright">23rd Squad © 2018 </p>
+          <p className="copyright">23rd Squad © 2018 </p>
         </footer>
       </div>
     );
