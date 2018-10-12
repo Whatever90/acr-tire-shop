@@ -154,7 +154,7 @@ export default class Rims extends Component {
                 <div className="container" id="rim">
                   <div className="row">
                       <div className="col-md-12" id="top" >
-                          <h1 id="title">{ rim.title }</h1>
+                          <h1 id="title">{ rim.brand } { rim.diameter } { rim.ratio } { rim.width}</h1>
                       </div>
                   </div>
                   <div className="row">
@@ -163,7 +163,7 @@ export default class Rims extends Component {
                         {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
                       </div>
                       <div className="col-md-4">
-                          <p id="model">{ rim.year } { rim.brand } { rim.model }</p>
+                          <p id="model">Count: { rim.count },  { rim.description }</p>
                           <p id="condition">Condition: { rim.condition} </p>
                       </div>
                       <div className="col-md-4">

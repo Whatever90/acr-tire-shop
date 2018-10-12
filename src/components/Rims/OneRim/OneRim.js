@@ -59,7 +59,7 @@ export default class OneRim extends Component {
             <div className="container" id="rim">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.rim.year} {this.state.rim.brand} {this.state.rim.model}</h1>
+                  <h1 id="title">{this.state.rim.brand} {this.state.rim.diameter} {this.state.rim.ratio} {this.state.rim.width}</h1>
                 </div>
               </div>
               <div className="row">
@@ -72,7 +72,7 @@ export default class OneRim extends Component {
               </div>
               <div className="row">
                 <div className="col-md-4">
-                  <p id="model">Mileage: {this.state.rim.mileage} Color: {this.state.rim.color}</p>
+                  <p id="model">Condition: {this.state.rim.condition} Count: {this.state.rim.count}</p>
                   <p id="condition">{this.state.rim.description}</p>
                 </div>
                 <div className="col-md-4">

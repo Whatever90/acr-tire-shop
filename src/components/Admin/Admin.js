@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import { login } from '../../redux/ducks/reducer';
 import Navbar from "./../Navbar/Navbar"
 import Uploader from "./../Uploader/Uploader";
-import {savePhotos, getPhotos} from './../../redux/ducks/reducer';
+import { savePhotos, getPhotos } from './../../redux/ducks/reducer';
 import Dropzone from 'react-dropzone';
-import superagent  from 'superagent';
+import superagent from 'superagent';
 
 class Admin extends Component {
   constructor(props) {
@@ -41,15 +41,15 @@ class Admin extends Component {
       container: null
     };
   }
-/// oh boy, here we go. 
+  /// oh boy, here we go. 
   componentDidMount() {
     axios.get('/user/data')
-    .then(response => {
-      if (response.data.user) {
-        this.props.login(response.data.user); // adding admin to session
-      }
-    })
-    .catch(error => console.log(error))
+      .then(response => {
+        if (response.data.user) {
+          this.props.login(response.data.user); // adding admin to session
+        }
+      })
+      .catch(error => console.log(error))
   }
 
   componentWillMount() {
@@ -116,11 +116,11 @@ class Admin extends Component {
 
   edit_Tire_submit(event, index) {
     event.preventDefault();
-    
+
     let {
-      temp_id, brand, model, price,  width, description, ratio, diameter, count, type, photos
+      temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos
     } = this.state;
-    
+
     axios
       .post("/tires/edit", {
         temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos
@@ -138,7 +138,7 @@ class Admin extends Component {
         }
       })
       .catch(error => console.log("BLYAAAD'", error)); /// ++++++++++++++++++ ADD A MESSAGE!
-    
+
   }
 
   refreshTireById(id) {
@@ -162,10 +162,10 @@ class Admin extends Component {
 
   tires_list_remove(id) {
     var tireArray = this.state.tires;
-    for(let i = 0; i< tireArray.length; i++){
-      if(tireArray[i]._id === id){
-        for(let k = i; k<tireArray.length; k++){
-          tireArray[k] = tireArray[k+1];
+    for (let i = 0; i < tireArray.length; i++) {
+      if (tireArray[i]._id === id) {
+        for (let k = i; k < tireArray.length; k++) {
+          tireArray[k] = tireArray[k + 1];
         }
         tireArray.pop();
         break;
@@ -205,7 +205,7 @@ class Admin extends Component {
     let {
       temp_id, brand, count, price, description, condition, diameter, photos
     } = this.state;
-    
+
     axios
       .post("/rims/edit", {
         temp_id, brand, count, price, description, condition, diameter, photos
@@ -247,10 +247,10 @@ class Admin extends Component {
 
   rims_list_remove(id) {
     var tireArray = this.state.rims;
-    for(let i = 0; i< tireArray.length; i++){
-      if(tireArray[i]._id === id){
-        for(let k = i; k<tireArray.length; k++){
-          tireArray[k] = tireArray[k+1];
+    for (let i = 0; i < tireArray.length; i++) {
+      if (tireArray[i]._id === id) {
+        for (let k = i; k < tireArray.length; k++) {
+          tireArray[k] = tireArray[k + 1];
         }
         tireArray.pop();
         break;
@@ -261,7 +261,7 @@ class Admin extends Component {
     })
   }
 
-// END OF RIMSS FUNCTIONS -------------
+  // END OF RIMSS FUNCTIONS -------------
 
 
 
@@ -299,10 +299,10 @@ class Admin extends Component {
           if (error) console.log(error);
           counter++;
           if (counter === filesToUpload.length) {
-            if(x === "tires"){
+            if (x === "tires") {
               console.log("1 lol", x, id);
               this.refreshTireById(id)
-            }else if(x === "rims"){
+            } else if (x === "rims") {
               console.log("1 lol", x, id);
               this.refreshRimById(id)
             }
@@ -342,9 +342,9 @@ class Admin extends Component {
       .then(res => {
         if (res.data) {
           this.clearState();
-          if(x === "tires"){
+          if (x === "tires") {
             this.tires_list_remove(i)
-          }else if(x === "rims"){
+          } else if (x === "rims") {
             this.rims_list_remove(i)
           }
         } else {
@@ -353,11 +353,11 @@ class Admin extends Component {
       })
       .catch(error => console.log(error));
   }
-  cancelDeletion(){
+  cancelDeletion() {
     console.log(this.state.container);
     var arrRims = this.state.rims;
-    for(let i = 0; i< arrRims.length; i++){
-      if(arrRims[i]._id == this.state.container._id){
+    for (let i = 0; i < arrRims.length; i++) {
+      if (arrRims[i]._id == this.state.container._id) {
         arrRims[i] = this.state.container;
         this.setState({
           rims: arrRims
@@ -365,16 +365,16 @@ class Admin extends Component {
         break;
       }
     }
-  }    
+  }
 
-  deletePhoto(id, element){
+  deletePhoto(id, element) {
     console.log(id, element);
     var tempArr = this.state.photos;
     var arrDeletion = this.state.photos_to_delete;
-    for(let i = 0; i< tempArr.length; i++){
-      if(tempArr[i] === element){
-        for(let k = i; k < tempArr.length-1; k++){
-          tempArr[k] = tempArr[k+1]
+    for (let i = 0; i < tempArr.length; i++) {
+      if (tempArr[i] === element) {
+        for (let k = i; k < tempArr.length - 1; k++) {
+          tempArr[k] = tempArr[k + 1]
         }
         tempArr.pop();
         break;
@@ -387,15 +387,15 @@ class Admin extends Component {
     })
   }
 
-  photos_deletion_submitted(x, id){
-    if(this.state.photos_to_delete.length<1){
+  photos_deletion_submitted(x, id) {
+    if (this.state.photos_to_delete.length < 1) {
       return;
     }
     console.log("deleting photos for", x);
     var arrToDelete = this.state.photos_to_delete;
     console.log("Photos to delete:", arrToDelete);
     var counter = 0;
-    for(var i = 0; i< arrToDelete.length; i++){
+    for (var i = 0; i < arrToDelete.length; i++) {
       const url = arrToDelete[i].split('/');
       const fileName = url[url.length - 1];
       counter++;
@@ -403,16 +403,16 @@ class Admin extends Component {
         .then(res => {
           console.log(arrToDelete[i], "is deleted");
         }).catch(err => console.log(err));
-      if(counter === arrToDelete.length){
-        if(x === "tires"){
+      if (counter === arrToDelete.length) {
+        if (x === "tires") {
           this.refreshTireById(id)
-        } else if(x === "rims"){
+        } else if (x === "rims") {
           this.refreshRimById(id)
         }
       }
     }
   }
-  
+
   logout() {
     console.log(this.state)
     axios.post('/user/logout')
@@ -428,7 +428,7 @@ class Admin extends Component {
   }
 
   clearState() {
-    this.setState({ 
+    this.setState({
       temp_id: "",
       brand: "",
       title: "",
@@ -450,7 +450,7 @@ class Admin extends Component {
     })
   }
 
-  checkState(){              // Dev function.
+  checkState() {              // Dev function.
     console.log(this.state); // Just checking this.state. Should be removed before releasing the final version
   }
 
@@ -460,49 +460,49 @@ class Admin extends Component {
     const { user } = this.props;
     const listOfRequests = this.state.requests.map(request => (
       <div className="admin-requests-container border-top-0" key={request._id}>
-          <div>Name: {request.name}</div>
-          <div>Phone: {request.phone}</div>
-          <div>Message: {request.message}</div>
-          <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
+        <div>Name: {request.name}</div>
+        <div>Phone: {request.phone}</div>
+        <div>Message: {request.message}</div>
+        <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
       </div>
     ));
 
     const listOfTires = this.state.tires.map((tire, index) => (
       <div id="rim_box" key={tire._id}>
-      <div className="row" >
+        <div className="row" >
           <div className="col-lg-5">
-              <label className="switch">
-                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_tire(tire)} />
-                <span className="slider"></span>
-              </label>
-              Edit
+            <label className="switch">
+              <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === tire._id} onClick={() => this.edit_tire(tire)} />
+              <span className="slider"></span>
+            </label>
+            Edit
             <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(tire._id, "tires")} disabled={this.state.temp_id !== tire._id}>Delete</button>
             <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_tire_submit(event, tire._id)} disabled={this.state.temp_id !== tire._id}>Submit</button>
           </div>
           <div className="col-md-4">
           </div>
         </div>
-      <div className="row" >
-        <div className="col-md-3"> 
-          <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={tire.brand} disabled={this.state.temp_id !== tire._id} />
-          <label>width : </label><input type='number' className='form-control' onChange={event => this.handleChange("width", event)} placeholder="width" defaultValue={tire.width} disabled={this.state.temp_id !== tire._id} />
-          <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
-          <label>ratio :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio" defaultValue={tire.ratio} disabled={this.state.temp_id !== tire._id} />
-           </div>
-        <div className="col-md-3">
-          <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} />
-          <label>condition :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} />
-          <label>count :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={tire.count} disabled={this.state.temp_id !== tire._id} />
-          <label>type :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("type", event)} placeholder="type" defaultValue={tire.type} disabled={this.state.temp_id !== tire._id} />
-          <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !==tire._id} />
-        </div>
-        <div className="col-md-3">
+        <div className="row" >
+          <div className="col-md-3">
+            <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={tire.brand} disabled={this.state.temp_id !== tire._id} />
+            <label>width : </label><input type='number' className='form-control' onChange={event => this.handleChange("width", event)} placeholder="width" defaultValue={tire.width} disabled={this.state.temp_id !== tire._id} />
+            <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
+            <label>ratio :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio" defaultValue={tire.ratio} disabled={this.state.temp_id !== tire._id} />
+          </div>
+          <div className="col-md-3">
+            <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} />
+            <label>condition :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} />
+            <label>count :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={tire.count} disabled={this.state.temp_id !== tire._id} />
+            <label>type :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("type", event)} placeholder="type" defaultValue={tire.type} disabled={this.state.temp_id !== tire._id} />
+            <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !== tire._id} />
+          </div>
+          <div className="col-md-3">
             <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-                <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(tire._id, e)} disabled={this.state.temp_id !== tire._id}>x</button>
-              </li>)}
+              <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(tire._id, e)} disabled={this.state.temp_id !== tire._id}>x</button>
+            </li>)}
             </ul>
-        </div>
-        <div className="col-md-3">
+          </div>
+          <div className="col-md-3">
             <div className="uploader">
               <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true} disabled={this.state.temp_id !== tire._id}>
                 <button className="btn btn-warning btn-xs" disabled={this.state.temp_id !== tire._id} onClick={(event) => event.preventDefault()} >+</button>
@@ -513,44 +513,44 @@ class Admin extends Component {
                   <button type="button" className="btn btn-danger btn-xs" onClick={() => this.delete(e)} disabled={this.state.temp_id !== tire._id}>x</button></p>
                 </small>)}
             </div>
+          </div>
         </div>
       </div>
-    </div>
     ));
 
     const listOfRims = this.state.rims.map((rim, index) => (
       <div id="rim_box" key={rim._id}>
-      <div className="row" >
+        <div className="row" >
           <div className="col-lg-5">
-              <label className="switch">
-                <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === rim._id} onClick={() => this.edit_rim(rim)} />
-                <span className="slider"></span>
-              </label>
-              Edit
+            <label className="switch">
+              <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === rim._id} onClick={() => this.edit_rim(rim)} />
+              <span className="slider"></span>
+            </label>
+            Edit
             <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(rim._id, "rims")} disabled={this.state.temp_id !== rim._id}>Delete</button>
             <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_rim_submit(event, rim._id)} disabled={this.state.temp_id !== rim._id}>Submit</button>
           </div>
           <div className="col-md-4">
           </div>
         </div>
-      <div className="row" >
-        <div className="col-md-3"> 
-          <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
-          <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={rim.brand} disabled={this.state.temp_id !== rim._id} />
-          <label>count : </label><input type='text' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
-          <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
-        </div>
-        <div className="col-md-3">
-          <label>Condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="Condition" defaultValue={rim.condition} disabled={this.state.temp_id !== rim._id} />
-          <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={rim.description} rows="4" disabled={this.state.temp_id !==rim._id} />
-        </div>
-        <div className="col-md-3">
+        <div className="row" >
+          <div className="col-md-3">
+            <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
+            <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={rim.brand} disabled={this.state.temp_id !== rim._id} />
+            <label>count : </label><input type='text' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
+            <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
+          </div>
+          <div className="col-md-3">
+            <label>Condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="Condition" defaultValue={rim.condition} disabled={this.state.temp_id !== rim._id} />
+            <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={rim.description} rows="4" disabled={this.state.temp_id !== rim._id} />
+          </div>
+          <div className="col-md-3">
             <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-                <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(rim._id, e)} disabled={this.state.temp_id !== rim._id}>x</button>
-              </li>)}
+              <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(rim._id, e)} disabled={this.state.temp_id !== rim._id}>x</button>
+            </li>)}
             </ul>
-        </div>
-        <div className="col-md-3">
+          </div>
+          <div className="col-md-3">
             <div className="uploader">
               <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true} disabled={this.state.temp_id !== rim._id}>
                 <button className="btn btn-warning btn-xs" disabled={this.state.temp_id !== rim._id} onClick={(event) => event.preventDefault()} >+</button>
@@ -561,9 +561,9 @@ class Admin extends Component {
                   <button type="button" className="btn btn-danger btn-xs" onClick={() => this.delete(e)} disabled={this.state.temp_id !== rim._id}>x</button></p>
                 </small>)}
             </div>
+          </div>
         </div>
       </div>
-    </div>
     ));
 
     return (
@@ -572,30 +572,30 @@ class Admin extends Component {
         <div className="admin-main-container">
           {user && <div className="mainDiv">
             <h1>Admin</h1>
-            <button type="button" className="btn btn-outline-danger" onClick={ () => this.logout() }>Log out</button>
+            <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
             <div className="list_of_requests">
               <h2>Requests</h2>
               {listOfRequests}
             </div>
-            
+
             <AddNewTire />
             {this.state.tires.length && <div className="rims">
               <h2>Tires</h2>
               {listOfTires}
             </div>}
-            
+
             <AddNewRim />
-            
+
             <div className="rims">
               <h2>Rims</h2>
               {listOfRims}
             </div>
-            
+
           </div>}
           {!user && <div className="you-must-log-in-div"><p>You must log in! <Link to="/login">Log in</Link></p></div>}
 
-          </div>
-        </div> 
+        </div>
+      </div>
     );
   }
 }

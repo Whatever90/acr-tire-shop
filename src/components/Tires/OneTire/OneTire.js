@@ -61,7 +61,7 @@ export default class OneTire extends Component {
             <div className="container" id="tire">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.tire.year} {this.state.tire.brand} {this.state.tire.model}</h1>
+                  <h1 id="title">{this.state.tire.brand} {this.state.tire.ration} {this.state.tire.width} {this.state.tire.diameter}</h1>
                 </div>
               </div>
               <div className="row">
@@ -74,7 +74,7 @@ export default class OneTire extends Component {
               </div>
               <div className="row">
                 <div className="col-md-7">
-                  <p id="model">Mileage: {this.state.tire.mileage} Color: {this.state.tire.color}</p>
+                  <p id="model">Count: {this.state.tire.count}, Type: {this.state.tire.type}, Condition: {this.state.tire.condition}</p>
                   <p id="condition">{this.state.tire.description}</p>
                 </div>
                 <div className="col-md-5">

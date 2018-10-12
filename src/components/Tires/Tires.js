@@ -8,7 +8,7 @@ export default class Tires extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tires : [],
+      tires: [],
       search: false,
       inputSearch: {
         brand: null,
@@ -24,8 +24,8 @@ export default class Tires extends Component {
       filterShowself: true
     };
   }
-  
-  componentWillMount(){
+
+  componentWillMount() {
     axios.get('/tires/all')
       .then(res => {
         console.log(res);
@@ -33,43 +33,43 @@ export default class Tires extends Component {
       })
       .catch(error => console.log(error));
   }
-  searchClicked(){
+  searchClicked() {
     let status = this.state.search;
     this.setState({
       search: !status
     })
   }
-  inputChange(target, event){
+  inputChange(target, event) {
     event.preventDefault();
     console.log(event.target.value);
   }
-  searchSubmit(){
+  searchSubmit() {
     var copytires = this.state.copytires;
     var resulttires = [];
     var searchOptions = this.state.inputSearch;
-    copytires.forEach(function(tire){
-      if(searchOptions.brand !== null){
-        if(tire.brand === searchOptions.brand){
-          if(searchOptions.model !== null){
-            if(tire.model === searchOptions.model){
-              if(tire.year>=searchOptions.yearMin && tire.year<=searchOptions.yearMax && tire.price>=searchOptions.priceMin && tire.price<=searchOptions.priceMax){
+    copytires.forEach(function (tire) {
+      if (searchOptions.brand !== null) {
+        if (tire.brand === searchOptions.brand) {
+          if (searchOptions.model !== null) {
+            if (tire.model === searchOptions.model) {
+              if (tire.year >= searchOptions.yearMin && tire.year <= searchOptions.yearMax && tire.price >= searchOptions.priceMin && tire.price <= searchOptions.priceMax) {
                 resulttires.push(tire)
               }
             }
-          }else if(tire.year>=searchOptions.yearMin && tire.year<=searchOptions.yearMax && tire.price>=searchOptions.priceMin && tire.price<=searchOptions.priceMax){
+          } else if (tire.year >= searchOptions.yearMin && tire.year <= searchOptions.yearMax && tire.price >= searchOptions.priceMin && tire.price <= searchOptions.priceMax) {
             resulttires.push(tire);
           }
         }
-      }else{
-        if(tire.year>=searchOptions.yearMin && tire.year<=searchOptions.yearMax && tire.price>=searchOptions.priceMin && tire.price<=searchOptions.priceMax){
+      } else {
+        if (tire.year >= searchOptions.yearMin && tire.year <= searchOptions.yearMax && tire.price >= searchOptions.priceMin && tire.price <= searchOptions.priceMax) {
           resulttires.push(tire);
         }
       }
     })
     var result_bool;
-    if(resulttires.length<1){
+    if (resulttires.length < 1) {
       result_bool = false;
-    }else{
+    } else {
       result_bool = true;
     }
     this.setState({
@@ -78,19 +78,19 @@ export default class Tires extends Component {
     })
 
   }
-  searchCancel(){
+  searchCancel() {
     this.setState({
       tires: this.state.copytires,
       filterResult: true,
       filterShowself: false
-    }, function(){
+    }, function () {
       this.setState({
         filterShowself: true
       })
     })
   }
-  searchFilterByBrand(brand){
-    if(brand==="All"){
+  searchFilterByBrand(brand) {
+    if (brand === "All") {
       var tempSearch = this.state.inputSearch;
       tempSearch.brand = null;
       tempSearch.tires = [];
@@ -103,8 +103,8 @@ export default class Tires extends Component {
     var tires = [];
     var temp = this.state.inputSearch;
     temp.brand = brand;
-    this.state.copytires.forEach(function(tire){
-      if(tire.brand===brand){
+    this.state.copytires.forEach(function (tire) {
+      if (tire.brand === brand) {
         tires.push(tire)
       }
     })
@@ -121,11 +121,11 @@ export default class Tires extends Component {
     })
   }
 
-  changeState(x,y,val){
+  changeState(x, y, val) {
     var temp = this.state[x];
-    if(y){
+    if (y) {
       temp[y] = val;
-    }else{
+    } else {
       temp = val;
     }
     this.setState({
@@ -137,34 +137,35 @@ export default class Tires extends Component {
 
   render() {
     var listOftires
-    if(this.state.tires.length>0){
+    if (this.state.tires.length > 0) {
       listOftires = this.state.tires.map((tire, index) => {
         return (
-          <Link to={`/tire/${ tire._id }`} key={index}>
-             <div>
+          <Link to={`/tire/${tire._id}`} key={index}>
+            <div>
               <div id="box" key={index}>
                 <div className="container" id="tire">
                   <div className="row">
-                      <div className="col-md-12" id="top" >
-                          <h1 id="title">{ tire.year } { tire.brand } { tire.model } </h1>
-                      </div>
+                    <div className="col-md-12" id="top" >
+                      <h1 id="title">{tire.brand} {tire.ratio} {tire.width} {tire.diameter}</h1>
+                    </div>
                   </div>
                   <div className="row">
-                      <div className="col-md-4">
+                    <div className="col-md-4">
                       {/* 
                         not sure which css is right. have to check
                         {tire.photos.length === 0 && <img src={aws} alt="tire" id="tire-photo"/>} 
                         {tire.photos.length>0 && <img src={tire.photos[0]} alt="tire" id="tire-photo"/>}
                       */}
-                        {tire.photos.length === 0 && <img src={aws} alt="rim" className="photos"/>} 
-                        {tire.photos.length>0 && <img src={tire.photos[0]} alt="rim" className="photos"/>}
-                      </div>
-                      <div className="col-md-4">
-                          <p id="model">{ tire.mileage } miles, Color: { tire.color }</p>
-                      </div>
-                      <div className="col-md-4">
-                          <p id="price">${ tire.price }</p>
-                      </div>
+                      {tire.photos.length === 0 && <img src={aws} alt="rim" className="photos" />}
+                      {tire.photos.length > 0 && <img src={tire.photos[0]} alt="rim" className="photos" />}
+                    </div>
+                    <div className="col-md-4">
+                      <p id="model">Count {tire.count}, Type: {tire.type} , Condition: {tire.condition}</p>
+                      <p>{tire.description}</p>
+                    </div>
+                    <div className="col-md-4">
+                      <p id="price">${tire.price}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -172,22 +173,22 @@ export default class Tires extends Component {
           </Link>
         )
       })
-    }else{
+    } else {
       listOftires = ``
     }
     var listOfBrands = [];
-    this.state.copytires.forEach(function(tire){
+    this.state.copytires.forEach(function (tire) {
       listOfBrands.push(tire.brand)
     })
-    listOfBrands = listOfBrands.filter(function(item, pos, self) {
-        return self.indexOf(item) === pos;
-      }).sort().map((b, index) => {
-        return (
-          <option key={index}>{b}</option>
-        )
+    listOfBrands = listOfBrands.filter(function (item, pos, self) {
+      return self.indexOf(item) === pos;
+    }).sort().map((b, index) => {
+      return (
+        <option key={index}>{b}</option>
+      )
     })
-    
-    
+
+
 
     return (
       <div id="body_list_tires">
@@ -205,58 +206,58 @@ export default class Tires extends Component {
             {this.state.search && <div className="col-sm-3 searchBoxButtons">
               <button className="btn btn-primary" onClick={() => this.searchSubmit()}>Search</button>
               <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
-              </div>
-              }
+            </div>
+            }
           </div>
           {this.state.search && this.state.filterShowself && <div className="container" id="searchInput">
-              <div className="row">
-                <div className="col-sm-6">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Brand:</span></div>
-                    <select className="form-control" onChange={event => this.searchFilterByBrand(event.target.value)}>
-                      <option>All</option>
-                      {listOfBrands}
-                    </select>
-                  </div>
+            <div className="row">
+              <div className="col-sm-6">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Brand:</span></div>
+                  <select className="form-control" onChange={event => this.searchFilterByBrand(event.target.value)}>
+                    <option>All</option>
+                    {listOfBrands}
+                  </select>
                 </div>
-              
-                <div className="col-sm-6">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Model:</span></div>
-                    <select className="form-control" disabled={this.state.inputSearch.listOfModels.length===0}>
-                      <option value="all">All</option>
-                        {this.state.inputSearch.listOfModels}
-                    </select>
-                  </div>
+              </div>
+
+              <div className="col-sm-6">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Model:</span></div>
+                  <select className="form-control" disabled={this.state.inputSearch.listOfModels.length === 0}>
+                    <option value="all">All</option>
+                    {this.state.inputSearch.listOfModels}
+                  </select>
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Model Year:</span></div>
-                    <input type='number' className='form-control' placeholder="Min year"
-                      min={this.state.inputSearch.yearMin} max={this.state.inputSearch.yearMax}
-                      onChange={event => this.changeState("inputSearch", 'yearMin', Number(event.target.value))} />
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Model Year:</span></div>
+                  <input type='number' className='form-control' placeholder="Min year"
+                    min={this.state.inputSearch.yearMin} max={this.state.inputSearch.yearMax}
+                    onChange={event => this.changeState("inputSearch", 'yearMin', Number(event.target.value))} />
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <input type='number'  className='form-control' placeholder="Max year" onChange={event => this.changeState("inputSearch", 'yearMax', Number(event.target.value))}/>
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <input type='number' className='form-control' placeholder="Max year" onChange={event => this.changeState("inputSearch", 'yearMax', Number(event.target.value))} />
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Lowest Price:</span></div>
-                    <input type='number'  className='form-control' placeholder="Min $" onChange={event => this.changeState("inputSearch", 'priceMin', Number(event.target.value))}/>
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Lowest Price:</span></div>
+                  <input type='number' className='form-control' placeholder="Min $" onChange={event => this.changeState("inputSearch", 'priceMin', Number(event.target.value))} />
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Highest Price:</span></div>
-                    <input type='number' className='form-control' placeholder="Max $" onChange={event => this.changeState("inputSearch", 'priceMax', Number(event.target.value))}/>
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Highest Price:</span></div>
+                  <input type='number' className='form-control' placeholder="Max $" onChange={event => this.changeState("inputSearch", 'priceMax', Number(event.target.value))} />
                 </div>
               </div>
             </div>
-        }
+          </div>
+          }
           <div id="main2">
             {listOftires}
           </div>
@@ -268,12 +269,12 @@ export default class Tires extends Component {
           </div>
           }
           {!this.state.filterResult && <div className="row text-center margin-b-40 emptytires">
-          <div className="col-sm-6 col-sm-offset-3 emptytires-box">
-             <h1>Sorry, we have nothing according filter settings</h1>
-             <h4>Please, come back later to check new offers!</h4>
-           </div>
-         </div>
-           }          
+            <div className="col-sm-6 col-sm-offset-3 emptytires-box">
+              <h1>Sorry, we have nothing according filter settings</h1>
+              <h4>Please, come back later to check new offers!</h4>
+            </div>
+          </div>
+          }
         </div>
       </div>
     );
