@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Top from '../Top/Top';
-import Contact from '../Contact/Contact';
-import Navbar from '../Navbar/Navbar';
+import React, { Component } from "react";
+import Top from "../Top/Top";
+import Contact from "../Contact/Contact";
+import Navbar from "../Navbar/Navbar";
 
 export default class Home extends Component {
   render() {
@@ -10,7 +10,6 @@ export default class Home extends Component {
         <Navbar />
         <Top />
         <Contact />
-        
       </div>
     );
   }
