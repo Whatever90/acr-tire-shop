@@ -19,6 +19,13 @@ class Admin extends Component {
       requests: [],
       tires: [],
       rims: [],
+      //
+      width: 0,
+      ratio: 0,
+      diameter: 0,
+      count: 0,
+      type: "",
+      //
       temp_id: '',
       title: "",
       brand: "",
@@ -92,11 +99,14 @@ class Admin extends Component {
       this.setState({
         temp_id: tire._id,
         brand: tire.brand,
-        model: tire.model,
-        year: tire.year,
+        width: tire.width,
+        ratio: tire.ratio,
+        diameter: tire.diameter,
         price: tire.price,
         description: tire.description,
-        mileage: tire.mileage,
+        condition: tire.condition,
+        count: tire.count,
+        type: tire.type,
         photos: tire.photos,
         files: [],
         photos_to_delete: []
@@ -108,12 +118,12 @@ class Admin extends Component {
     event.preventDefault();
     
     let {
-      temp_id, brand, model, price,  year, description, mileage, photos
+      temp_id, brand, model, price,  width, description, ratio, diameter, count, type, photos
     } = this.state;
     
     axios
       .post("/tires/edit", {
-        temp_id, brand, model, price, year, description, mileage, photos
+        temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos
       })
       .then(response => {
         if (response.data) {
@@ -179,9 +189,8 @@ class Admin extends Component {
         container: rim,
         temp_id: rim._id,
         brand: rim.brand,
-        title: rim.title,
-        model: rim.model,
-        year: rim.year,
+        diameter: rim.diameter,
+        count: rim.count,
         condition: rim.condition,
         price: rim.price,
         description: rim.description,
@@ -194,12 +203,12 @@ class Admin extends Component {
   edit_rim_submit(event, index) {
     event.preventDefault();
     let {
-      temp_id, brand, model, price, year, description, condition, title, photos
+      temp_id, brand, count, price, description, condition, diameter, photos
     } = this.state;
     
     axios
       .post("/rims/edit", {
-        temp_id, brand, model, price, year, description, condition, title, photos
+        temp_id, brand, count, price, description, condition, diameter, photos
       })
       .then(response => {
         if (response.data) {
@@ -432,7 +441,12 @@ class Admin extends Component {
       photos: [],
       files: [],
       photos_to_delete: [],
-      container: null
+      container: null,
+      width: 0,
+      ratio: 0,
+      diameter: 0,
+      count: 0,
+      type: "",
     })
   }
 
@@ -471,13 +485,15 @@ class Admin extends Component {
       <div className="row" >
         <div className="col-md-3"> 
           <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={tire.brand} disabled={this.state.temp_id !== tire._id} />
-          <label>Model : </label><input type='text' className='form-control' onChange={event => this.handleChange("model", event)} placeholder="Model" defaultValue={tire.model} disabled={this.state.temp_id !== tire._id} />
+          <label>width : </label><input type='number' className='form-control' onChange={event => this.handleChange("width", event)} placeholder="width" defaultValue={tire.width} disabled={this.state.temp_id !== tire._id} />
           <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
-          <label>Year :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("year", event)} placeholder="Year" defaultValue={tire.year} disabled={this.state.temp_id !== tire._id} />
+          <label>ratio :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio" defaultValue={tire.ratio} disabled={this.state.temp_id !== tire._id} />
            </div>
         <div className="col-md-3">
-          <label>Color : </label><input type='text' className='form-control' onChange={event => this.handleChange("color", event)} placeholder="Color" defaultValue={tire.color} disabled={this.state.temp_id !== tire._id} />
-          <label>Mileage :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("mileage", event)} placeholder="Mileage" defaultValue={tire.mileage} disabled={this.state.temp_id !== tire._id} />
+          <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} />
+          <label>condition :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} />
+          <label>count :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={tire.count} disabled={this.state.temp_id !== tire._id} />
+          <label>type :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("type", event)} placeholder="type" defaultValue={tire.type} disabled={this.state.temp_id !== tire._id} />
           <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !==tire._id} />
         </div>
         <div className="col-md-3">
@@ -519,14 +535,13 @@ class Admin extends Component {
         </div>
       <div className="row" >
         <div className="col-md-3"> 
-          <label>Title : </label><input type='text' className='form-control' onChange={event => this.handleChange("title", event)} placeholder="Title" defaultValue={rim.title} disabled={this.state.temp_id !== rim._id} />
+          <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
           <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={rim.brand} disabled={this.state.temp_id !== rim._id} />
-          <label>Model : </label><input type='text' className='form-control' onChange={event => this.handleChange("model", event)} placeholder="Model" defaultValue={rim.model} disabled={this.state.temp_id !== rim._id} />
+          <label>count : </label><input type='text' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
           <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
         </div>
         <div className="col-md-3">
           <label>Condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="Condition" defaultValue={rim.condition} disabled={this.state.temp_id !== rim._id} />
-          <label>Year :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("year", event)} placeholder="Year" defaultValue={rim.year} disabled={this.state.temp_id !== rim._id} />
           <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={rim.description} rows="4" disabled={this.state.temp_id !==rim._id} />
         </div>
         <div className="col-md-3">

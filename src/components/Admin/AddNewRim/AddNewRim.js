@@ -8,12 +8,11 @@ export default class AddNewRim extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
+      diameter: "",
       brand: "",
-      model: "",
       price: "",
       condition: "",
-      year: "",
+      count: "",
       description: "",
       files: [],
       formShowself: true
@@ -28,22 +27,20 @@ export default class AddNewRim extends Component {
   handleSubmit(event) { //adding a new rim
     event.preventDefault();
     let {
-      title,
+      diameter,
       brand,
-      model,
       price,
       condition,
-      year,
+      count,
       description
     } = this.state;
     axios
       .post("/rims/new", {
-        title,
+        diameter,
         brand,
-        model,
         price,
         condition,
-        year,
+        count,
         description
       })
       .then(response => {
@@ -119,11 +116,11 @@ export default class AddNewRim extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <p>Title:</p>
+                    <p>diameter:</p>
                   </td>
                   <td>
                     <input
-                      onChange={event => this.handleChange("title", event)}
+                      onChange={event => this.handleChange("diameter", event)}
                       className="input"
                     />
                   </td>
@@ -135,17 +132,6 @@ export default class AddNewRim extends Component {
                   <td>
                     <input
                       onChange={event => this.handleChange("brand", event)}
-                      className="input"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Model: </p>
-                  </td>
-                  <td>
-                    <input
-                      onChange={event => this.handleChange("model", event)}
                       className="input"
                     />
                   </td>
@@ -175,11 +161,11 @@ export default class AddNewRim extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <p className="inputparagraph">Year: </p>
+                    <p className="inputparagraph">count: </p>
                   </td>
                   <td>
                     <input
-                      onChange={event => this.handleChange("year", event)}
+                      onChange={event => this.handleChange("count", event)}
                       className="input"
                       type="number"
                     />

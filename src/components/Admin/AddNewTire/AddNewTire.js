@@ -19,13 +19,15 @@ class AddNewTire extends Component {
     super(props);
     this.state = {
       brand: "",
-      model: "",
-      price: "",
-      color: "",
-      year: "",
-      mileage: "",
+      width: 0,
+      price: 0,
+      ratio: 0,
+      diameter: 0,
+      condition: "",
       description: "",
       files: [],
+      count: 0,
+      type: "",
       formShowself: true
     };
   }
@@ -41,21 +43,25 @@ class AddNewTire extends Component {
     event.preventDefault();
     let {
       brand,
-      model,
+      width,
       price,
-      color,
-      year,
-      mileage,
+      count,
+      type,
+      ratio,
+      diameter,
+      condition,
       description
     } = this.state;
     axios
       .post("/tires/new", {
         brand,
-        model,
+        width,
         price,
-        color,
-        year,
-        mileage,
+        count,
+        type,
+        ratio,
+        diameter,
+        condition,
         description
       })
       .then(response => {
@@ -67,11 +73,13 @@ class AddNewTire extends Component {
     alert("New tire is created!")
     this.setState({ //clearing state
       brand: "",
-      model: "",
-      price: "",
-      color: "",
-      year: "",
-      mileage: "",
+      width: 0,
+      price: 0,
+      ratio: 0,
+      count: 0,
+      type: "",
+      diameter: 0,
+      condition: "",
       description: "",
       formShowself: false // Reloading form by disabling and enabling
     }, function () {
@@ -148,13 +156,14 @@ class AddNewTire extends Component {
               </tr>
               <tr>
                 <td>
-                  <p className="inputparagraph">Model: </p>
+                  <p className="inputparagraph">Width: </p>
                 </td>
                 <td>
                   <input
-                    onChange={event => this.handleChange("model", event)}
+                    onChange={event => this.handleChange("width", event)}
                     className="input"
-                    defaultValue={this.state.model}
+                    type="Number"
+                    defaultValue={this.state.width}
                   />
                 </td>
               </tr>
@@ -171,44 +180,70 @@ class AddNewTire extends Component {
                   />
                 </td>
               </tr>
+              {/*  */}
+            <tr>
+              <td>
+                <p className="inputparagraph">Count: </p>
+              </td>
+              <td>
+                <input
+                  onChange={event => this.handleChange("count", event)}
+                  className="input"
+                  type="number"
+                  defaultValue={this.state.count}
+                />
+              </td>
+            </tr>
+            {/*  */}
               <tr>
                 <td>
-                  <p className="inputparagraph">Color: </p>
+                  <p className="inputparagraph">Ratio: </p>
                 </td>
                 <td>
                   <input
-                    onChange={event => this.handleChange("color", event)}
+                    onChange={event => this.handleChange("ratio", event)}
                     className="input"
-                    defaultValue={this.state.color}
+                    defaultValue={this.state.ratio}
                   />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <p className="inputparagraph">Year: </p>
+                  <p className="inputparagraph">Diameter: </p>
                 </td>
                 <td>
                   <input
-                    onChange={event => this.handleChange("year", event)}
+                    onChange={event => this.handleChange("diameter", event)}
                     className="input"
                     type="number"
-                    defaultValue={this.state.year}
+                    defaultValue={this.state.diameter}
                   />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <p className="inputparagraph">Mileage: </p>
+                  <p className="inputparagraph">Condition: </p>
                 </td>
                 <td>
                   <input
-                    onChange={event => this.handleChange("mileage", event)}
+                    onChange={event => this.handleChange("condition", event)}
                     className="input"
-                    type="number"
-                    defaultValue={this.state.mileage}
+                    defaultValue={this.state.condition}
                   />
                 </td>
               </tr>
+            <tr>
+              <td>
+                <p className="inputparagraph">Type: </p>
+              </td>
+              <td>
+                <input
+                  onChange={event => this.handleChange("type", event)}
+                  className="input"
+                  defaultValue={this.state.type}
+                />
+              </td>
+            </tr>
               <tr>
                 <td>
                   <p className="inputparagraph">Description: </p>

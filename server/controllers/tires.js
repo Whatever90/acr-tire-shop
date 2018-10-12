@@ -5,7 +5,7 @@ var bcrypt = require("bcryptjs");
 
 var Tire = mongoose.model("Tire");
 module.exports = {
-  all: function(req, res) {
+  all: function (req, res) {
     // console.log("all Tires")
     Tire.find({})
       .then(data => {
@@ -16,7 +16,7 @@ module.exports = {
         res.status(500).json(false);
       });
   },
-  find: function(req, res) {
+  find: function (req, res) {
     // console.log("all Tires")
     Tire.findOne({ _id: req.body._id })
       .then(data => {
@@ -28,19 +28,21 @@ module.exports = {
       });
   },
 
-  new: function(req, res) {
+  new: function (req, res) {
     // console.log("++++++++++++++++++++++++++++++++++++")
     // console.log(req.body)
     // console.log('+++++++++++++++++++')
     var tire = new Tire({
       brand: req.body.brand,
-      model: req.body.model,
-      price: req.body.price,
-      color: req.body.color,
-      year: req.body.year,
-      mileage: req.body.mileage,
+      ratio: req.body.ratio,
+      width: req.body.width,
+      diameter: req.body.diameter,
+      condition: req.body.condition,
       description: req.body.description,
-      photos: req.body.photos
+      photos: req.body.photos,
+      price: req.body.price,
+      count: req.body.count,
+      type: req.body.type
     });
     tire
       .save()
@@ -54,7 +56,7 @@ module.exports = {
         res.status(500).json(false);
       });
   },
-  delete: function(req, res) {
+  delete: function (req, res) {
     Tire.remove({ _id: req.body.id })
       .then(data => {
         res.status(200).json(true);
@@ -63,41 +65,44 @@ module.exports = {
         res.status(500).json(false);
       });
   },
-  edit: function(req, res){
+  edit: function (req, res) {
     // console.log(req.body);
     Tire.findByIdAndUpdate({ _id: req.body.temp_id }, {
-                brand: req.body.brand,
-                model: req.body.model,
-                price: req.body.price,
-                year: req.body.year,
-                description: req.body.description,
-                mileage: req.body.mileage,
-                photos: req.body.photos
-    }, function(err, data){
-      if(err){
+      brand: req.body.brand,
+      ratio: req.body.ratio,
+      width: req.body.width,
+      diameter: req.body.diameter,
+      condition: req.body.condition,
+      description: req.body.description,
+      photos: req.body.photos,
+      price: req.body.price,
+      count: req.body.count,
+      type: req.body.type
+    }, function (err, data) {
+      if (err) {
         console.log("can't edit")
         console.log(err);
         res.json(false)
-      }else{
+      } else {
         console.log("the tire was edited")
         console.log(data);
         res.status(200).json(true)
       }
-    }) 
+    })
   },
-  addPhoto: function(params){
+  addPhoto: function (params) {
     console.log(params);
     Tire.findByIdAndUpdate({ _id: params.id }, {
-                $push: {photos: params.imageUrl}
-    }, function(err, data){
-      if(err){
+      $push: { photos: params.imageUrl }
+    }, function (err, data) {
+      if (err) {
         console.log("can't edit")
         console.log(err);
         res.json(false)
-      }else{
+      } else {
         console.log("Photos are uploaded!")
         console.log(data);
       }
-    }) 
+    })
   }
 };
