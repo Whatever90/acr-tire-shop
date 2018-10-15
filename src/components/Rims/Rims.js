@@ -9,17 +9,16 @@ export default class Rims extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rims : [],
+      rims: [],
       search: false,
       inputSearch: {
         title: "",
         brand: null,
-        model: null,
-        yearMin: 0,
-        yearMax: Number.MAX_VALUE,
-        priceMin: 0,
-        priceMax: Number.MAX_VALUE,
-        listOfModels: []
+        diameter: null,
+        priceMin: null,
+        priceMax: null,
+        count: null,
+        condition: null
       },
       copyRims: [],
       filterResult: true,
@@ -27,7 +26,7 @@ export default class Rims extends Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     axios.get('/rims/all')
       .then(res => {
         console.log(res);
@@ -36,148 +35,149 @@ export default class Rims extends Component {
       .catch(error => console.log(error));
   }
 
-  searchClicked(){
+  searchClicked() {
     let status = this.state.search;
     this.setState({
       search: !status
     })
   }
-  inputChange(target, event){
-    event.preventDefault();
-    console.log(event.target.value);
+  inputChange(event) { // Listens any value changes of state.inputSearch via form
+    const target = event.target;
+    let value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    let temp = this.state.inputSearch;
+    if (parseInt(value) % parseInt(value) === 0 || value === '0') {
+      value = parseInt(value);
+    }
+    temp[name] = value;
+    this.setState({
+      inputSearch: temp
+    });
   }
-  searchSubmit(){
+  searchSubmit() { // Listens any
     var copyRims = this.state.copyRims;
-    var resultRims = [];
-    var searchOptions = this.state.inputSearch;
-    copyRims.forEach(function(rim){
-      console.log(rim._id);
-      if(searchOptions.brand !== null){
-        if(rim.brand === searchOptions.brand){
-          if(searchOptions.model !== null){
-            if(rim.model === searchOptions.model){
-              if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
-                resultRims.push(rim)
-              }
+    var tempSearchOptions = [];
+    let tempRims = [];
+    for (let i = 0; i < this.state.copyRims.length; i++) {
+      let bool = true;
+      for (let k in this.state.inputSearch) {
+        if (!bool) {
+          console.log("pizda");
+          break;
+        }
+        if (this.state.inputSearch[k]) {
+          if (k === "priceMin") {
+            if (this.state.copyRims[i].price < this.state.inputSearch[k]) {
+              console.log("too cheap!");
+              bool = false;
             }
-          }else if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
-            resultRims.push(rim);
+            continue;
+          } else if (k === "priceMax") {
+            if (this.state.copyRims[i].price > this.state.inputSearch[k]) {
+              console.log("too expensive!");
+              bool = false
+            }
+            continue;
+          }
+          if (this.state.inputSearch[k] === "" || this.state.inputSearch[k] === "All") {
+            continue;
+          }
+          if (this.state.copyRims[i][k] !== this.state.inputSearch[k]) {
+            console.log("nea suka", this.state.copyRims[i][k])
+            console.log(typeof (this.state.copyRims[i][k]), typeof (this.state.inputSearch[k]))
+            bool = false;
           }
         }
-      }else{
-        if(rim.year>=searchOptions.yearMin && rim.year<=searchOptions.yearMax && rim.price>=searchOptions.priceMin && rim.price<=searchOptions.priceMax){
-          resultRims.push(rim);
-        }
       }
-    })
-    if(resultRims.length<1){
-      this.setState({
-        filterResult: false
-      })
-    }else{
-      this.setState({
-        filterResult: true
-      })
+      if (bool) {
+        console.log("found!")
+        tempRims.push(this.state.copyRims[i]);
+      } else {
+        bool = true;
+      }
     }
     this.setState({
-      rims: resultRims
+      rims: tempRims
     })
 
   }
-  searchCancel(){
+  searchCancel() {
     this.setState({
       rims: this.state.copyRims,
       filterResult: true,
       filterShowself: false
-    }, function(){
+    }, function () {
       this.setState({
         filterShowself: true
       })
     })
-  }
-  searchFilterByBrand(brand){
-    if(brand==="All"){
-      var tempSearch = this.state.inputSearch;
-      tempSearch.brand = null;
-      tempSearch.title = "";
-      tempSearch.listOfModels = [];
-      this.setState({
-        inputSearch: tempSearch   
-      })
-      return;
-    }
-    var rims = [];
-    var temp = this.state.inputSearch;
-    temp.brand = brand;
-    this.state.copyRims.forEach(function(rim){
-      if(rim.brand===brand){
-        rims.push(rim)
-      }
-    })
-    var tempModels = rims.filter(function (item, pos, self) {
-      return self.indexOf(item) === pos;
-    }).sort().map((c, index) => {
-      return (
-        <option key={index}>{c.model}</option>
-      )
-    })
-    temp.listOfModels = tempModels;
+    let temp = {
+      title: "",
+      brand: null,
+      diameter: null,
+      priceMin: 0,
+      priceMax: Number.MAX_VALUE,
+      listOfDiametres: [],
+      count: null,
+      condition: null
+    };
     this.setState({
       inputSearch: temp
     })
   }
 
-  changeState(x,y,val){
+  changeState(x, y, val) {
     var temp = this.state[x];
-    if(y){
+    if (y) {
       temp[y] = val;
-    }else{
+    } else {
       temp = val;
     }
     this.setState({
       x: temp
     })
     console.log(this.state);
-    console.log(this.state.inputSearch.yearMax-this.state.inputSearch.yearMin)
+    console.log(this.state.inputSearch.yearMax - this.state.inputSearch.yearMin)
   }
 
 
 
   render() {
     let listOfRims = null;
-    if(this.state.rims.length>0){
+    if (this.state.rims.length > 0) {
       listOfRims = this.state.rims.map((rim, index) => {
         return (
-          <Link to={`/rim/${ rim._id }`} key={index}>
+          <Link to={`/rim/${rim._id}`} key={index}>
             <div>
               <div id="box" key={index}>
                 <div className="container" id="rim">
                   <div className="row">
-                      <div className="col-md-12" id="top" >
-                          <h1 id="title">{ rim.brand } { rim.diameter } { rim.ratio } { rim.width}</h1>
-                      </div>
+                    <div className="col-md-12" id="top" >
+                      <h1 id="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
+                    </div>
                   </div>
                   <div className="row">
-                      <div className="col-md-4">
-                        {rim.photos.length === 0 && <img src={aws} alt="rim" id="photo" className="photos" />}
-                        {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
-                      </div>
-                      <div className="col-md-4">
-                          <p id="model">Count: { rim.count },  { rim.description }</p>
-                          <p id="condition">Condition: { rim.condition} </p>
-                      </div>
-                      <div className="col-md-4">
-                          <p id="price">${ rim.price }</p>
-                      </div>
+                    <div className="col-md-4">
+                      {rim.photos.length === 0 && <img src={aws} alt="rim" id="photo" className="photos" />}
+                      {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
+                    </div>
+                    <div className="col-md-4">
+                      <p id="diameter">Count: {rim.count},  {rim.description}</p>
+                      <p id="condition">Condition: {rim.condition} </p>
+                    </div>
+                    <div className="col-md-4">
+                      <p id="price">${rim.price}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </Link>
-        )})
-      } else {
-        listOfRims = '';
-      }
+        )
+      })
+    } else {
+      listOfRims = '';
+    }
     var listOfBrands = [];
     this.state.copyRims.forEach(function (rim) {
       listOfBrands.push(rim.brand)
@@ -193,10 +193,10 @@ export default class Rims extends Component {
 
     return (
       <div>
-      < Navbar />
-      <div className="rims-main-container" id="main">
-        <h1 id="list_name">List of rims</h1>
-        <div className="container">
+        < Navbar />
+        <div className="rims-main-container" id="main">
+          <h1 id="list_name">List of rims</h1>
+          <div className="container">
             <div id="searchBox" className="col-sm-3">
               <label className="switch">
                 <input type="checkbox" onClick={() => this.searchClicked()} />
@@ -207,76 +207,87 @@ export default class Rims extends Component {
             {this.state.search && <div className="col-sm-3 searchBoxButtons">
               <button className="btn btn-primary" onClick={() => this.searchSubmit()}>Apply</button>
               <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
+            </div>
+            }
+          </div>
+          {this.state.search && this.state.filterShowself && <div className="container" id="searchInput">
+            <div className="row">
+              <div className="col-sm-6">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Brand:</span></div>
+                  <select className="form-control" name="brand" onChange={event => this.inputChange(event)}>
+                    <option>All</option>
+                    {listOfBrands}
+                  </select>
+                </div>
               </div>
-              }
+
+              <div className="col-sm-6">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Diameter:</span></div>
+                  <select className="form-control" type="number" name="diameter" onChange={event => this.inputChange(event)}>
+                    <option selected value="all">All</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+
+                  </select>
+                </div>
               </div>
-              {this.state.search && this.state.filterShowself && <div className="container" id="searchInput">
-              <div className="row">
-                <div className="col-sm-6">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Brand:</span></div>
-                    <select className="form-control" onChange={event => this.searchFilterByBrand(event.target.value)}>
-                      <option>All</option>
-                      {listOfBrands}
-                    </select>
-                  </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Condition:</span></div>
+                  <select className="form-control" name="condition" onChange={event => this.inputChange(event)}>
+                    <option selected value="all">All</option>
+                    <option value="used">Used</option>
+                    <option value="new">New</option>
+                  </select>
                 </div>
-              
-                <div className="col-sm-6">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Model:</span></div>
-                    <select className="form-control" disabled={this.state.inputSearch.listOfModels.length===0}>
-                      <option value="all">All</option>
-                        {this.state.inputSearch.listOfModels}
-                    </select>
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <input type='number' className='form-control' name="count" placeholder="Count" onChange={event => this.inputChange(event)} />
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Model Year:</span></div>
-                    <input type='number' className='form-control' placeholder="Min year"
-                      min={this.state.inputSearch.yearMin} max={this.state.inputSearch.yearMax}
-                      onChange={event => this.changeState("inputSearch", 'yearMin', Number(event.target.value))} />
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Lowest Price:</span></div>
+                  <input type='number' className='form-control' name="priceMin" placeholder="Min $" onChange={event => this.inputChange(event)} />
                 </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <input type='number'  className='form-control' placeholder="Max year" onChange={event => this.changeState("inputSearch", 'yearMax', Number(event.target.value))}/>
-                  </div>
-                </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Lowest Price:</span></div>
-                    <input type='number'  className='form-control' placeholder="Min $" onChange={event => this.changeState("inputSearch", 'priceMin', Number(event.target.value))}/>
-                  </div>
-                </div>
-                <div className="col-sm-3">
-                  <div className="input-group">
-                    <div className="input-group-addon"><span>Highest Price:</span></div>
-                    <input type='number' className='form-control' placeholder="Max $" onChange={event => this.changeState("inputSearch", 'priceMax', Number(event.target.value))}/>
-                  </div>
+              </div>
+              <div className="col-sm-3">
+                <div className="input-group">
+                  <div className="input-group-addon"><span>Highest Price:</span></div>
+                  <input type='number' className='form-control' name="priceMax" placeholder="Max $" onChange={event => this.inputChange(event)} />
                 </div>
               </div>
             </div>
-        }
-        <div id="main2">
-        { listOfRims }
+          </div>
+          }
+          <div id="main2">
+            {listOfRims}
+          </div>
+          {this.state.rims.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
+            <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
+              <h1>Sorry, we have nothing to sell at the moment</h1>
+              <h4>Please, come back later to check new offers!</h4>
+            </div>
+          </div>
+          }
+          {!this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
+            <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
+              <h1>Sorry, we have nothing according filter settings</h1>
+              <h4>Please, come back later to check new offers!</h4>
+            </div>
+          </div>
+          }
         </div>
-        {this.state.rims.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
-               <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
-                  <h1>Sorry, we have nothing to sell at the moment</h1>
-                  <h4>Please, come back later to check new offers!</h4>
-                </div>
-              </div>
-                }
-        {!this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">
-               <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
-                  <h1>Sorry, we have nothing according filter settings</h1>
-                  <h4>Please, come back later to check new offers!</h4>
-                </div>
-              </div>
-                }
-      </div>
       </div>
     );
   }

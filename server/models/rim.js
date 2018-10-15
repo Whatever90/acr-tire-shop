@@ -8,7 +8,7 @@ var rimSchema = new mongoose.Schema({
     description: { type: String },
     photos: { type: Array, "default": [] },
     price: { type: Number },
-    count: { type: String }
+    count: { type: Number }
 }, { timestamps: true });
 
 var Rim = mongoose.model('Rim', rimSchema) 

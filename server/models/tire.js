@@ -10,7 +10,7 @@ var tireSchema = new mongoose.Schema({
     description: { type: String },
     photos: { type: Array, "default": [] },
     price: { type: Number },
-    count: { type: String },
+    count: { type: Number },
     type: { type: String}
 }, {timestamps: true });
 
