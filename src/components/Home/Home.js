@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import Navbar from "../Navbar/Navbar";
 import Top from "../Top/Top";
 import Contact from "../Contact/Contact";
-import Navbar from "../Navbar/Navbar";
+import Location from "../Location/Location";
+
 
 export default class Home extends Component {
   render() {
@@ -9,6 +11,7 @@ export default class Home extends Component {
       <div className="App">
         <Navbar />
         <Top />
+        <Location />
         <Contact />
       </div>
     );

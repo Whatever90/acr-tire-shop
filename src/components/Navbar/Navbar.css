@@ -1,20 +1,24 @@
 #navbar-toggle-cbox {
-    display:none
-  }
-  #navbar-toggle-cbox:checked ~ .collapse {
-      display: block;
-  }
-  .listLink:hover{
-      color: aliceblue;
-  }
-  .links p{
-     color:#c8d7e0ab;
-  }
-  .links p:hover{
-      color: wheat;
-  }
-  #nav{
-    background-color:#282d32;
-    border: 1px solid #282d32;
-  }
- 
+  display: none;
+}
+
+#navbar-toggle-cbox:checked ~ .collapse {
+  display: block;
+}
+
+.listLink:hover {
+  color: aliceblue;
+}
+
+.links p {
+  color: #c8d7e0ab;
+}
+
+.links p:hover {
+  color: wheat;
+}
+
+#nav {
+  background-color: #282d32;
+  border: 1px solid #282d32;
+}
