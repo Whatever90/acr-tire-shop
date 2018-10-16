@@ -114,16 +114,16 @@ class Admin extends Component {
     }
   }
 
-  edit_Tire_submit(event, index) {
+  edit_tire_submit(event, index) {
     event.preventDefault();
 
     let {
-      temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos
+      temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos, condition
     } = this.state;
 
     axios
       .post("/tires/edit", {
-        temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos
+        temp_id, brand, model, price, width, description, ratio, diameter, count, type, photos, condition
       })
       .then(response => {
         if (response.data) {
@@ -486,14 +486,14 @@ class Admin extends Component {
           <div className="col-md-3">
             <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={tire.brand} disabled={this.state.temp_id !== tire._id} />
             <label>width : </label><input type='number' className='form-control' onChange={event => this.handleChange("width", event)} placeholder="width" defaultValue={tire.width} disabled={this.state.temp_id !== tire._id} />
-            <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
-            <label>ratio :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio" defaultValue={tire.ratio} disabled={this.state.temp_id !== tire._id} />
+            <label>Price : </label><input className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={tire.price} disabled={this.state.temp_id !== tire._id} />
+            <label>ratio :</label><input className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio" defaultValue={tire.ratio} disabled={this.state.temp_id !== tire._id} />
           </div>
           <div className="col-md-3">
-            <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} />
-            <label>condition :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} />
-            <label>count :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={tire.count} disabled={this.state.temp_id !== tire._id} />
-            <label>type :</label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("type", event)} placeholder="type" defaultValue={tire.type} disabled={this.state.temp_id !== tire._id} />
+            <label>diameter : </label><input type='number' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} />
+            <label>condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} />
+            <label>count :</label><input className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={tire.count} disabled={this.state.temp_id !== tire._id} />
+            <label>type :</label><input type='text' className='form-control' onChange={event => this.handleChange("type", event)} placeholder="type" defaultValue={tire.type} disabled={this.state.temp_id !== tire._id} />
             <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !== tire._id} />
           </div>
           <div className="col-md-3">
@@ -535,10 +535,10 @@ class Admin extends Component {
         </div>
         <div className="row" >
           <div className="col-md-3">
-            <label>diameter : </label><input type='text' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
+            <label>diameter : </label><input type='number' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
             <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={rim.brand} disabled={this.state.temp_id !== rim._id} />
-            <label>count : </label><input type='text' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
-            <label>Price : </label><input type='text' className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
+            <label>count : </label><input type='number' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
+            <label>Price : </label><input type='number' className='form-control' onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
           </div>
           <div className="col-md-3">
             <label>Condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="Condition" defaultValue={rim.condition} disabled={this.state.temp_id !== rim._id} />

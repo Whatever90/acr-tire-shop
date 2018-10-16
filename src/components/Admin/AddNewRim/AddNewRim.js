@@ -8,10 +8,10 @@ export default class AddNewRim extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diameter: "",
+      diameter: 15,
       brand: "",
-      price: "",
-      condition: "",
+      price: 0,
+      condition: "new",
       count: "",
       description: "",
       files: [],
@@ -34,6 +34,7 @@ export default class AddNewRim extends Component {
       count,
       description
     } = this.state;
+    diameter = Number(diameter);
     axios
       .post("/rims/new", {
         diameter,
@@ -47,8 +48,14 @@ export default class AddNewRim extends Component {
         console.log(response);
         this.upload(response.data._id);
         alert("New rim was created!");
-        this.setState({
-          formShowself: false //Refreshing the form
+        this.setState({ //clearing state
+          brand: "",
+          price: 0,
+          count: 0,
+          diameter: 15,
+          condition: "new",
+          description: "",
+          formShowself: false // Reloading form by disabling and enabling
         }, function () {
           this.setState({
             formShowself: true
@@ -116,13 +123,21 @@ export default class AddNewRim extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <p>diameter:</p>
+                    <p>Diameter:</p>
                   </td>
                   <td>
-                    <input
-                      onChange={event => this.handleChange("diameter", event)}
-                      className="input"
-                    />
+                  <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
+                    className="input">
+                    <option selected value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                  </select>
                   </td>
                 </tr>
                 <tr>
@@ -153,15 +168,15 @@ export default class AddNewRim extends Component {
                     <p className="inputparagraph">Condition: </p>
                   </td>
                   <td>
-                    <input
-                      onChange={event => this.handleChange("condition", event)}
-                      className="input"
-                    />
+                  <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
+                    <option value="used">Used</option>
+                    <option selected value="new">New</option>
+                  </select>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <p className="inputparagraph">count: </p>
+                    <p className="inputparagraph">Count: </p>
                   </td>
                   <td>
                     <input

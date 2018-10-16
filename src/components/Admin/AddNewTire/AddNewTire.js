@@ -22,12 +22,12 @@ class AddNewTire extends Component {
       width: 0,
       price: 0,
       ratio: 0,
-      diameter: 0,
-      condition: "",
+      diameter: 15,
+      condition: "new",
       description: "",
       files: [],
       count: 0,
-      type: "",
+      type: "all season",
       formShowself: true
     };
   }
@@ -52,6 +52,7 @@ class AddNewTire extends Component {
       condition,
       description
     } = this.state;
+    diameter = Number(diameter);
     axios
       .post("/tires/new", {
         brand,
@@ -77,9 +78,9 @@ class AddNewTire extends Component {
       price: 0,
       ratio: 0,
       count: 0,
-      type: "",
-      diameter: 0,
-      condition: "",
+      type: "all season",
+      diameter: 17,
+      condition: "new",
       description: "",
       formShowself: false // Reloading form by disabling and enabling
     }, function () {
@@ -203,6 +204,7 @@ class AddNewTire extends Component {
                   <input
                     onChange={event => this.handleChange("ratio", event)}
                     className="input"
+                    type="number"
                     defaultValue={this.state.ratio}
                   />
                 </td>
@@ -212,12 +214,19 @@ class AddNewTire extends Component {
                   <p className="inputparagraph">Diameter: </p>
                 </td>
                 <td>
-                  <input
-                    onChange={event => this.handleChange("diameter", event)}
-                    className="input"
-                    type="number"
-                    defaultValue={this.state.diameter}
-                  />
+                  
+                <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
+                  className="input">
+                  <option selected value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                </select>
                 </td>
               </tr>
               <tr>
@@ -225,11 +234,10 @@ class AddNewTire extends Component {
                   <p className="inputparagraph">Condition: </p>
                 </td>
                 <td>
-                  <input
-                    onChange={event => this.handleChange("condition", event)}
-                    className="input"
-                    defaultValue={this.state.condition}
-                  />
+                <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
+                  <option value="used">Used</option>
+                  <option selected value="new">New</option>
+                </select>
                 </td>
               </tr>
             <tr>
@@ -237,11 +245,12 @@ class AddNewTire extends Component {
                 <p className="inputparagraph">Type: </p>
               </td>
               <td>
-                <input
-                  onChange={event => this.handleChange("type", event)}
-                  className="input"
-                  defaultValue={this.state.type}
-                />
+                <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
+                  <option selected value="all season">All season</option>
+                  <option value="racing">Racing</option>
+                  <option value="winter">Winter</option>
+                  <option value="regular">Regular</option>
+                </select>
               </td>
             </tr>
               <tr>
