@@ -16,3 +16,13 @@ body {
 .round-border {
   border-radius: 5px;
 }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}

@@ -1,6 +1,7 @@
 .projects-clean {
-  color:#313437;
-  background-color:#fff;
+  background-image: url(../images/repair.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .projects-clean p {
@@ -12,14 +13,6 @@
   margin-bottom:40px;
   padding-top:40px;
   color:inherit;
-}
-
-@media (max-width:767px) {
-  .projects-clean h2 {
-    margin-bottom:25px;
-    padding-top:25px;
-    font-size:24px;
-  }
 }
 
 .projects-clean .intro {
@@ -55,3 +48,10 @@
   margin-bottom:0;
 }
 
+@media (max-width:767px) {
+  .projects-clean h2 {
+    margin-bottom:25px;
+    padding-top:25px;
+    font-size:24px;
+  }
+}
