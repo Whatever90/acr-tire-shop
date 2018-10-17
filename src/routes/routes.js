@@ -19,7 +19,7 @@ export default (
     <Route path="/rims" component={ Rims }/>
     <Route path="/admin" component={ Admin }/>
     <Route path="/login" component={ Login }/>
-    
+
     <Route path="*" component={ NotFound }/>
   </Switch>
 );

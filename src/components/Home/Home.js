@@ -10,11 +10,11 @@ export default class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <Top />
-        <Services />
-        <Location />
-        <Contact />
+        {/* <Services /> */}
+        {/* <Location /> */}
+        {/* <Contact /> */}
       </div>
     );
   }

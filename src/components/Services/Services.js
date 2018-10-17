@@ -6,7 +6,6 @@ import Scroll from "react-scroll-to-element";
 import rims from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-parts-1.jpg";
 import repair from "../images/Car-Engine-Maintenance-cropped_iStock.png";
 import tires from "../images/Carr Parking Gl .jpg";
-import "./Projects-Clean.css";
 
 export default class Services extends Component {
   render() {
