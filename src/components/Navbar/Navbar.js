@@ -6,7 +6,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-default" id="nav">
+        <nav className="navbar-default" id="nav">
           <div className="container">
             <input type="checkbox" id="navbar-toggle-cbox" />
             <div className="navbar-header">

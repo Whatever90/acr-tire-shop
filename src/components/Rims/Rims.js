@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import aws from '../images/aws.png';
-import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import './Rims.css';
 
@@ -190,10 +189,8 @@ export default class Rims extends Component {
       )
     })
 
-
     return (
       <div>
-        < Navbar />
         <div className="rims-main-container" id="main">
           <h1 id="list_name">List of rims</h1>
           <div className="container">

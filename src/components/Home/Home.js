@@ -10,9 +10,9 @@ export default class Home extends Component {
     return (
       <div className="App">
         <Top />
-        {/* <Services /> */}
-        {/* <Location /> */}
-        {/* <Contact /> */}
+        <Services />
+        <Location />
+        <Contact />
       </div>
     );
   }
