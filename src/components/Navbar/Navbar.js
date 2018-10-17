@@ -28,17 +28,17 @@ export default class Navbar extends Component {
             <div id="navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav">
                 <li className="listLink" id="homeLink">
-                  <Link className="links" to="/">
+                  <Link className="navbar-links" to="/">
                     <p>Home</p>
                   </Link>
                 </li>
                 <li className="listLink">
-                  <Link className="links" to="/tires">
+                  <Link className="navbar-links" to="/tires">
                     <p>Tires</p>
                   </Link>
                 </li>
                 <li className="listLink">
-                  <Link className="links" to="/rims">
+                  <Link className="navbar-links" to="/rims">
                     <p>Rims</p>
                   </Link>
                 </li>

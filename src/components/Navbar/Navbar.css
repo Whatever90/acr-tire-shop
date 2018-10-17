@@ -10,11 +10,11 @@
   color: aliceblue;
 }
 
-.links p {
+.navbar-links p {
   color: #c8d7e0ab;
 }
 
-.links p:hover {
+.navbar-links p:hover {
   color: wheat;
 }
 

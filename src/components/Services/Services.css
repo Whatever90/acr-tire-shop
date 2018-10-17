@@ -1,8 +1,37 @@
 .services-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #282d32;
   color: black;
 }
 
-.description {
+.services-title {
+  color: #fff;
+}
+
+.services-inner-container {
+  width: 90%;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 50px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+.services-item {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+
+.services-item-description {
   margin: 0;
+}
+
+.services-item-description:hover {
+  color: black!;
+  text-decoration: none!;
+  text-decoration-line: none!;
 }
