@@ -1,3 +1,32 @@
-.scrolling-item {
-  cursor: pointer;
+.top-main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url(../images/repair.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.top-inner-container {
+  height: 85%;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.top-content-container {
+  border-radius: 50px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+.top-info {
+  padding: 2rem;
+  color: black;
+}
+
+@media screen and (max-width: 650px) {
+  .top-inner-container {
+    width: 80%;
+  }
 }
