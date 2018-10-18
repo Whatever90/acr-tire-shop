@@ -9,133 +9,157 @@
 
 .admin-requests-container {
   margin-top: 10px;
-  border-bottom: 1px solid brown; 
+  border-bottom: 1px solid brown;
 }
+
 .admin-rims-container.container {
   /* display: flex; */
   /* width: 50vh; */
 }
-.red{
-  color:red;
-  }
-.form-area
-{
-  background-color: #FAFAFA;
-padding: 10px 40px 60px;
-margin: 10px 0px 60px;
-border: 1px solid GREY;
+
+.red {
+  color: red;
 }
-.edit_heading{
-  margin-bottom: 25px; 
+
+.form-area {
+  background-color: #FAFAFA;
+  padding: 10px 40px 60px;
+  margin: 10px 0px 60px;
+  border: 1px solid GREY;
+}
+
+.edit_heading {
+  margin-bottom: 25px;
   text-align: center;
 }
+
 /* #rim_box{
   max-width: 400px;
 } */
-.form-area{
+.form-area {
   max-width: 35vh;
   max-height: 40vh;
 }
-.form .form-control{
+
+.form .form-control {
   max-width: 150px;
   margin: 0 0;
 }
-.switch input { 
-  display:none;
+
+.switch input {
+  display: none;
 }
+
 .switch {
-  display:inline-block;
-  width:60px;
-  height:30px;
-  margin:8px;
-  transform:translateY(50%);
-  position:relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin: 8px;
+  transform: translateY(50%);
+  position: relative;
   margin-bottom: 15px;
 }
 
 .slider {
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  border-radius:30px;
-  box-shadow:0 0 0 2px #777, 0 0 4px #777;
-  cursor:pointer;
-  border:4px solid transparent;
-  overflow:hidden;
-   transition:.4s;
-}
-.slider:before {
-  position:absolute;
-  content:"";
-  width:100%;
-  height:100%;
-  background:#777;
-  border-radius:30px;
-  transform:translateX(-30px);
-  transition:.4s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 30px;
+  box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+  cursor: pointer;
+  border: 4px solid transparent;
+  overflow: hidden;
+  transition: .4s;
 }
 
-input:checked + .slider:before {
-  transform:translateX(30px);
-  background:limeGreen;
+.slider:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #777;
+  border-radius: 30px;
+  transform: translateX(-30px);
+  transition: .4s;
 }
-input:checked + .slider {
-  box-shadow:0 0 0 2px limeGreen,0 0 2px limeGreen;
+
+input:checked+.slider:before {
+  transform: translateX(30px);
+  background: limeGreen;
 }
-#list_of_rims{
+
+input:checked+.slider {
+  box-shadow: 0 0 0 2px limeGreen, 0 0 2px limeGreen;
+}
+
+#list_of_rims {
   -moz-column-width: 19em;
-    -webkit-column-width: 19em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap:1em; 
-    height: 100%
+  -webkit-column-width: 19em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  height: 100%
 }
-#list_of_rims{
+
+#list_of_rims {
   display: table-row-group;
-    /* padding:  .5rem; */
-    width:  100%;
-}
-.rim_cont{
-  max-width: 350px;
-}
-.col-md-4{
+  /* padding:  .5rem; */
   width: 100%;
 }
-.you-must-log-in-div{
+
+.rim_cont {
+  max-width: 350px;
+}
+
+.col-md-4 {
+  width: 100%;
+}
+
+.you-must-log-in-div {
   margin-top: 100px;
 }
-.col-md-3{
+
+.col-md-3 {
   /* border: 1px silver groove; */
   /* height: 800px; */
 }
-.list_of_requests{
-    margin: auto;
-    width: 70%;
-    border: 3px solid green;
-    padding: 10px;
-    align-content: center;
-    background-color: azure;
+
+.list_of_requests {
+  margin: auto;
+  width: 70%;
+  border: 3px solid green;
+  padding: 10px;
+  align-content: center;
+  background-color: azure;
 }
-#rim_box{
-    border-bottom:  1px silver groove;
-    /* padding: auto; */
-    margin-bottom: 15px; 
-    /* margin: auto; */
+
+#rim_box {
+  border-bottom: 1px silver groove;
+  /* padding: auto; */
+  margin-bottom: 15px;
+  /* margin: auto; */
 }
-.rims{
-    margin: auto;
-    width: 70%;
-    border: 1px solid green;
-    padding: 10px;
-    align-content: center;
-    background-color: azure;
-    border-radius: 10px;
+
+.rims {
+  margin: auto;
+  width: 70%;
+  border: 1px solid green;
+  padding: 10px;
+  align-content: center;
+  background-color: azure;
+  border-radius: 10px;
 }
-.rim-btn{
+
+.rim-btn {
   margin-left: 15px;
   margin-top: -25px;
 }
-.mainDiv{
+
+.mainDiv {
   width: 100%;
+}
+.admin-top{
+  margin: 0px auto;
+  width: 70%;
 }

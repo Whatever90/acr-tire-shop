@@ -38,7 +38,11 @@ class Admin extends Component {
       photos: [],
       files: [],
       photos_to_delete: [],
-      container: null
+      container: null,
+      page_requests: true,
+      page_tires: false,
+      page_rims: false
+
     };
   }
   /// oh boy, here we go. 
@@ -453,6 +457,33 @@ class Admin extends Component {
   checkState() {              // Dev function.
     console.log(this.state); // Just checking this.state. Should be removed before releasing the final version
   }
+  page_switcher(target) {
+    console.log(target);
+    console.log(this.state[target])
+    if (this.state[target]) {
+      return;
+    } else {
+      this.setState({
+        page_requests: false,
+        page_rims: false,
+        page_tires: false
+      }, function () {
+        if (target === "page_requests") {
+          this.setState({
+            page_requests: true
+          });
+        } else if (target === "page_tires") {
+          this.setState({
+            page_tires: true
+          });
+        } else {
+          this.setState({
+            page_rims: true
+          })
+        }
+      })
+    }
+  }
 
 
 
@@ -571,25 +602,37 @@ class Admin extends Component {
         < Navbar />
         <div className="admin-main-container">
           {user && <div className="mainDiv">
-            <h1>Admin</h1>
-            <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
-            <div className="list_of_requests">
+            <div className="admin-top" align='center'>
+              <h1>Admin</h1>
+              <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
+              {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
+              {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
+              {!this.state.page_tires && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_tires")}>Tires</button>}
+              {this.state.page_tires && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_tires")}>Tires</button>}
+              {!this.state.page_rims && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
+              {this.state.page_rims && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
+            </div>
+            {this.state.page_requests && <div className="list_of_requests">
               <h2>Requests</h2>
               {listOfRequests}
-            </div>
-
-            <AddNewTire />
-            {this.state.tires.length && <div className="rims">
-              <h2>Tires</h2>
-              {listOfTires}
             </div>}
 
-            <AddNewRim />
+            {this.state.page_tires && <div className="admin-page">
+              <AddNewTire />
+              {this.state.tires.length && <div className="rims">
+                <h2>Tires</h2>
+                {listOfTires}
+              </div>}
+            </div>}
 
-            <div className="rims">
-              <h2>Rims</h2>
-              {listOfRims}
-            </div>
+            {this.state.page_rims && <div className="admin-page">
+              <AddNewRim />
+
+              <div className="rims">
+                <h2>Rims</h2>
+                {listOfRims}
+              </div>
+            </div>}
 
           </div>}
           {!user && <div className="you-must-log-in-div"><p>You must log in! <Link to="/login">Log in</Link></p></div>}
