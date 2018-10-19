@@ -1,5 +1,5 @@
 .admin-main-container {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -117,7 +117,16 @@ input:checked+.slider {
 }
 
 .you-must-log-in-div {
-  margin-top: 100px;
+  height: 85vh;
+  width: 100%;
+  background: grey;
+}
+.you-must-log-in-box {
+  margin-top: 40vh;
+  width: 100%;
+}
+.you-must-log-in-box p{
+  margin: 0px auto;
 }
 
 .col-md-3 {
@@ -126,12 +135,13 @@ input:checked+.slider {
 }
 
 .list_of_requests {
-  margin: auto;
-  width: 70%;
-  border: 3px solid green;
-  padding: 10px;
-  align-content: center;
-  background-color: azure;
+   margin: auto;
+   width: 70%;
+   border: 1px solid green;
+   padding: 10px;
+   align-content: center;
+   background-color: azure;
+   border-radius: 10px;
 }
 
 #rim_box {
@@ -158,8 +168,14 @@ input:checked+.slider {
 
 .mainDiv {
   width: 100%;
+  /* background: url('http://www.wallpaperup.com/uploads/wallpapers/2012/10/21/20181/cad2441dd3252cf53f12154412286ba0.jpg'); */
+  min-height: 87vh;
 }
 .admin-top{
   margin: 0px auto;
   width: 70%;
+  margin-bottom: 25px;
+}
+.admin-body{
+  
 }

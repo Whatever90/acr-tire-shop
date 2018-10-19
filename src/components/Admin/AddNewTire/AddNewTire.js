@@ -285,19 +285,21 @@ class AddNewTire extends Component {
     //     </div>
     //   }
     // </div>
-    <div id="rim_box">
-        <div className="row" >
+    <div className="addNewTire-body" >
+    < h2 align = "center" > Add new tire </h2>
+        <div className="row" id="addNewTire-box">
           <div className="col-md-3">
             <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand"  />
             <label>width : </label><input type='number' className='form-control' onChange={event => this.handleChange("width", event)} placeholder="width"  />
             <label>Price : </label><input className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price"  />
             <label>ratio :</label><input className='form-control' type="number" onChange={event => this.handleChange("ratio", event)} placeholder="ratio"  />
+            <br></br>
+          <button onClick={(event) => this.handleSubmit(event)} className="btn btn-primary input">Submit</button>
           </div>
           <div className="col-md-3">
-            {/* <label>diameter : </label><input type='number' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={tire.diameter} disabled={this.state.temp_id !== tire._id} /> */}
-            <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
-                  className="input">
-                  <option selected value="15">15</option>
+            < label > diameter: </label>
+            <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}>
+                  <option defaultValue value = "15" > 15 </option>
                   <option value="16">16</option>
                   <option value="17">17</option>
                   <option value="18">18</option>
@@ -307,13 +309,13 @@ class AddNewTire extends Component {
                   <option value="22">22</option>
                   <option value="23">23</option>
                 </select>
-            {/* <label>condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="condition" defaultValue={tire.condition} disabled={this.state.temp_id !== tire._id} /> */}
+            < label > condition: </label>
             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
                    <option value="used">Used</option>
                    <option selected value="new">New</option>
                  </select>
             <label>count :</label><input className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count"  />
-            {/* <label>type :</label><input type='text' className='form-control' onChange={event => this.handleChange("type", event)} placeholder="type" /> */}
+           < label > type: </label>
            <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
                    <option selected value="all season">All season</option>
                    <option value="racing">Racing</option>
@@ -335,7 +337,6 @@ class AddNewTire extends Component {
                    </ul>
                  </div>
           </div>
-          <button onClick={(event) => this.handleSubmit(event)} className="btn btn-primary input">Submit</button>
         </div>
       </div>
             );

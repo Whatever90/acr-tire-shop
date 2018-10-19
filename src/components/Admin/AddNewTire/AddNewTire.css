@@ -21,3 +21,9 @@
 .input{
   max-width: 200px;
 }
+
+#addNewTire-box {
+  margin: 0px auto;
+  width: 70%;
+  border: 1px solid silver;
+}

@@ -598,12 +598,11 @@ class Admin extends Component {
     ));
 
     return (
-      <div >
-        < Navbar />
+      <div className="admin-body">
         <div className="admin-main-container">
           {user && <div className="mainDiv">
             <div className="admin-top" align='center'>
-              <h1>Admin</h1>
+              <h1>Control Panel v0.2b</h1>
               <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
               {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
@@ -612,9 +611,12 @@ class Admin extends Component {
               {!this.state.page_rims && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
               {this.state.page_rims && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
             </div>
-            {this.state.page_requests && <div className="list_of_requests">
-              <h2>Requests</h2>
+            {this.state.page_requests && <div>
+              <h2 align="center">Messages</h2>
+            <div className="list_of_requests">
+              
               {listOfRequests}
+              </div>
             </div>}
 
             {this.state.page_tires && <div className="admin-page">
@@ -635,7 +637,11 @@ class Admin extends Component {
             </div>}
 
           </div>}
-          {!user && <div className="you-must-log-in-div"><p>You must log in! <Link to="/login">Log in</Link></p></div>}
+          {!user && <div className="you-must-log-in-div">
+          < div className = "you-must-log-in-box" >
+          <h1 align="center">You must log in! <Link to="/login">Log in</Link></h1>
+          </div>
+          </div>}
 
         </div>
       </div>

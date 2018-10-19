@@ -5,7 +5,8 @@
 	justify-content: center;
 	align-items: center;
   align-content: stretch;
-  height: 600px;
+  background: grey;
+  height: 85vh;
 }
 
 .login-main-container {
@@ -15,7 +16,6 @@
 	justify-content: center;
 	align-items: center;
   align-content: stretch;
-  background-color: white;
 }
 
 .login-input-div {

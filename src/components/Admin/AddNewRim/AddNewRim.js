@@ -108,26 +108,12 @@ export default class AddNewRim extends Component {
   }
   render() {
     return (
-      <div className="addnewrim-container">
-        <h2>Add a new rim</h2>
-        {this.state.formShowself &&
-          <form
-            className="addnewrim-form"
-            onSubmit={event => this.handleSubmit(event)}
-          >
-            <table>
-              <tbody>
-                <tr>
-                  <th>Options</th>
-                  <th>Parametres</th>
-                </tr>
-                <tr>
-                  <td>
-                    <p>Diameter:</p>
-                  </td>
-                  <td>
-                  <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
-                    className="input">
+      <div className="addNewTire-body">
+        <h2 align="center">Add new rim</h2>
+         <div className="row" id="addNewTire-box">
+          <div className="col-md-3">
+            <label>diameter : </label>
+           <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}>
                     <option selected value="15">15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
@@ -138,67 +124,21 @@ export default class AddNewRim extends Component {
                     <option value="22">22</option>
                     <option value="23">23</option>
                   </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Brand:</p>
-                  </td>
-                  <td>
-                    <input
-                      onChange={event => this.handleChange("brand", event)}
-                      className="input"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Price: </p>
-                  </td>
-                  <td>
-                    <input
-                      onChange={event => this.handleChange("price", event)}
-                      className="input"
-                      type="number"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Condition: </p>
-                  </td>
-                  <td>
-                  <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
+            <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand"  />
+            <label>count : </label><input type='number' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count"  />
+            <label>Price : </label><input type='number' className='form-control' onChange={event => this.handleChange("price", event)} placeholder="Price"  />
+          </div>
+          <div className="col-md-3">
+            <label>Condition :</label>
+           <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
                     <option value="used">Used</option>
                     <option selected value="new">New</option>
                   </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Count: </p>
-                  </td>
-                  <td>
-                    <input
-                      onChange={event => this.handleChange("count", event)}
-                      className="input"
-                      type="number"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="inputparagraph">Description: </p>
-                  </td>
-                  <td>
-                    <input
-                      onChange={event => this.handleChange("description", event)}
-                      className="input"
-                    />
-                  </td>
-                </tr>
-                <tr><td>
-                    <div className="uploader">
+            <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" />
+          <button onClick={(event) => this.handleSubmit(event)} className="btn btn-primary input">Submit</button>
+          </div>
+          <div className="col-md-3">
+           <div className="uploader">
                         <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo)=> this.onDrop(photo) } multiple={true}> 
                             <button className="btn btn-warning" onClick={(event) => event.preventDefault()} >+</button>
                         </Dropzone>
@@ -209,16 +149,8 @@ export default class AddNewRim extends Component {
                             </li>) }
                         </ul>
                     </div>
-              </td></tr>
-                <tr>
-                  <td>
-                    <input type="submit" className="btn btn-primary" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        }
+          </div>
+        </div>
       </div>
     );
   }
