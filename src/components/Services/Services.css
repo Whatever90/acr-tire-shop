@@ -35,3 +35,19 @@
   text-decoration: none!;
   text-decoration-line: none!;
 }
+.links:link {
+  text-decoration: none;
+}
+
+.links:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.links:visited {
+  color: black;
+}
+
+a.subnav_link:active {
+  color: black;
+}

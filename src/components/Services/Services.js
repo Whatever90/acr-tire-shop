@@ -23,7 +23,7 @@ export default class Services extends Component {
             </div>
           </Scroll>
 
-          <Link className="links" to="/tires">
+          <Link className="links" to="/tires" style={{ textDecoration: "none" }}>
             <div className="services-item">
               <img className="img-fluid" src={aws} alt="service-2" />
               <h3 className="name">Used Tires</h3>
