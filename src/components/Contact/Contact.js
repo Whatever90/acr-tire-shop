@@ -27,6 +27,7 @@ export default class Contact extends Component {
       .post("/requests/new", { name, phone, message })
       .then(response => {
         console.log(response);
+        this.togglePopup();
       })
       .catch(error => console.log(error));
   }
@@ -62,7 +63,7 @@ export default class Contact extends Component {
             <div className="container">
               <form
                 className="contact-form"
-                onSubmit={event => this.handleSubmit(event)}
+                onSubmit={(event) => this.handleSubmit(event)}
               >
                 <div className="col-md-6 form-line">
                   <div className="form-group">
@@ -99,7 +100,7 @@ export default class Contact extends Component {
                   </div>
                   <div>
                     <button
-                      onClick={this.togglePopup.bind(this)}
+                      // onClick={this.togglePopup.bind(this)}
                       type="submit"
                       value="Send"
                       className="btn btn-default submit"
