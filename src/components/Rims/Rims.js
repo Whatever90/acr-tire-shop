@@ -194,22 +194,11 @@ export default class Rims extends Component {
         <div className="rims-main-container" id="main">
           <h1 id="list_name">List of rims</h1>
           <div className="container">
-            <div id="searchBox" className="col-sm-3">
-              <label className="switch">
-                <input type="checkbox" onClick={() => this.searchClicked()} />
-                <span className="slider"></span>
-              </label>
-              <h3 className="switch">Filter</h3>
-            </div>
-            {this.state.search && <div className="col-sm-3 searchBoxButtons">
-              <button className="btn btn-primary" onClick={() => this.searchSubmit()}>Apply</button>
-              <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
-            </div>
-            }
+          
           </div>
-          {this.state.search && this.state.filterShowself && <div className="container" id="searchInput">
+          <div className="container" id="searchInput">
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-sm-3">
                 <div className="input-group">
                   <div className="input-group-addon"><span>Brand:</span></div>
                   <select className="form-control" name="brand" onChange={event => this.inputChange(event)}>
@@ -219,7 +208,7 @@ export default class Rims extends Component {
                 </div>
               </div>
 
-              <div className="col-sm-6">
+              <div className="col-sm-3">
                 <div className="input-group">
                   <div className="input-group-addon"><span>Diameter:</span></div>
                   <select className="form-control" type="number" name="diameter" onChange={event => this.inputChange(event)}>
@@ -264,9 +253,15 @@ export default class Rims extends Component {
                   <input type='number' className='form-control' name="priceMax" placeholder="Max $" onChange={event => this.inputChange(event)} />
                 </div>
               </div>
+              <div className="col-sm-3" align='right'>
+                <button className="btn btn-primary" onClick={() => this.searchSubmit()}>Apply</button>
+              </div>
+              < div className = "col-sm-3" >
+                <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
+              </div>
             </div>
           </div>
-          }
+          
           <div id="main2">
             {listOfRims}
           </div>
