@@ -6,6 +6,10 @@
   align-items: center;
   background-color: #282d32;
   color: black;
+  background-image: url(../images/background-acr.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .services-title {
