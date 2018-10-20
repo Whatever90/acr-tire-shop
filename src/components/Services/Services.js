@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Scroll from "react-scroll-to-element";
 import "./Services.css";
 import aws from '../images/aws.png';
+import service from '../images/service.jpg';
+import rims from '../images/rims.jpg';
+import tires from '../images/tires.jpg'
 // import rims from "../images/100816-cc-upcycle-your-recycling-with-great-ideas-for-old-car-parts-1.jpg";
 // import repair from "../images/Car-Engine-Maintenance-cropped_iStock.png";
 // import tires from "../images/Carr Parking Gl .jpg";
@@ -16,7 +19,7 @@ export default class Services extends Component {
           <div className="services-item">
             <Scroll type="id" element="_contact">
               <div className="services-item-content">
-                <img className="img-fluid" src={aws} alt="service-1" />
+                <img className="img-fluid" src={service} alt="service-1" />
                 <h3 className="name">Repair/Maintenance</h3>
                 <p className="services-item-description">
                   We provide a large spectrum of wheel service
@@ -28,8 +31,8 @@ export default class Services extends Component {
           <div className="services-item">
             <Link className="links" to="/tires" style={{ textDecoration: "none" }}>
               <div className="services-item-content">
-                <img className="img-fluid" src={aws} alt="service-2" />
-                <h3 className="name">Used Tires</h3>
+                <img className="img-fluid" src={tires} alt="service-2" />
+                <h3 className="name">Infinite number of different tires</h3>
                 <p className="services-item-description">
                   Aenean tortor est, vulputate quis leo in, vehicula rhoncus
                   lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
@@ -42,8 +45,8 @@ export default class Services extends Component {
           <div className="services-item">
             <Link className="links" to="/rims">
               <div className="services-item-content">
-                <img className="img-fluid" src={aws} alt="service-3" />
-                <h3 className="name">Rims</h3>
+                <img className="img-fluid" src={rims} alt="service-3" />
+                <h3 className="name">Various Rims</h3>
                 <p className="services-item-description">
                   Aenean tortor est, vulputate quis leo in, vehicula rhoncus
                   lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
