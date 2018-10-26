@@ -193,9 +193,6 @@ export default class Rims extends Component {
       <div>
         <div className="rims-main-container" id="main">
           <h1 id="list_name">List of rims</h1>
-          <div className="container">
-          
-          </div>
           <div className="container" id="searchInput">
             <div className="row">
               <div className="col-sm-3">
