@@ -53,7 +53,6 @@ export default class OneRim extends Component {
 
     return (
       <div>
-        <Navbar />
         <div id="main">
           <div id="oneCar">
             <div className="container" id="rim">

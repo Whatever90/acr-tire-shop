@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import aws from '../images/aws.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Rims.css';
+import aws from '../images/aws.png';
 
 export default class Rims extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ export default class Rims extends Component {
       search: !status
     })
   }
+
   inputChange(event) { // Listens any value changes of state.inputSearch via form
     const target = event.target;
     let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -53,6 +54,7 @@ export default class Rims extends Component {
       inputSearch: temp
     });
   }
+
   searchSubmit() { // Listens any
     var copyRims = this.state.copyRims;
     var tempSearchOptions = [];
@@ -258,7 +260,7 @@ export default class Rims extends Component {
               </div>
             </div>
           </div>
-          
+
           <div id="main2">
             {listOfRims}
           </div>

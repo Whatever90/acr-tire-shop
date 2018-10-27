@@ -4,11 +4,6 @@
   background-attachment: fixed;
 }
 
-#main2 {
-  margin: 15px auto;
-  align-content: center;
-}
-
 #title {
   margin-left:25px;
   color: white;
@@ -85,7 +80,7 @@
   border-radius: 15px;
 }
 
-.switch input { 
+.switch input {
   display:none;
 }
 

@@ -55,7 +55,6 @@ export default class OneTire extends Component {
 
     return (
       <div>
-        < Navbar />
         <div id="main">
           <div id="oneTire">
             <div className="container" id="tire">
@@ -81,7 +80,6 @@ export default class OneTire extends Component {
                   <p id="price">${this.state.tire.price}</p>
                 </div>
               </div>
-                
             </div>
           </div>
         </div>
