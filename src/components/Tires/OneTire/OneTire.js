@@ -4,14 +4,16 @@ import Navbar from "../../Navbar/Navbar";
 import Slider from 'react-slick';
 // import { Link } from 'react-router-dom';
 import "./OneTire.css";
-import aws from '../../images/aws.png'
+import aws from '../../images/aws.png';
+import { Link } from 'react-router-dom';
 
 export default class OneTire extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tire: {},
-      photos: []
+      photos: [],
+      matches: []
     };
   }
 
@@ -22,7 +24,7 @@ export default class OneTire extends Component {
     }
     axios.post('/tires/find/', id)
       .then(res => {
-        this.setState({ tire: res.data, photos: res.data.photos })
+        this.setState({ tire: res.data, photos: res.data.photos, matches: res.data.matches })
         console.log(this.state.tire);
         console.log(this.state.tire.photos);
       })
@@ -51,7 +53,42 @@ export default class OneTire extends Component {
           </div>
         </div>
       )
-    })
+    });
+    let listOfRims = null;
+    if (this.state.matches.length > 0) {
+      listOfRims = this.state.matches.map((rim, index) => {
+        return (
+          <Link to={`/rim/${rim._id}`} key={index}>
+            <div>
+              <div id="box" key={index}>
+                <div className="container" id="rim">
+                  <div className="row">
+                    <div className="col-md-12" id="top" >
+                      <h1 id="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-4">
+                      {rim.photos.length === 0 && <img src={aws} alt="rim" id="photo" className="photos" />}
+                      {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
+                    </div>
+                    <div className="col-md-4">
+                      <p id="diameter">Count: {rim.count},  {rim.description}</p>
+                      <p id="condition">Condition: {rim.condition} </p>
+                    </div>
+                    <div className="col-md-4">
+                      <p id="price">${rim.price}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        )
+      })
+    } else {
+      listOfRims = '';
+    }
 
     return (
       <div>
@@ -83,6 +120,9 @@ export default class OneTire extends Component {
               </div>
                 
             </div>
+          </div>
+          <div id="main2">
+            {listOfRims}
           </div>
         </div>
       </div>

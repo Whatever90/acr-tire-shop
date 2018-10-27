@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs')
-
+var Tire = mongoose.model("Tire");
 
 var Rim = mongoose.model('Rim');
 module.exports = {
@@ -40,13 +40,18 @@ module.exports = {
 
   },
   find: function (req, res) {
-    Rim.findOne({ _id: req.body._id })
-      .then(data => {
-        res.json(data);
-      })
-      .catch(err => {
+    //searching a rim by id and find matching tires by diameter
+    Rim.findOne({ _id: req.body._id }).lean().exec(function(err, data){
+      if(err){
         res.status(500).json(false);
-      });
+      } else {
+        Tire.find({diameter: data.diameter})
+          .then(tires => { 
+            data.matches = tires;
+            res.json(data)
+          })
+      }
+    });
   },
   delete: function (req, res) {
     console.log('req.body ---->', req.body);

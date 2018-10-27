@@ -10,6 +10,7 @@ export default class Contact extends Component {
       name: "",
       phone: "",
       message: "",
+      category: "Contact me",
       showPopup: false
     };
   }
