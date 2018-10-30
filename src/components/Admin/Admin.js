@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Admin.css';
 import AddNewTire from './AddNewTire/AddNewTire';
 import AddNewRim from './AddNewRim/AddNewRim';
+import AddNewDeal from './AddNewDeal/AddNewDeal';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../redux/ducks/reducer';
@@ -19,6 +20,7 @@ class Admin extends Component {
       requests: [],
       tires: [],
       rims: [],
+      deals: [],
       //
       width: 0,
       ratio: 0,
@@ -41,7 +43,8 @@ class Admin extends Component {
       container: null,
       page_requests: true,
       page_tires: false,
-      page_rims: false
+      page_rims: false,
+      page_deals: false,
 
     };
   }
@@ -466,7 +469,8 @@ class Admin extends Component {
       this.setState({
         page_requests: false,
         page_rims: false,
-        page_tires: false
+        page_tires: false,
+        page_deals: false
       }, function () {
         if (target === "page_requests") {
           this.setState({
@@ -476,9 +480,13 @@ class Admin extends Component {
           this.setState({
             page_tires: true
           });
-        } else {
+        } else if(target === "page_rims"){
           this.setState({
             page_rims: true
+          })
+        } else {
+          this.setState({
+            page_deals: true
           })
         }
       })
@@ -493,7 +501,10 @@ class Admin extends Component {
       <div className="admin-requests-container border-top-0" key={request._id}>
         <div>Name: {request.name}</div>
         <div>Phone: {request.phone}</div>
+        <div>category: {request.category}</div>
+        <div>product: {request.product_id}</div>
         <div>Message: {request.message}</div>
+        
         <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
       </div>
     ));
@@ -610,6 +621,9 @@ class Admin extends Component {
               {this.state.page_tires && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_tires")}>Tires</button>}
               {!this.state.page_rims && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
               {this.state.page_rims && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_rims")}>Rims</button>}
+
+              {!this.state.page_deals && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_deals")}>deals</button>}
+              {this.state.page_deals && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_deals")}>deals</button>}
             </div>
             {this.state.page_requests && <div>
               <h2 align="center">Messages</h2>
@@ -633,6 +647,14 @@ class Admin extends Component {
               <div className="rims">
                 <h2>Rims</h2>
                 {listOfRims}
+              </div>
+            </div>}
+
+            {this.state.page_deals && <div className="admin-page">
+              <AddNewDeal />
+
+              <div className="deals">
+                <h2>Deals</h2>
               </div>
             </div>}
 
