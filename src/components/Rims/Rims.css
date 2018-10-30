@@ -19,7 +19,7 @@
 
 #top {
   background-color:#282d32;
-  /* border-radius: 15px; */
+  border-radius: 15px;
 }
 
 #rim {
@@ -61,6 +61,10 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.rims-main-container h1{
+  align-self: center;
 }
 
 .rims-item-container img {

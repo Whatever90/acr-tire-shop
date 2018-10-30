@@ -230,8 +230,8 @@ export default class Tires extends Component {
       <div id="body_list_tires">
         <div className="rims-main-container">
           <h1 id="page_title">List of tires</h1>
-          
-           <div className="container" id="searchInput">
+
+          <div className="container" id="searchInput">
             <div className="row">
               <div className="col-sm-3">
                 <div className="input-group">

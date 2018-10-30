@@ -141,8 +141,6 @@ export default class Rims extends Component {
     console.log(this.state.inputSearch.yearMax - this.state.inputSearch.yearMin)
   }
 
-
-
   render() {
     let listOfRims = null;
     if (this.state.rims.length > 0) {
