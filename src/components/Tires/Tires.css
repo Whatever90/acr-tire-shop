@@ -1,37 +1,5 @@
-.rims-main-container {
-  min-height: 92vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.rims-main-container h1{
-  align-self: center;
-}
-
-.rims-item-container img {
-  background-color: yellow;
-}
-
-.rims-img {
-  max-height: 150px;
-}
-
-#title {
-  margin-left:25px;
-  color: white;
-}
-
-#box {
-  margin:5px 50px;
-}
-
 #page_title {
   color: whitesmoke;
-}
-
-#top {
-  background-color:#282d32;
-  border-radius: 15px;
 }
 
 #tire {
@@ -46,136 +14,29 @@
   font-weight:600;
 }
 
-#price {
-  float:right;
-  font-weight:700;
-  font-size: 200%;
-}
-
-#condition {
-  font-size:larger;
-}
-
 #tire-photo {
   max-width: 100%;
 }
 
-@media (max-width: 991px) {
-  tire-photo {
-    max-width: 100%;
-  }
+#main2 {
+  margin: 15px auto;
+  align-content: center;
 }
 
-@media (max-width: 991px) {
-  #top {
-    padding-top: 2px;
-    /* margin-top: -8px; */
-    height:38px;
-  }
+#body_list_tires {
+  background-image:url(../images/repair.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
 }
 
-@media (max-width: 991px) {
-  #title {
-    font-size:larger;
-    margin-top:10px;
-  }
+.photos {
+  max-width: 300px;
+  max-height: 200px;
 }
 
-@media (max-width: 991px) {
-  #box {
-    margin:0px 0px;
-    border:1px solid silver;
-  }
-}
-
-  /*  */
-  .card-product:after {
-    content: "";
-    display: table;
-    clear: both;
-    visibility: hidden;
-  }
-  .card-product .price-new, .card-product .price {
-    margin-right: 5px;
-  }
-  .card-product .price-old {
-    color: #999;
-  }
-  .card-product .img-wrap {
-    border-radius: 3px 3px 0 0;
-    overflow: hidden;
-    position: relative;
-    height: 220px;
-    text-align: center;
-  }
-  .card-product .img-wrap img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-  }
-  .card-product .info-wrap {
-    overflow: hidden;
-    padding: 15px;
-    border-top: 1px solid #eee;
-  }
-  .card-product .action-wrap {
-    padding-top: 4px;
-    margin-top: 4px;
-  }
-  .card-product .bottom-wrap {
-    padding: 15px;
-    border-top: 1px solid #eee;
-  }
-  .card-product .title {
-    margin-top: 0;
-  }
-  .tire-cont {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    margin: 15px 15px;
-  }
-
-  #main2{
-    margin: 15px auto;
-    align-content: center;
-  }
-  #body_list_tires{
-    background-image:url(../images/repair.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-attachment: fixed;
-  }
-  .photos{
-    max-width: 300px;
-    max-height: 200px;
-  }
-  h3.switch{
-    color: #fcc500;
-  }
-
-  /* 5/9 */
-.productbox {
-  background-color:#ffffff;
-  padding:10px;
-  margin-bottom:10px;
-  -webkit-box-shadow: 0 8px 6px -6px  #999;
-  -moz-box-shadow: 0 8px 6px -6px  #999;
-  box-shadow: 0 8px 6px -6px #999;
-}
-
-.producttitle {
-  font-weight:bold;
-	padding:5px 0 5px 0;
-}
-
-.productprice {
-  border-top: 1px solid #dadada;
-  padding-top: 5px;
-}
-
-.pricetext {
-  font-weight: bold;
-  font-size: 1.4em;
+h3.switch {
+  color: #fcc500;
 }
 
 .emptyTires {
@@ -188,7 +49,6 @@
 }
 
 /* SEARCH SWITCHER */
-
 .switch input {
   display: none;
 }
@@ -236,16 +96,28 @@ input:checked+.slider {
   box-shadow: 0 0 0 2px red, 0 0 2px blue;
 }
 
-#searchBox {
-  display: flex;
-}
-
-#searchInput {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
 .searchBoxButtons {
   margin-top: 19px;
+}
+
+@media (max-width: 991px) {
+  .tire-photo {
+    max-width: 100%;
+  }
+
+  #top {
+    padding-top: 2px;
+    /* margin-top: -8px; */
+    height:38px;
+  }
+
+  #title {
+    font-size:larger;
+    margin-top:10px;
+  }
+
+  #box {
+    margin:0px 0px;
+    border:1px solid silver;
+  }
 }

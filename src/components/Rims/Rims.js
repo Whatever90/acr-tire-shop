@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import aws from '../images/aws.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Rims.css';
+import aws from '../images/aws.png';
 
 export default class Rims extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ export default class Rims extends Component {
       search: !status
     })
   }
+
   inputChange(event) { // Listens any value changes of state.inputSearch via form
     const target = event.target;
     let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -53,6 +54,7 @@ export default class Rims extends Component {
       inputSearch: temp
     });
   }
+
   searchSubmit() { // Listens any
     var copyRims = this.state.copyRims;
     var tempSearchOptions = [];
@@ -139,8 +141,6 @@ export default class Rims extends Component {
     console.log(this.state.inputSearch.yearMax - this.state.inputSearch.yearMin)
   }
 
-
-
   render() {
     let listOfRims = null;
     if (this.state.rims.length > 0) {
@@ -193,7 +193,10 @@ export default class Rims extends Component {
       <div>
         <div className="rims-main-container" id="main">
           <h1 id="list_name">List of rims</h1>
-          <div className="container" id="searchInput">
+          <div className="rims-sidemenu">
+            <p>hi</p>
+          </div>
+          {/* <div className="container" id="searchInput">
             <div className="row">
               <div className="col-sm-3">
                 <div className="input-group">
@@ -257,8 +260,8 @@ export default class Rims extends Component {
                 <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
               </div>
             </div>
-          </div>
-          
+          </div> */}
+
           <div id="main2">
             {listOfRims}
           </div>

@@ -130,11 +130,9 @@ var listOftires
     } else {
       listOftires = ``
     }
-    
 
     return (
       <div>
-        <Navbar />
         <div id="main">
           <div id="oneCar">
             <div className="container" id="rim">

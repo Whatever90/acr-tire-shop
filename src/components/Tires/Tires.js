@@ -187,7 +187,7 @@ export default class Tires extends Component {
                   </div>
                   <div className="row">
                     <div className="col-md-4">
-                      {/* 
+                      {/*
                         not sure which css is right. have to check
                         {tire.photos.length === 0 && <img src={aws} alt="tire" id="tire-photo"/>} 
                         {tire.photos.length>0 && <img src={tire.photos[0]} alt="tire" id="tire-photo"/>}
@@ -230,8 +230,8 @@ export default class Tires extends Component {
       <div id="body_list_tires">
         <div className="rims-main-container">
           <h1 id="page_title">List of tires</h1>
-          
-           <div className="container" id="searchInput">
+
+          <div className="container" id="searchInput">
             <div className="row">
               <div className="col-sm-3">
                 <div className="input-group">
@@ -317,7 +317,7 @@ export default class Tires extends Component {
               </div>
             </div>
           </div>
-          
+
           <div id="main2">
             {listOftires}
           </div>
