@@ -14,38 +14,28 @@
   font-weight:600;
 }
 
-#price {
-  float:right;
-  font-weight:700;
-  font-size: 200%;
-}
-
-#condition {
-  font-size:larger;
-}
-
 #tire-photo {
   max-width: 100%;
 }
 
-#main2{
+#main2 {
   margin: 15px auto;
   align-content: center;
 }
 
-#body_list_tires{
+#body_list_tires {
   background-image:url(../images/repair.jpg);
   background-repeat: no-repeat;
   background-size:cover;
   background-attachment: fixed;
 }
 
-.photos{
+.photos {
   max-width: 300px;
   max-height: 200px;
 }
 
-h3.switch{
+h3.switch {
   color: #fcc500;
 }
 
@@ -106,22 +96,12 @@ input:checked+.slider {
   box-shadow: 0 0 0 2px red, 0 0 2px blue;
 }
 
-#searchBox {
-  display: flex;
-}
-
-#searchInput {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
 .searchBoxButtons {
   margin-top: 19px;
 }
 
 @media (max-width: 991px) {
-  tire-photo {
+  .tire-photo {
     max-width: 100%;
   }
 

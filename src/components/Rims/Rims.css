@@ -13,7 +13,7 @@
   margin:5px 50px;
 }
 
-#list_name{
+#list_name {
   color: white;
 }
 
@@ -25,11 +25,6 @@
 #rim {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
-}
-
-#model {
-  font-size:large;
-  font-weight:600;
 }
 
 #price {
@@ -84,77 +79,21 @@
   border-radius: 15px;
 }
 
-.switch input {
-  display:none;
-}
-
-.switch {
-  display:inline-block;
-  width:60px;
-  height:30px;
-  margin:8px;
-  transform:translateY(50%);
-  position:relative;
-}
-
-.slider {
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  border-radius:30px;
-  box-shadow:0 0 0 2px #777, 0 0 4px #777;
-  cursor:pointer;
-  border:4px solid transparent;
-  overflow:hidden;
-  transition:.4s;
-}
-
-.slider:before {
-  position:absolute;
-  content:"";
-  width:100%;
-  height:100%;
-  background:red;
-  border-radius:30px;
-  transform:translateX(-30px);
-  transition:.4s;
-}
-
-input:checked + .slider:before {
-  transform:translateX(30px);
-  background:red;
-}
-
-input:checked + .slider {
-  box-shadow:0 0 0 2px red,0 0 2px blue;
-}
-
-.searchBoxButtons {
-  margin-top: 19px;
-}
-
-h3.switch {
-  color: #fcc500;
+/* SIDE MENU */
+.rims-sidemenu {
+  /* height: 100%; Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  /* position: fixed; Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  /* top: 0; Stay at the top */
+  /* left: 0; */
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
 }
 
 @media (max-width: 991px) {
   #photo {
     max-width:210px;
-  }
-
-  #top {
-    height:38px;
-  }
-
-  #title {
-    font-size:larger;
-    margin-top:10px;
-  }
-
-  #box {
-    margin:0px 0px;
-    border:1px solid silver;
   }
 }

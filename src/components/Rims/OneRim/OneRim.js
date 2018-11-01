@@ -130,7 +130,6 @@ var listOftires
     } else {
       listOftires = ``
     }
-    
 
     return (
       <div>
