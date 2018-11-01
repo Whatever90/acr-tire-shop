@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
-// import { Link } from 'react-router-dom';
 import "./OneTire.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
@@ -157,14 +156,15 @@ export default class OneTire extends Component {
               </div>
             </div>
           </div>
-          <div className="contact-section">
+          <div className="one-tire-contact-section">
           {!this.state.showPopup ? (
-            <div className="one-tire-contact-form">
-              <form onSubmit={(event) => this.handleSubmit(event)}>
-                <input onChange={event => this.handleChange("name", event)}/>
-                <input onChange={event => this.handleChange("phone", event)}/>
-                <textarea onChange={event => this.handleChange("message", event)}/>
-                <button></button>
+            <div className="one-tire-contact-container">
+              <h1>Here you can ask any question related to this product</h1>
+              <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
+                Name: <input onChange={event => this.handleChange("name", event)}/>
+                Phone: <input onChange={event => this.handleChange("phone", event)}/>
+                Message:<textarea onChange={event => this.handleChange("message", event)}/>
+                <button className="one-tire-contact-button">Send</button>
               </form>
             </div>
           ) : null}

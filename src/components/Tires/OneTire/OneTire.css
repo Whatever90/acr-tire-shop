@@ -13,6 +13,29 @@
   border-radius: 15px;
 }
 
+.one-tire-contact-section {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.one-tire-contact-container {
+  width: 50%;
+  padding: 3rem;
+  background-color: #282d32;
+  border-radius: 50px;
+}
+
+.one-tire-contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.one-tire-contact-button {
+  width: 5em;
+  color: #000;
+}
+
 /* ONE RIM/ONE TIRE SLIDER CONTAINER */
 .slider-container {
   display: flex;
