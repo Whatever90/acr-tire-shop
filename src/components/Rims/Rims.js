@@ -193,10 +193,8 @@ export default class Rims extends Component {
       <div>
         <div className="rims-main-container" id="main">
           <h1 id="list_name">List of rims</h1>
-          <div className="rims-sidemenu">
-            <p>hi</p>
-          </div>
-          {/* <div className="container" id="searchInput">
+
+          <div className="container" id="searchInput">
             <div className="row">
               <div className="col-sm-3">
                 <div className="input-group">
@@ -260,7 +258,7 @@ export default class Rims extends Component {
                 <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
               </div>
             </div>
-          </div> */}
+          </div>
 
           <div id="main2">
             {listOfRims}

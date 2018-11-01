@@ -1,37 +1,4 @@
-/* .contact-main-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.contact-form {
-  width: 100%;
-}
-
-.contact-input-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-input {
-  width: 90%;
-  border: 1px solid #ced4da;
-  padding: 10px;
-  margin: 10px 0;
-  box-sizing: border-box;
-}
-
-.contact-button {
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: rgba(255,255,255,0.8);
-  border: 1px solid black;
-} */
-
-/*Contact sectiom*/
+/* CONTACT SECTION */
 .content-header {
   /* font-family: 'Oleo Script', cursive; */
   color: #fcc500;
@@ -66,13 +33,6 @@
 }
 .contact-section {
   padding-top: 40px;
-}
-.contact-section .col-md-6 {
-  /* width: 50%; */
-}
-
-.form-line {
-  /* border-right: 1px solid #B29999; */
 }
 
 .form-group {

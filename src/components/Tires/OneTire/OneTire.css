@@ -2,31 +2,6 @@
   width: 80%;
 }
 
-.slider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  /* height: 500px; */
-}
-
-.slider-container > img {
-  max-height: 500px;
-}
-
-.slider-parent-container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.slide-container-img {
-  max-height: 500px;
-}
-
-.empty-tire-img {
-  max-width: 90%;
-}
-
 #oneTire {
   margin: 5px 50px;
   height: 90vh;
@@ -43,6 +18,7 @@
   border-radius: 15px;
 }
 
+/* ONE RIM/ONE TIRE SLIDER CONTAINER */
 .slider-container {
   display: flex;
   justify-content: center;
@@ -52,7 +28,7 @@
 }
 
 .slider-container > img {
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .slider-parent-container {
@@ -64,6 +40,10 @@
 
 .slide-container-img {
   max-height: 500px;
+}
+
+.empty-tire-img {
+  max-width: 90%;
 }
 
 .slick-arrow,

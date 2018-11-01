@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from "../../Navbar/Navbar";
 import Slider from 'react-slick';
 // import { Link } from 'react-router-dom';
 import "./OneTire.css";
@@ -20,42 +19,42 @@ export default class OneTire extends Component {
       showPopup: false
     };
   }
- handleChange(property, event) {
-   event.preventDefault();
-   this.setState({
-     [property]: event.target.value
-   });
- }
+  handleChange(property, event) {
+    event.preventDefault();
+    this.setState({
+      [property]: event.target.value
+    });
+  }
 
- handleSubmit(event) {
-   event.preventDefault();
-   let {
-     name,
-     phone,
-     message
-   } = this.state;
-   let category = "tires";
-   let product_id = this.state.tire._id;
-   axios
-     .post("/requests/new", {
-       name,
-       phone,
-       message,
-       category,
-       product_id
-     })
-     .then(response => {
-       console.log("response!", response);
-       this.togglePopup();
-     })
-     .catch(error => console.log(error));
- }
+  handleSubmit(event) {
+    event.preventDefault();
+    let {
+      name,
+      phone,
+      message
+    } = this.state;
+    let category = "tires";
+    let product_id = this.state.tire._id;
+    axios
+      .post("/requests/new", {
+        name,
+        phone,
+        message,
+        category,
+        product_id
+      })
+      .then(response => {
+        console.log("response!", response);
+        this.togglePopup();
+      })
+      .catch(error => console.log(error));
+  }
 
- togglePopup() {
-   this.setState({
-     showPopup: !this.state.showPopup
-   });
- }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
   componentWillMount(){
     // console.log("ONE tire!")
     let id = {
@@ -160,56 +159,12 @@ export default class OneTire extends Component {
           </div>
           <div className="contact-section">
           {!this.state.showPopup ? (
-            <div className="container">
-              <form
-                className="contact-form"
-                onSubmit={(event) => this.handleSubmit(event)}
-              >
-                <div className="col-md-6 form-line">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputUsername">Your name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id=""
-                      placeholder=" Enter Name"
-                      onChange={event => this.handleChange("name", event)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="telephone">Mobile No.</label>
-                    <input
-                      type="tel"
-                      type="number"
-                      className="form-control"
-                      id="telephone"
-                      placeholder=" Enter 10-digit mobile no."
-                      onChange={event => this.handleChange("phone", event)}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <label htmlFor="description"> Message</label>
-                    <textarea
-                      className="form-control"
-                      id="description"
-                      placeholder="Enter Your Message"
-                      onChange={event => this.handleChange("message", event)}
-                    />
-                  </div>
-                  <div>
-                    <button
-                      // onClick={this.togglePopup.bind(this)}
-                      type="submit"
-                      value="Send"
-                      className="btn btn-default submit"
-                    >
-                      <i className="fa fa-paper-plane" aria-hidden="true" />{" "}
-                      Send Message
-                    </button>
-                  </div>
-                </div>
+            <div className="one-tire-contact-form">
+              <form onSubmit={(event) => this.handleSubmit(event)}>
+                <input onChange={event => this.handleChange("name", event)}/>
+                <input onChange={event => this.handleChange("phone", event)}/>
+                <textarea onChange={event => this.handleChange("message", event)}/>
+                <button></button>
               </form>
             </div>
           ) : null}
