@@ -8,11 +8,6 @@
   margin-bottom: -20px;
 }
 
-#top {
-  background-color: #282d32;
-  border-radius: 15px;
-}
-
 #tire {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
@@ -53,20 +48,6 @@
 }
 
 @media (max-width: 991px) {
-  #top {
-    height: 38px;
-  }
-
-  #title {
-    font-size: larger;
-    margin-top: 10px;
-  }
-
-  #box {
-    margin: 0px 0px;
-    border: 1px solid silver;
-  }
-
   .slider-parent-container {
     width: 100%;
     margin: 0 auto;

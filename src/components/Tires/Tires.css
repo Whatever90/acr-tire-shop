@@ -14,10 +14,6 @@
   font-weight:600;
 }
 
-#tire-photo {
-  max-width: 100%;
-}
-
 #main2 {
   margin: 15px auto;
   align-content: center;
@@ -53,16 +49,6 @@ h3.switch {
 }
 
 @media (max-width: 991px) {
-  .tire-photo {
-    max-width: 100%;
-  }
-
-  #top {
-    padding-top: 2px;
-    /* margin-top: -8px; */
-    height:38px;
-  }
-
   #title {
     font-size:larger;
     margin-top:10px;
