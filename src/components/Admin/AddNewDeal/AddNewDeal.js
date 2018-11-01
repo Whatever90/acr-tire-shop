@@ -22,7 +22,16 @@ class AddNewDeal extends Component {
       tires: [],
       rim: null,
       tire: null,
-      price: 0
+      tires_matches: [],
+      rims_matches: [],
+      price: 0,
+      selected_id: null,
+      selected_id2: null,
+      matching_diameter: null,
+      matching_category: null,
+      selected_product1: null,
+      selected_product2: null,
+      deal: null
     };
   }
   componentWillMount() {
@@ -47,6 +56,51 @@ class AddNewDeal extends Component {
   handleSubmit(event) { //adding a new deal
    
   }
+  chooseTarget(id, category, diameter, product){
+    this.setState({
+      selected_id: id,
+      matching_diameter: diameter,
+      matching_category: category,
+      selected_product1: product
+    });
+  }
+  async createDeal(product){
+    console.log("CREATING A NEW DEAL!", product)
+    
+    var rim;
+    var tire;
+    var price = this.state.selected_product1.price + product.price;
+    if(this.state.matching_category==="tire"){
+      rim = this.state.selected_product1;
+      tire = product;
+    }else{
+      rim = product;
+      tire = this.state.selected_product1;
+    }
+    var deal = {"rim": rim, "tire": tire}
+    console.log("that's deal! => ", deal)
+    this.setState({
+      rim: rim,
+      tire: tire,
+      deal: deal,
+      price: price,
+      selected_product2: product
+    })
+    console.log(this.state)
+  }
+  cancel(){
+    this.setState({
+      rim: null,
+      tire: null,
+      price: 0,
+      selected_id2: null,
+      selected_product2: null,
+      deal: null
+    })
+  }
+  confirmCreatingDeal(){
+    console.log("confirming")
+  }
   show_state(){
     console.log(this.state)
   }
@@ -55,60 +109,162 @@ class AddNewDeal extends Component {
     var listOfRims;
     if(this.state.rims.length>0){
       listOfRims = this.state.rims.map((rim, index) => (
-      <div id="rim_box" key={rim._id}>
-        <div className="row" >
-          <div className="col-lg-5">
-            <label className="switch">
-              <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === rim._id} onClick={() => this.edit_rim(rim)} />
-              <span className="slider"></span>
-            </label>
-            Edit
-            <button className="btn btn-danger rim-btn" onClick={() => this.handleDelete(rim._id, "rims")} disabled={this.state.temp_id !== rim._id}>Delete</button>
-            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_rim_submit(event, rim._id)} disabled={this.state.temp_id !== rim._id}>Submit</button>
-          </div>
-          <div className="col-md-4">
-          </div>
-        </div>
-        <div className="row" >
+      <div key={rim._id}>
+        {this.state.selected_id === rim._id && <div className = "addNewDealRimSelected"  onClick={ function(){
+          this.chooseTarget(rim._id, "tire", rim.diameter, rim)
+          }.bind(this)
+        }>
+        <h1>{rim.brand}</h1>
           <div className="col-md-3">
-            <label>diameter : </label><input type='number' className='form-control' onChange={event => this.handleChange("diameter", event)} placeholder="diameter" defaultValue={rim.diameter} disabled={this.state.temp_id !== rim._id} />
-            <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand" defaultValue={rim.brand} disabled={this.state.temp_id !== rim._id} />
-            <label>count : </label><input type='number' className='form-control' onChange={event => this.handleChange("count", event)} placeholder="count" defaultValue={rim.count} disabled={this.state.temp_id !== rim._id} />
-            <label>Price : </label><input type='number' className='form-control' onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={rim.price} disabled={this.state.temp_id !== rim._id} />
-          </div>
-          <div className="col-md-3">
-            <label>Condition :</label><input type='text' className='form-control' onChange={event => this.handleChange("condition", event)} placeholder="Condition" defaultValue={rim.condition} disabled={this.state.temp_id !== rim._id} />
-            <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={rim.description} rows="4" disabled={this.state.temp_id !== rim._id} />
+            <p>Diameter: {rim.diameter}</p>
+            <p>Count: {rim.count}</p>
+            <p>Price: ${rim.price}</p>
+            <p>Condition: {rim.condition}</p>
+            <p>Description: {rim.description}</p>
           </div>
           <div className="col-md-3">
             <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-              <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(rim._id, e)} disabled={this.state.temp_id !== rim._id}>x</button>
             </li>)}
             </ul>
           </div>
+        </div>}
+        {
+          this.state.selected_id !== rim._id && this.state.matching_diameter !== rim.diameter && < div className = "addNewDealRim"  onClick={ function(){
+          this.chooseTarget(rim._id, "tire", rim.diameter, rim)
+          }.bind(this)
+        }>
+        <h1>{rim.brand}</h1>
           <div className="col-md-3">
-            <div className="uploader">
-              <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true} disabled={this.state.temp_id !== rim._id}>
-                <button className="btn btn-warning btn-xs" disabled={this.state.temp_id !== rim._id} onClick={(event) => event.preventDefault()} >+</button>
-              </Dropzone>
-              {this.state.temp_id === rim._id && <p>Chosen photos</p>}
-              {this.state.temp_id === rim._id && this.state.files.length > 0 && this.state.files.map((e, i) =>
-                <small key={i}><p>{e.name} - <img src={e.preview} className="prevImg" alt="img" />
-                  <button type="button" className="btn btn-danger btn-xs" onClick={() => this.delete(e)} disabled={this.state.temp_id !== rim._id}>x</button></p>
-                </small>)}
-            </div>
+            <p>Diameter: {rim.diameter}</p>
+            <p>Count: {rim.count}</p>
+            <p>Price: ${rim.price}</p>
+            <p>Condition: {rim.condition}</p>
+            <p>Description: {rim.description}</p>
           </div>
-        </div>
+          <div className="col-md-3">
+            <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            </li>)}
+            </ul>
+          </div>
+        </div>}
+        {this.state.matching_diameter === rim.diameter && this.state.matching_category==="rim" && <div className = "addNewDealRimMatched"  onClick={ function(){
+          this.createDeal(rim)
+          }.bind(this)
+        }>
+        <h1>{rim.brand}</h1>
+          <div className="col-md-3">
+            <p>Diameter: {rim.diameter}</p>
+            <p>Count: {rim.count}</p>
+            <p>Price: ${rim.price}</p>
+            <p>Condition: {rim.condition}</p>
+            <p>Description: {rim.description}</p>
+          </div>
+          <div className="col-md-3">
+            <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            </li>)}
+            </ul>
+          </div>
+          
+        </div>}
       </div>
     ));
     }
-     
+    var listOfTires;
+    if(this.state.tires.length>0){
+      listOfTires = this.state.tires.map((tire, index) => (
+      <div key={tire._id}>
+        {this.state.selected_id === tire._id && < div className = "addNewDealRimSelected" onClick={ function(){
+          this.chooseTarget(tire._id, "rim", tire.diameter, tire)
+          }.bind(this)
+        }>
+        <h1>{tire.brand}</h1>
+          <div className="col-md-3">
+            <p>Diameter: {tire.diameter}</p>
+            <p>Width: {tire.width}</p>
+            <p>Ratio: {tire.ratio}</p>
+            <p>Count: {tire.count}</p>
+            <p>Price: ${tire.price}</p>
+            <p>Condition: {tire.condition}</p>
+            <p>Description: {tire.description}</p>
+          </div>
+          <div className="col-md-3">
+            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            </li>)}
+            </ul>
+          </div>
+        </div>}
+        {
+          this.state.selected_id !== tire._id && this.state.matching_diameter !== tire.diameter && < div className = "addNewDealRim" onClick={ function(){
+          this.chooseTarget(tire._id, "rim", tire.diameter, tire)
+          }.bind(this)
+        }>
+        <h1>{tire.brand}</h1>
+          <div className="col-md-3">
+            <p>Diameter: {tire.diameter}</p>
+            <p>Width: {tire.width}</p>
+            <p>Ratio: {tire.ratio}</p>
+            <p>Count: {tire.count}</p>
+            <p>Price: ${tire.price}</p>
+            <p>Condition: {tire.condition}</p>
+            <p>Description: {tire.description}</p>
+          </div>
+          <div className="col-md-3">
+            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            </li>)}
+            </ul>
+          </div>
+        </div>}
+        {
+          this.state.matching_diameter === tire.diameter && this.state.matching_category === "tire" && < div className = "addNewDealRimMatched" onClick={ function(){
+          this.createDeal(tire)
+          }.bind(this)
+        }>
+        <h1>{tire.brand}</h1>
+          <div className="col-md-3">
+            <p>Diameter: {tire.diameter}</p>
+            <p>Width: {tire.width}</p>
+            <p>Ratio: {tire.ratio}</p>
+            <p>Count: {tire.count}</p>
+            <p>Price: ${tire.price}</p>
+            <p>Condition: {tire.condition}</p>
+            <p>Description: {tire.description}</p>
+          </div>
+          <div className="col-md-3">
+            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            </li>)}
+            </ul>
+          </div>
+        </div>}
+      </div>
+    ));
+    } 
     return (
  
     <div className="addNewTire-body" >
       <h1>CREATING A NEW DEAL!</h1>
       <button onClick={() => this.show_state()}>Show state</button>
-      {listOfRims}
+      <div className="addNewDealProductsSeparator">
+        <div className="addNewDealProductsContainer">
+          {listOfRims}
+        </div>
+        <div className="addNewDealProductsMiddleContainer">
+        
+          {this.state.rim && this.state.tire && <div>
+              <h5>{this.state.rim.brand} + {this.state.tire.brand}</h5>
+              <h5>{this.state.rim.diameter} with a tire of {this.state.tire.width} {this.state.tire.ratio} {this.state.tire.diameter}</h5>
+              <h5>{this.state.price}</h5>
+              <div>
+                <button onClick={() => this.confirmCreatingDeal()}>Confirm a new deal</button>
+                <button onClick={() => this.cancel()}>Cancel</button>
+              </div>
+            </div>}
+            {!this.state.selected_product2 && <h3>CHOOSE YOUR DESTINY</h3>}
+        </div>
+        <div className="addNewDealProductsContainer">
+          {listOfTires}
+        </div>
+      </div>
+      
       </div>
       
             );
