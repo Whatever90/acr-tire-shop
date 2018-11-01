@@ -93,7 +93,7 @@ export default class OneTire extends Component {
         </div>
       )
     });
-    let listtires = null;
+    let listOfRims = null;
     if (this.state.matches.length > 0) {
       listOfRims = this.state.matches.map((rim, index) => {
         return (
