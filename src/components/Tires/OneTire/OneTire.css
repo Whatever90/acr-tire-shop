@@ -2,40 +2,10 @@
   width: 80%;
 }
 
-.slider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  /* height: 500px; */
-}
-
-.slider-container > img {
-  max-height: 500px;
-}
-
-.slider-parent-container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.slide-container-img {
-  max-height: 500px;
-}
-
-.empty-tire-img {
-  max-width: 90%;
-}
-
 #oneTire {
   margin: 5px 50px;
   height: 90vh;
   margin-bottom: -20px;
-}
-
-#top {
-  background-color: #282d32;
-  border-radius: 15px;
 }
 
 #tire {
@@ -43,6 +13,30 @@
   border-radius: 15px;
 }
 
+.one-tire-contact-section {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.one-tire-contact-container {
+  width: 50%;
+  padding: 3rem;
+  background-color: #282d32;
+  border-radius: 50px;
+}
+
+.one-tire-contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.one-tire-contact-button {
+  width: 5em;
+  color: #000;
+}
+
+/* ONE RIM/ONE TIRE SLIDER CONTAINER */
 .slider-container {
   display: flex;
   justify-content: center;
@@ -52,7 +46,7 @@
 }
 
 .slider-container > img {
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .slider-parent-container {
@@ -66,6 +60,10 @@
   max-height: 500px;
 }
 
+.empty-tire-img {
+  max-width: 90%;
+}
+
 .slick-arrow,
 .slick-prev:before,
 .slick-next:before {
@@ -73,20 +71,6 @@
 }
 
 @media (max-width: 991px) {
-  #top {
-    height: 38px;
-  }
-
-  #title {
-    font-size: larger;
-    margin-top: 10px;
-  }
-
-  #box {
-    margin: 0px 0px;
-    border: 1px solid silver;
-  }
-
   .slider-parent-container {
     width: 100%;
     margin: 0 auto;

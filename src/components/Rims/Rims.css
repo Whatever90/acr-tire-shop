@@ -93,6 +93,12 @@
 }
 
 @media (max-width: 991px) {
+  #top {
+    padding-top: 2px;
+    /* margin-top: -8px; */
+    height:38px;
+  }
+
   #photo {
     max-width:210px;
   }

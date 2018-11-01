@@ -187,11 +187,6 @@ export default class Tires extends Component {
                   </div>
                   <div className="row">
                     <div className="col-md-4">
-                      {/*
-                        not sure which css is right. have to check
-                        {tire.photos.length === 0 && <img src={aws} alt="tire" id="tire-photo"/>} 
-                        {tire.photos.length>0 && <img src={tire.photos[0]} alt="tire" id="tire-photo"/>}
-                      */}
                       {tire.photos.length === 0 && <img src={aws} alt="rim" className="photos" />}
                       {tire.photos.length > 0 && <img src={tire.photos[0]} alt="rim" className="photos" />}
                     </div>

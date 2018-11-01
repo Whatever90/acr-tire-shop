@@ -12,11 +12,6 @@
   border-bottom: 1px solid brown;
 }
 
-.admin-rims-container.container {
-  /* display: flex; */
-  /* width: 50vh; */
-}
-
 .red {
   color: red;
 }
@@ -33,9 +28,6 @@
   text-align: center;
 }
 
-/* #rim_box{
-  max-width: 400px;
-} */
 .form-area {
   max-width: 35vh;
   max-height: 40vh;
@@ -46,6 +38,7 @@
   margin: 0 0;
 }
 
+/* SEARCH SWITCHER */
 .switch input {
   display: none;
 }
