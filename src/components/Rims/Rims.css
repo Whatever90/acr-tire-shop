@@ -9,10 +9,6 @@
   color: white;
 }
 
-#box {
-  margin:5px 50px;
-}
-
 #list_name {
   color: white;
 }
@@ -51,6 +47,10 @@
   margin-top: 5px;
 }
 
+.box {
+  margin: 5px 50px;
+}
+
 .rims-main-container {
   min-height: 92vh;
   width: 100%;
@@ -79,24 +79,21 @@
   border-radius: 15px;
 }
 
-/* SIDE MENU */
-.rims-sidemenu {
-  /* height: 100%; Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  /* position: fixed; Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  /* top: 0; Stay at the top */
-  /* left: 0; */
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
-
 @media (max-width: 991px) {
+  .box {
+    margin:0px 0px;
+    border:1px solid silver;
+  }
+
   #top {
     padding-top: 2px;
     /* margin-top: -8px; */
     height:38px;
+  }
+
+  #title {
+    font-size:larger;
+    margin-top:10px;
   }
 
   #photo {
