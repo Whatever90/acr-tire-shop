@@ -4,8 +4,6 @@
 
 #oneTire {
   margin: 5px 50px;
-  height: 90vh;
-  margin-bottom: -20px;
 }
 
 #tire {
@@ -26,14 +24,30 @@
   border-radius: 50px;
 }
 
+.one-tire-contact-header {
+  text-align: center;
+  font-size: 2.2rem;
+}
+
 .one-tire-contact-form {
   display: flex;
   flex-direction: column;
 }
 
 .one-tire-contact-button {
-  width: 5em;
-  color: #000;
+  margin-top: 1.2rem;
+  align-self: flex-end;
+}
+
+.one-tire-matching-container {
+  margin: 15px auto;
+  align-content: center;
+
+}
+.one-tire-matching-header {
+  align-self: center;
+  text-align: center;
+  color: #fff;
 }
 
 /* ONE RIM/ONE TIRE SLIDER CONTAINER */

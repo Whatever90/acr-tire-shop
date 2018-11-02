@@ -97,7 +97,7 @@ export default class OneTire extends Component {
         return (
           <Link to={`/rim/${rim._id}`} key={index}>
             <div>
-              <div id="box" key={index}>
+              <div className="box" key={index}>
                 <div className="container" id="rim">
                   <div className="row">
                     <div className="col-md-12" id="top" >
@@ -159,17 +159,18 @@ export default class OneTire extends Component {
           <div className="one-tire-contact-section">
           {!this.state.showPopup ? (
             <div className="one-tire-contact-container">
-              <h1>Here you can ask any question related to this product</h1>
+              <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
               <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
-                Name: <input onChange={event => this.handleChange("name", event)}/>
-                Phone: <input onChange={event => this.handleChange("phone", event)}/>
-                Message:<textarea onChange={event => this.handleChange("message", event)}/>
-                <button className="one-tire-contact-button">Send</button>
+                Name: <input className="form-control" onChange={event => this.handleChange("name", event)}/>
+                Phone: <input className="form-control" onChange={event => this.handleChange("phone", event)}/>
+                Message:<textarea className="form-control" onChange={event => this.handleChange("message", event)}/>
+                <button className="one-tire-contact-button btn btn-default submit">Send</button>
               </form>
             </div>
           ) : null}
         </div>
-          <div id="main2">
+          <div id="one-tire-matching-container">
+            <h1 className="one-tire-matching-header">List of matching rims</h1>
             {listOfRims}
           </div>
         </div>

@@ -10,13 +10,8 @@
 }
 
 #model {
-  font-size:large;
-  font-weight:600;
-}
-
-#main2 {
-  margin: 15px auto;
-  align-content: center;
+  font-size: large;
+  font-weight: 600;
 }
 
 #body_list_tires {
@@ -46,16 +41,4 @@ h3.switch {
 
 .searchBoxButtons {
   margin-top: 19px;
-}
-
-@media (max-width: 991px) {
-  #title {
-    font-size:larger;
-    margin-top:10px;
-  }
-
-  #box {
-    margin:0px 0px;
-    border:1px solid silver;
-  }
 }
