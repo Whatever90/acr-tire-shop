@@ -31,7 +31,9 @@ class AddNewDeal extends Component {
       matching_category: null,
       selected_product1: null,
       selected_product2: null,
-      deal: null
+      deal: null,
+      description: '',
+      show_form: false,
     };
   }
   componentWillMount() {
@@ -95,14 +97,35 @@ class AddNewDeal extends Component {
       price: 0,
       selected_id2: null,
       selected_product2: null,
-      deal: null
+      deal: null,
+      description: ''
     })
   }
   confirmCreatingDeal(){
     console.log("confirming")
+    var obj = {
+      rim: this.state.deal.rim._id,
+      tire: this.state.deal.tire._id,
+      price: this.state.price,
+      old_price: this.state.deal.tire.price + this.state.deal.rim.price,
+      description: this.state.description
+    }
+    console.log(obj)
+    axios.post("/deals/new", obj)
+    .then(response => {
+      console.log(response);
+      alert("A new deal was created!")
+    })
+    this.cancel();
   }
   show_state(){
     console.log(this.state)
+  }
+  show_form(){
+    var bool = !this.state.show_form;
+    this.setState({
+      show_form: !this.state.show_form
+    })
   }
 
   render() {
@@ -241,8 +264,11 @@ class AddNewDeal extends Component {
     return (
  
     <div className="addNewTire-body" >
-      <h1>CREATING A NEW DEAL!</h1>
-      <button onClick={() => this.show_state()}>Show state</button>
+    <button onClick={() => this.show_state()}>Show state</button>
+    <button onClick={() => this.show_form()}>Show Form</button>
+      {this.state.show_form && <div>
+        <h1>CREATING A NEW DEAL!</h1>
+        
       <div className="addNewDealProductsSeparator">
         <div className="addNewDealProductsContainer">
           {listOfRims}
@@ -252,7 +278,10 @@ class AddNewDeal extends Component {
           {this.state.rim && this.state.tire && <div>
               <h5>{this.state.rim.brand} + {this.state.tire.brand}</h5>
               <h5>{this.state.rim.diameter} with a tire of {this.state.tire.width} {this.state.tire.ratio} {this.state.tire.diameter}</h5>
-              <h5>{this.state.price}</h5>
+              <label>Old Price: {this.state.tire.price + this.state.rim.price}</label>
+              <br></br>
+              <label>New Price : </label><input className='form-control' type="number" onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={this.state.price} />
+              <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" />
               <div>
                 <button onClick={() => this.confirmCreatingDeal()}>Confirm a new deal</button>
                 <button onClick={() => this.cancel()}>Cancel</button>
@@ -264,6 +293,9 @@ class AddNewDeal extends Component {
           {listOfTires}
         </div>
       </div>
+        </div>}
+      
+      
       
       </div>
       

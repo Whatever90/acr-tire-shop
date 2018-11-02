@@ -26,6 +26,7 @@ var tire = require('./../controllers/tires.js');
 var rim = require('./../controllers/rims.js');
 var request = require('./../controllers/requests.js');
 var user = require('./../controllers/users.js');
+var deal = require('./../controllers/deals.js')
 
 module.exports = function(app) {
 	// tires functions
@@ -77,6 +78,19 @@ module.exports = function(app) {
 	})
 	app.post("/requests/edit", (req, res, next) => {
 		request.edit(req, res);
+	})
+	// Deals functions
+	app.get("/deals/all", (req, res, next) => {
+		deal.all(req, res)
+	});
+	app.post("/deals/new", (req, res, next) => {
+		deal.new(req, res);
+	});
+	app.post("/deals/delete", (req, res, next) => {
+		deal.delete(req, res);
+	})
+	app.post("/deals/edit", (req, res, next) => {
+		deal.edit(req, res);
 	})
 
 	// Users functions

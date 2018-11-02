@@ -64,12 +64,14 @@ class Admin extends Component {
     axios.all([
       axios.get(`/requests/all`),
       axios.get(`/tires/all`),
-      axios.get(`/rims/all`)
-    ]).then(axios.spread((requests, tires, rims) => {
+      axios.get(`/rims/all`),
+      axios.get('/deals/all')
+    ]).then(axios.spread((requests, tires, rims, deals) => {
       this.setState({
         requests: requests.data,
         tires: tires.data,
-        rims: rims.data
+        rims: rims.data,
+        deals: deals.data
       })
     })).catch(err => console.log(err));
 
@@ -97,6 +99,21 @@ class Admin extends Component {
 
   // END OF REQUESTS -------------------------------------
 
+  // DEALS -----------------------------------------------
+    handleDealDelete(i) {
+    axios.post('/deals/delete', { i })
+      .then(res => {
+        if (res.data) {
+          axios.get('/deals/all')
+            .then(res => {
+              this.setState({ deals: res.data })
+            })
+            .catch(error => console.log(error));
+        }
+      })
+      .catch(error => console.log(error));
+  }
+  // END OF DEALS ----------------------------------------------
 
   // Tires functions --------------------------------------------
   edit_tire(tire) {
@@ -488,6 +505,7 @@ class Admin extends Component {
           this.setState({
             page_deals: true
           })
+          console.log(this.state.deals)
         }
       })
     }
@@ -607,13 +625,27 @@ class Admin extends Component {
         </div>
       </div>
     ));
+    var listOfDeals;
+    if(this.state.deals.length>0){
+      listOfDeals = this.state.deals.map(deal => (
+      <div className="admin-requests-container border-top-0" key={deal._id}>
+        <div>Rim: {deal.rim_id} {deal.rim[0].brand}</div>
+        <div>Tire: {deal.tire_id} {deal.tire[0].brand}</div>
+        <div>Old Price: {deal.old_price}</div>
+        <div>Price: {deal.price}</div>
+        <div>Description: {deal.description}</div>
+        <button className="btn btn-danger" onClick={() => this.handleDealDelete(deal._id)}>Delete</button>
+      </div>
+    ));
+    }
+     
 
     return (
       <div className="admin-body">
         <div className="admin-main-container">
           {user && <div className="mainDiv">
             <div className="admin-top" align='center'>
-              <h1>Control Panel v0.2b</h1>
+              <h1>Control Panel v0.5a</h1>
               <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
               {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
@@ -655,6 +687,7 @@ class Admin extends Component {
 
               <div className="deals">
                 <h2>Deals</h2>
+                {listOfDeals}
               </div>
             </div>}
 
