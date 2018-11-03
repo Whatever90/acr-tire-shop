@@ -1,0 +1,44 @@
+#page_title {
+  color: whitesmoke;
+}
+
+#deal {
+  background-color: rgba(255, 255, 255, 0.8);
+  max-height: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+#model {
+  font-size: large;
+  font-weight: 600;
+}
+
+#body_list_deals {
+  background-image:url(../images/repair.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+.photos {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+h3.switch {
+  color: #fcc500;
+}
+
+.emptyTires {
+  height: 75vh;
+}
+
+.emptyTires-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+.searchBoxButtons {
+  margin-top: 19px;
+}

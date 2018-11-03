@@ -9,37 +9,58 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 module.exports = {
   all: function (req, res) {
-    // console.log("all deals")
-    Deal.aggregate([
-      
-       {
-      $lookup: {
-        from: "tires" ,
-        localField: "tire_id",
-        foreignField: "_id",
-        as: "tire"
-      }},{
-      $lookup: {
-        from: "rims",
-        localField: "rim_id",
-        foreignField: "_id",
-        as: "rim"
-      },
-    }])
+    Deal.aggregate([{
+        $lookup: {
+          from: "tires",
+          localField: "tire_id",
+          foreignField: "_id",
+          as: "tire"
+        }
+      }, {
+        $lookup: {
+          from: "rims",
+          localField: "rim_id",
+          foreignField: "_id",
+          as: "rim"
+        },
+      }])
       .then(data => {
-        console.log(data)
         res.json(data);
       })
       .catch(err => {
         console.log(err);
       });
-
+  },
+  find: function (req, res) {
+    Deal.aggregate([ { $match : { _id : mongoose.Types.ObjectId(req.body._id) } },
+      {
+        $lookup: {
+          from: "tires",
+          localField: "tire_id",
+          foreignField: "_id",
+          as: "tire"
+        }
+      }, {
+        $lookup: {
+          from: "rims",
+          localField: "rim_id",
+          foreignField: "_id",
+          as: "rim"
+        },
+      }
+    ])
+      .then(data => {
+        console.log(req.body._id)
+        console.log("========")
+        console.log(data)
+        console.log("========")
+        res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
   new: function (req, res) {
-    console.log("===================");
-    console.log(ObjectId(req.body.tire));
-     console.log(typeof(ObjectId(req.body.tire)));
-    console.log("=========")
     var deal = new Deal({
       tire_id: req.body.tire,
       rim_id: req.body.rim,
@@ -49,12 +70,9 @@ module.exports = {
     });
     deal.save()
       .then(saved => {
-        console.log('saved!')
         res.json(saved)
       })
       .catch(err => {
-        console.log(err)
-        console.log('saving failed')
         res.json(false)
       })
   },

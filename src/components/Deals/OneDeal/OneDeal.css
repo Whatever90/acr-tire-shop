@@ -1,0 +1,92 @@
+.container {
+  width: 80%;
+}
+
+#oneTire {
+  margin: 5px 50px;
+}
+
+#deal {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+.one-deal-contact-section {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.one-deal-contact-container {
+  width: 50%;
+  padding: 3rem;
+  background-color: #282d32;
+  border-radius: 50px;
+}
+
+.one-deal-contact-header {
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.one-deal-contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.one-deal-contact-button {
+  margin-top: 1.2rem;
+  align-self: flex-end;
+}
+
+.one-deal-matching-container {
+  margin: 15px auto;
+  align-content: center;
+
+}
+.one-deal-matching-header {
+  align-self: center;
+  text-align: center;
+  color: #fff;
+}
+
+/* ONE RIM/ONE TIRE SLIDER CONTAINER */
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* height: 500px; */
+}
+
+.slider-container > img {
+  max-height: 500px;
+}
+
+.slider-parent-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.slide-container-img {
+  max-height: 500px;
+}
+
+.empty-deal-img {
+  max-width: 90%;
+}
+
+.slick-arrow,
+.slick-prev:before,
+.slick-next:before {
+  color: blue
+}
+
+@media (max-width: 991px) {
+  .slider-parent-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

@@ -7,7 +7,8 @@ import Admin from '../components/Admin/Admin';
 import OneTire from '../components/Tires/OneTire/OneTire';
 import OneRim from '../components/Rims/OneRim/OneRim';
 import Login from '../components/Admin/Login/Login';
-
+import Deals from '../components/Deals/Deals';
+import OneDeal from '../components/Deals/OneDeal/OneDeal';
 import NotFound from "../components/NotFound/NotFound";
 
 export default (
@@ -19,6 +20,8 @@ export default (
     <Route path="/rims" component={ Rims }/>
     <Route path="/admin" component={ Admin }/>
     <Route path="/login" component={ Login }/>
+    <Route path='/deals' component={Deals}/>
+    <Route path='/deal/:_id' component={OneDeal}/>
 
     <Route path="*" component={ NotFound }/>
   </Switch>

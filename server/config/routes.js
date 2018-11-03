@@ -91,7 +91,11 @@ module.exports = function(app) {
 	})
 	app.post("/deals/edit", (req, res, next) => {
 		deal.edit(req, res);
-	})
+	});
+	app.post("/deals/find", (req, res, next) => {
+		deal.find(req, res)
+	});
+	
 
 	// Users functions
 	app.post('/register', (req, res, next)=>{
