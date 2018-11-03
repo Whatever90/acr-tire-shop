@@ -42,6 +42,11 @@ export default class Navbar extends Component {
                     <p>Rims</p>
                   </Link>
                 </li>
+                <li className="listLink">
+                  <Link className="navbar-links" to="/deals">
+                    <p>Deals</p>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

@@ -9,7 +9,7 @@ export default class OneDeal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deal: {},
+      deal: null,
       photos: [],
       matches: [],
       name: "",
@@ -61,8 +61,15 @@ export default class OneDeal extends Component {
     }
     axios.post('/deals/find/', id)
       .then(res => {
-        this.setState({ deal: res.data[0] })
-        console.log(this.state.deal);
+        var photos = [];
+        for (let i = 0; i < res.data[0].rim[0].photos.length; i++){
+          photos.push(res.data[0].rim[0].photos[i]);
+        }
+        for (let i = 0; i < res.data[0].tire[0].photos.length; i++){
+          photos.push(res.data[0].tire[0].photos[i])
+        }
+        this.setState({ deal: res.data[0], photos: photos })
+        console.log(this.state);
       })
       .catch(error => console.log(error));
   }
@@ -80,8 +87,7 @@ export default class OneDeal extends Component {
       pauseOnHover: true
     };
 
-    const display = this.state.photos
-    .map((element, index) => {
+    var display = this.state.photos.map((element, index) => {
       return (
         <div key={ index }>
           <div className="slider-container">
@@ -91,55 +97,21 @@ export default class OneDeal extends Component {
       )
     });
     let listOfRims = null;
-    // if (this.state.matches.length > 0) {
-    //   listOfRims = this.state.matches.map((rim, index) => {
-    //     return (
-    //       <Link to={`/rim/${rim._id}`} key={index}>
-    //         <div>
-    //           <div className="box" key={index}>
-    //             <div className="container" id="rim">
-    //               <div className="row">
-    //                 <div className="col-md-12" id="top" >
-    //                   <h1 id="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
-    //                 </div>
-    //               </div>
-    //               <div className="row">
-    //                 <div className="col-md-4">
-    //                   {rim.photos.length === 0 && <img src={aws} alt="rim" id="photo" className="photos" />}
-    //                   {rim.photos.length > 0 && <img src={rim.photos[0]} alt="rim" id="photo" className="photos" />}
-    //                 </div>
-    //                 <div className="col-md-4">
-    //                   <p id="diameter">Count: {rim.count},  {rim.description}</p>
-    //                   <p id="condition">Condition: {rim.condition} </p>
-    //                 </div>
-    //                 <div className="col-md-4">
-    //                   <p id="price">${rim.price}</p>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </Link>
-    //     )
-    //   })
-    // } else {
-    //   listOfRims = '';
-    // }
 
     return (
       <div>
-        <div id="main">
+        {this.state. deal && <div id="main">
           <div id="oneDeal">
             <div className="container" id="deal">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.deal.brand} {this.state.deal.ratio} {this.state.deal.width} {this.state.deal.diameter}</h1>
+                  <h1 id="title">{this.state.deal.rim[0].diameter}' {this.state.deal.rim[0].brand} + {this.state.deal.tire[0].brand} {this.state.deal.tire[0].ratio} {this.state.deal.tire[0].width} {this.state.deal.tire[0].diameter}</h1>
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
                   {this.state.photos.length === 0 && <img className="empty-deal-img" src={aws} alt="default image of a deal" id="noImage"/>}
-                  {this.state.deal.photos && <Slider className="slider-component" {...settings}>
+                  {this.state.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }
                 </div>
@@ -150,7 +122,10 @@ export default class OneDeal extends Component {
                   <p id="condition">{this.state.deal.description}</p>
                 </div>
                 <div className="col-md-5">
-                  <p id="price">${this.state.deal.price}</p>
+                  <p id="price">Price Separately ${this.state.deal.old_price}</p>
+                </div>
+                <div className="col-md-5">
+                  <h2 id="price">Combo price ${this.state.deal.price}</h2>
                 </div>
               </div>
             </div>
@@ -168,11 +143,7 @@ export default class OneDeal extends Component {
             </div>
           ) : null}
         </div>
-          <div id="one-deal-matching-container">
-            <h1 className="one-deal-matching-header">List of matching rims</h1>
-            {listOfRims}
-          </div>
-        </div>
+        </div>}
       </div>
     );
   }
