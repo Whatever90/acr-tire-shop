@@ -28,6 +28,7 @@ class Admin extends Component {
       count: 0,
       type: "",
       //
+      temp_deal_price: null,
       temp_id: '',
       title: "",
       brand: "",
@@ -60,7 +61,6 @@ class Admin extends Component {
   }
 
   componentWillMount() {
-    console.log(window.location);
     axios.all([
       axios.get(`/requests/all`),
       axios.get(`/tires/all`),
@@ -76,6 +76,12 @@ class Admin extends Component {
     })).catch(err => console.log(err));
 
   }
+    handleChange(property, event) {
+      event.preventDefault();
+      this.setState({
+        [property]: event.target.value
+      });
+    }
 
 
   // REQUESTS -------------------------------------
@@ -92,15 +98,12 @@ class Admin extends Component {
       })
       .catch(error => console.log(error));
   }
-  handleChange(property, event) {
-    event.preventDefault();
-    this.setState({ [property]: event.target.value });
-  }
+
 
   // END OF REQUESTS -------------------------------------
 
   // DEALS -----------------------------------------------
-    handleDealDelete(i) {
+  handleDealDelete(i) {
     axios.post('/deals/delete', { i })
       .then(res => {
         if (res.data) {
@@ -112,6 +115,32 @@ class Admin extends Component {
         }
       })
       .catch(error => console.log(error));
+  }
+  edit_deal(deal){
+    if(this.state.temp_id === deal._id){
+      this.clearState();
+    }else{
+      this.setState({
+        temp_id: deal._id,
+        price: deal.price,
+      })
+    }
+  }
+  edit_deal_submit(event, index) {
+    event.preventDefault();
+    let new_price = this.state.price;
+    let _id = this.state.temp_id;
+    this.setState({
+      temp_id: null,
+      price: null
+    })
+    console.log({_id, new_price})
+  }
+  dealSold(id){
+    console.log("deal sold!", id)
+  }
+  cancelDeal(id){
+    
   }
   // END OF DEALS ----------------------------------------------
 
@@ -155,10 +184,8 @@ class Admin extends Component {
           this.photos_deletion_submitted("tires", temp_id);
           this.edit_cancel();
           alert("the tire was updated");
-          // console.log("the tire was updated"); /// ++++++++++++++++++ ADD A MESSAGE!
         } else {
           alert("can't update this tire");
-          // console.log("can't update this tire") /// ++++++++++++++++++ ADD A MESSAGE!
         }
       })
       .catch(error => console.log("BLYAAAD'", error)); /// ++++++++++++++++++ ADD A MESSAGE!
@@ -240,10 +267,8 @@ class Admin extends Component {
           this.photos_deletion_submitted("rims", temp_id);
           this.edit_cancel();
           alert("the rim was updated");
-          // console.log("the rim was updated");   /// ++++++++++++++++++ ADD A MESSAGE!
         } else {
           alert("can't update this rim");
-          // console.log("can't update this rim") /// ++++++++++++++++++ ADD A MESSAGE!
         }
       })
       .catch(error => console.log("BLYAAAD'", error));  /// ++++++++++++++++++ ADD A MESSAGE!
@@ -252,13 +277,11 @@ class Admin extends Component {
     var id = {
       _id: id
     }
-    console.log("refreshing by id", id);
     var tempArr = this.state.rims;
     axios.post('/rims/find/', id)
       .then(res => {
         for (let i = 0; i < tempArr.length; i++) {
           if (tempArr[i]._id === id._id) {
-            console.log("YES!", res.data);
             tempArr[i] = res.data;
             this.setState({
               tires: tempArr
@@ -292,7 +315,6 @@ class Admin extends Component {
 
   // LOCAL UPLOADER FOR TIRES AND RIMS ++++++++++++++++
   onDrop(photo) {
-    console.log("PHOTO!", photo);
     var tempArr = this.state.files;
     tempArr.push(photo[0]);
     this.setState({
@@ -304,13 +326,10 @@ class Admin extends Component {
   upload(id, x) { // x - is either "tire" or "rim", and by using id we add photos to a specific tire of rim
     var filesToUpload = this.state.files;
     var counter = 0;
-    console.log(id, x);
     if (filesToUpload.length === 0) {
       if (x === "tires") {
-        console.log("1 lol", x, id);
         this.refreshTireById(id)
       } else if (x === "rims") {
-        console.log("1 lol", x, id);
         this.refreshRimById(id)
       }
       return;
@@ -324,14 +343,12 @@ class Admin extends Component {
           counter++;
           if (counter === filesToUpload.length) {
             if (x === "tires") {
-              console.log("1 lol", x, id);
               this.refreshTireById(id)
             } else if (x === "rims") {
-              console.log("1 lol", x, id);
               this.refreshRimById(id)
             }
           }
-          console.log('File Uploaded Succesfully'); // Just taking all pics from this.state.files and send them on the back-end and then to s3
+          //console.log('File Uploaded Succesfully'); // Just taking all pics from this.state.files and send them on the back-end and then to s3
         })                                        // and getting back urls to those pics
     }
   }
@@ -378,7 +395,6 @@ class Admin extends Component {
       .catch(error => console.log(error));
   }
   cancelDeletion() {
-    console.log(this.state.container);
     var arrRims = this.state.rims;
     for (let i = 0; i < arrRims.length; i++) {
       if (arrRims[i]._id == this.state.container._id) {
@@ -392,7 +408,6 @@ class Admin extends Component {
   }
 
   deletePhoto(id, element) {
-    console.log(id, element);
     var tempArr = this.state.photos;
     var arrDeletion = this.state.photos_to_delete;
     for (let i = 0; i < tempArr.length; i++) {
@@ -415,9 +430,7 @@ class Admin extends Component {
     if (this.state.photos_to_delete.length < 1) {
       return;
     }
-    console.log("deleting photos for", x);
     var arrToDelete = this.state.photos_to_delete;
-    console.log("Photos to delete:", arrToDelete);
     var counter = 0;
     for (var i = 0; i < arrToDelete.length; i++) {
       const url = arrToDelete[i].split('/');
@@ -438,7 +451,6 @@ class Admin extends Component {
   }
 
   logout() {
-    console.log(this.state)
     axios.post('/user/logout')
       .then(response => {
         console.log('you are out');
@@ -478,8 +490,6 @@ class Admin extends Component {
     console.log(this.state); // Just checking this.state. Should be removed before releasing the final version
   }
   page_switcher(target) {
-    console.log(target);
-    console.log(this.state[target])
     if (this.state[target]) {
       return;
     } else {
@@ -505,7 +515,6 @@ class Admin extends Component {
           this.setState({
             page_deals: true
           })
-          console.log(this.state.deals)
         }
       })
     }
@@ -628,13 +637,29 @@ class Admin extends Component {
     var listOfDeals;
     if(this.state.deals.length>0){
       listOfDeals = this.state.deals.map(deal => (
-      <div className="admin-requests-container border-top-0" key={deal._id}>
-        <div>Rim: {deal.rim_id} {deal.rim[0].brand}</div>
-        <div>Tire: {deal.tire_id} {deal.tire[0].brand}</div>
-        <div>Old Price: {deal.old_price}</div>
-        <div>Price: {deal.price}</div>
-        <div>Description: {deal.description}</div>
-        <button className="btn btn-danger" onClick={() => this.handleDealDelete(deal._id)}>Delete</button>
+      <div id="rim_box" key={deal._id}>
+        <div className="row" >
+          <div className="col-lg-5">
+            <label className="switch">
+              <input type="checkbox" id="rim_edit_switcher" checked={this.state.temp_id === deal._id} onClick={() => this.edit_deal(deal)} />
+              <span className="slider"></span>
+            </label>
+            Edit
+            <button className="btn btn-danger rim-btn" onClick={() => this.dealSold(deal._id)} disabled={this.state.temp_id !== deal._id}>SOLD!</button>
+            <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_deal_submit(event, deal._id)} disabled={this.state.temp_id !== deal._id}>Submit Changes</button>
+          </div>
+          <div className="col-md-4">
+          </div>
+        </div>
+        <div className="row" >
+          <div className="col-md-3">
+            <label>Rim brand: <Link to={`/rim/${deal.rim[0]._id}`} target="_blank">{deal.rim[0].brand}</Link></label>
+            <label>Tire brand: <Link to={`/tire/${deal.tire[0]._id}`} target="_blank">{deal.tire[0].brand}</Link></label>
+            <label>Rim and tire diameter: {deal.rim[0].diameter}</label>
+            <label>Count: {deal.rim[0].count}</label>
+            <label>Price : </label><input type='number' className='form-control' onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={deal.price} disabled={this.state.temp_id !== deal._id} />
+          </div>
+        </div>
       </div>
     ));
     }

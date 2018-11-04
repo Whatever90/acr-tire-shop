@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "./OneTire.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 
 export default class OneTire extends Component {
   constructor(props) {
@@ -65,7 +66,10 @@ export default class OneTire extends Component {
         console.log(this.state.tire);
         console.log(this.state.tire.photos);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log("===========================", error)
+        this.props.history.push("/notfound");
+      });
   }
 
   render() {

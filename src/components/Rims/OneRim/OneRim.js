@@ -65,7 +65,10 @@ export default class OneRim extends Component {
       .then(res => {
         this.setState({ rim: res.data, photos: res.data.photos, matches: res.data.matches })
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log("===========================", error)
+        this.props.history.push("/notfound");
+      });
   }
 
   render() {

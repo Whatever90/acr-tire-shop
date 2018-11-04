@@ -287,7 +287,7 @@ class AddNewDeal extends Component {
                 <button onClick={() => this.cancel()}>Cancel</button>
               </div>
             </div>}
-            {!this.state.selected_product2 && <h3>CHOOSE YOUR DESTINY</h3>}
+            {!this.state.selected_product2 && <h3>Create a deal</h3>}
         </div>
         <div className="addNewDealProductsContainer">
           {listOfTires}

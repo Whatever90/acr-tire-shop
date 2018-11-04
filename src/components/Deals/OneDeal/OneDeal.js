@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "./OneDeal.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 
 export default class OneDeal extends Component {
   constructor(props) {
@@ -55,12 +56,12 @@ export default class OneDeal extends Component {
     });
   }
   componentWillMount(){
-    // console.log("ONE deal!")
     let id = {
       _id: this.props.match.params._id
     }
     axios.post('/deals/find/', id)
       .then(res => {
+        console.log("RESPONSE!!!")
         var photos = [];
         for (let i = 0; i < res.data[0].rim[0].photos.length; i++){
           photos.push(res.data[0].rim[0].photos[i]);
@@ -71,7 +72,11 @@ export default class OneDeal extends Component {
         this.setState({ deal: res.data[0], photos: photos })
         console.log(this.state);
       })
-      .catch(error => console.log(error));
+      //.catch(error => console.log(error));
+      .catch(error => {
+        console.log("===========================",error)
+        this.props.history.push("/notfound");
+      });
   }
 
   render() {
