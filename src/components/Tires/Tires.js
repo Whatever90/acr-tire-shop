@@ -219,8 +219,6 @@ export default class Tires extends Component {
       )
     })
 
-
-
     return (
       <div id="body_list_tires">
         <div className="rims-main-container">

@@ -56,9 +56,9 @@ class AddNewDeal extends Component {
   }
 
   handleSubmit(event) { //adding a new deal
-   
+
   }
-  chooseTarget(id, category, diameter, product){
+  chooseTarget(id, category, diameter, product) {
     this.setState({
       selected_id: id,
       matching_diameter: diameter,
@@ -68,7 +68,6 @@ class AddNewDeal extends Component {
   }
   async createDeal(product){
     console.log("CREATING A NEW DEAL!", product)
-    
     var rim;
     var tire;
     var price = this.state.selected_product1.price + product.price;
@@ -187,7 +186,6 @@ class AddNewDeal extends Component {
             </li>)}
             </ul>
           </div>
-          
         </div>}
       </div>
     ));
@@ -260,21 +258,18 @@ class AddNewDeal extends Component {
         </div>}
       </div>
     ));
-    } 
+    }
     return (
- 
     <div className="addNewTire-body" >
     <button onClick={() => this.show_state()}>Show state</button>
     <button onClick={() => this.show_form()}>Show Form</button>
       {this.state.show_form && <div>
-        <h1>CREATING A NEW DEAL!</h1>
-        
+        <h1>Here you can create a new deal</h1>
       <div className="addNewDealProductsSeparator">
         <div className="addNewDealProductsContainer">
           {listOfRims}
         </div>
         <div className="addNewDealProductsMiddleContainer">
-        
           {this.state.rim && this.state.tire && <div>
               <h5>{this.state.rim.brand} + {this.state.tire.brand}</h5>
               <h5>{this.state.rim.diameter} with a tire of {this.state.tire.width} {this.state.tire.ratio} {this.state.tire.diameter}</h5>
@@ -294,11 +289,7 @@ class AddNewDeal extends Component {
         </div>
       </div>
         </div>}
-      
-      
-      
       </div>
-      
             );
         }
       }

@@ -4,6 +4,7 @@
     border: 1px solid black;
     width: 100%;
 }
+
 .addNewDealRimSelected {
     background: azure;
     display: flex;
@@ -11,6 +12,7 @@
     border: 1px solid black;
     width: 100%;
 }
+
 .addNewDealRimMatched {
     background: gold;
     display: flex;
@@ -18,13 +20,16 @@
     border: 1px solid black;
     width: 100%;
 }
+
 .addNewDealProductsContainer{
     width: 40%;
 }
+
 .addNewDealProductsSeparator{
     display: inline-flex;
     width: 100%;
 }
+
 .addNewDealProductsMiddleContainer{
     width:20%;
 }
