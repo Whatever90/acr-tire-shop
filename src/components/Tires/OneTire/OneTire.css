@@ -34,6 +34,10 @@
   flex-direction: column;
 }
 
+.one-tire-contact-input {
+  margin: 1rem 0;
+}
+
 .one-tire-contact-button {
   margin-top: 1.2rem;
   align-self: flex-end;

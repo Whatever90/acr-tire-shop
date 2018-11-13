@@ -158,76 +158,18 @@ var listOftires
               </div>
             </div>
           </div>
-          <div className="contact">
-            <div id="_contact">
-        
-        <div className="contact-section">
-          {!this.state.showPopup ? (
-            <div className="container">
-              <form
-                className="contact-form"
-                onSubmit={(event) => this.handleSubmit(event)}
-              >
-                <div className="col-md-6 form-line">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputUsername">Your name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id=""
-                      placeholder=" Enter Name"
-                      onChange={event => this.handleChange("name", event)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="telephone">Mobile No.</label>
-                    <input
-                      type="tel"
-                      type="number"
-                      className="form-control"
-                      id="telephone"
-                      placeholder=" Enter 10-digit mobile no."
-                      onChange={event => this.handleChange("phone", event)}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <label htmlFor="description"> Message</label>
-                    <textarea
-                      className="form-control"
-                      id="description"
-                      placeholder="Enter Your Message"
-                      onChange={event => this.handleChange("message", event)}
-                    />
-                  </div>
-                  <div>
-                    <button
-                      // onClick={this.togglePopup.bind(this)}
-                      type="submit"
-                      value="Send"
-                      className="btn btn-default submit"
-                    >
-                      <i className="fa fa-paper-plane" aria-hidden="true" />{" "}
-                      Send Message
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          ) : null}
-        </div>
-        <div className="contact-section">
-          <div className="popup-container">
-            {this.state.showPopup ? (
-              <Popup
-                className="popup-element"
-                closePopup={this.togglePopup.bind(this)}
-              />
+          <div className="one-tire-contact-section">
+            {!this.state.showPopup ? (
+              <div className="one-tire-contact-container">
+                <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
+                <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
+                  Name: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("name", event)}/>
+                  Phone: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("phone", event)}/>
+                  Message:<textarea className="form-control one-tire-contact-input" onChange={event => this.handleChange("message", event)}/>
+                  <button className="one-tire-contact-button btn btn-default submit">Send</button>
+                </form>
+              </div>
             ) : null}
-          </div>
-        </div>
-      </div>
           </div>
           <div id="main2">
             {listOftires}

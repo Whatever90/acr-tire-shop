@@ -140,7 +140,6 @@ class Admin extends Component {
     console.log("deal sold!", id)
   }
   cancelDeal(id){
-    
   }
   // END OF DEALS ----------------------------------------------
 
@@ -531,11 +530,10 @@ class Admin extends Component {
         <div>Phone: {request.phone}</div>
         <div>Category: {request.category}</div>
         <h2>{request.product_id._id}</h2>
-         {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}  
+        {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}  
           {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
           {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product_id._id}`} target="_blank"> DEAL</Link></div>}
         <div>Message: {request.message}</div>
-        
         <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
       </div>
     ));
@@ -667,8 +665,6 @@ class Admin extends Component {
       </div>
     ));
     }
-     
-
     return (
       <div className="admin-body">
         <div className="admin-main-container">
@@ -689,7 +685,6 @@ class Admin extends Component {
             {this.state.page_requests && <div>
               <h2 align="center">Messages</h2>
             <div className="list_of_requests">
-              
               {listOfRequests}
               </div>
             </div>}

@@ -146,7 +146,7 @@ export default class Deals extends Component {
     if (this.state.deals.length > 0) {
       listOfdeals = this.state.deals.map((deal, index) => {
         return (
-           <Link to={`/deal/${deal._id}`} key={index}>
+          <Link to={`/deal/${deal._id}`} key={index}>
             <div>
                 <div className="container" id="deal">
                   <div className="row">
@@ -186,8 +186,6 @@ export default class Deals extends Component {
         <option key={index}>{b}</option>
       )
     })
-
-
 
     return (
       <div id="body_list_deals">

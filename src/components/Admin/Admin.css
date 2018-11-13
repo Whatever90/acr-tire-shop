@@ -1,6 +1,10 @@
+.admin-body{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
 .admin-main-container {
-  /* margin-top: 50px; */
-  width: 100%;
+  width: 93%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,7 +172,4 @@ input:checked+.slider {
   margin: 0px auto;
   width: 70%;
   margin-bottom: 25px;
-}
-.admin-body{
-  
 }

@@ -161,18 +161,18 @@ export default class OneTire extends Component {
             </div>
           </div>
           <div className="one-tire-contact-section">
-          {!this.state.showPopup ? (
-            <div className="one-tire-contact-container">
-              <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
-              <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
-                Name: <input className="form-control" onChange={event => this.handleChange("name", event)}/>
-                Phone: <input className="form-control" onChange={event => this.handleChange("phone", event)}/>
-                Message:<textarea className="form-control" onChange={event => this.handleChange("message", event)}/>
-                <button className="one-tire-contact-button btn btn-default submit">Send</button>
-              </form>
-            </div>
-          ) : null}
-        </div>
+            {!this.state.showPopup ? (
+              <div className="one-tire-contact-container">
+                <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
+                <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
+                  Name: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("name", event)}/>
+                  Phone: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("phone", event)}/>
+                  Message:<textarea className="form-control one-tire-contact-input" onChange={event => this.handleChange("message", event)}/>
+                  <button className="one-tire-contact-button btn btn-default submit">Send</button>
+                </form>
+              </div>
+            ) : null}
+          </div>
           <div id="one-tire-matching-container">
             <h1 className="one-tire-matching-header">List of matching rims</h1>
             {listOfRims}
