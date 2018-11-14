@@ -31,3 +31,7 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+
+.slick-slider {
+  width: 100%;
+}
