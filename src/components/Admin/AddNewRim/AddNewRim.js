@@ -58,6 +58,9 @@ export default class AddNewRim extends Component {
           formShowself: false // Reloading form by disabling and enabling
         }, function () {
           this.setState({
+            formShowself: false
+          })
+          this.setState({
             formShowself: true
           })
         })
@@ -109,6 +112,8 @@ export default class AddNewRim extends Component {
   render() {
     return (
       <div className="addNewTire-body">
+      
+        {this.state.formShowself && < div >
         <h2 align="center">Add new rim</h2>
          <div className="row" id="addNewTire-box">
           <div className="col-md-3">
@@ -151,6 +156,7 @@ export default class AddNewRim extends Component {
                     </div>
           </div>
         </div>
+        </div>}
       </div>
     );
   }

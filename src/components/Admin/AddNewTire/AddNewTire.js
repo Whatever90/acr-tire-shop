@@ -86,7 +86,7 @@ class AddNewTire extends Component {
     }, function () {
       this.setState({
         formShowself: true
-      })
+      });
     })
   }
   onDrop(photo) {
@@ -134,159 +134,10 @@ class AddNewTire extends Component {
 
   render() {
     return (
-    // <div className="addnewtire-container">
-    //   <h2>Add a new tire</h2>
-    //   {this.state.formShowself &&
-    //     <div className="addnewtire-form">
-    //       <table>
-    //         <tbody>
-    //           <tr>
-    //             <th>Options</th>
-    //             <th>Parametres</th>
-    //           </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Brand:</p>
-    //             </td>
-    //             <td>
-    //               <input
-    //                 onChange={event => this.handleChange("brand", event)}
-    //                 className="input"
-    //                 defaultValue={this.state.brand}
-    //               />
-    //             </td>
-    //           </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Width: </p>
-    //             </td>
-    //             <td>
-    //               <input
-    //                 onChange={event => this.handleChange("width", event)}
-    //                 className="input"
-    //                 type="Number"
-    //                 defaultValue={this.state.width}
-    //               />
-    //             </td>
-    //           </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Price: </p>
-    //             </td>
-    //             <td>
-    //               <input
-    //                 onChange={event => this.handleChange("price", event)}
-    //                 className="input"
-    //                 type="number"
-    //                 defaultValue={this.state.price}
-    //               />
-    //             </td>
-    //           </tr>
-    //           {/*  */}
-    //         <tr>
-    //           <td>
-    //             <p className="inputparagraph">Count: </p>
-    //           </td>
-    //           <td>
-    //             <input
-    //               onChange={event => this.handleChange("count", event)}
-    //               className="input"
-    //               type="number"
-    //               defaultValue={this.state.count}
-    //             />
-    //           </td>
-    //         </tr>
-    //         {/*  */}
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Ratio: </p>
-    //             </td>
-    //             <td>
-    //               <input
-    //                 onChange={event => this.handleChange("ratio", event)}
-    //                 className="input"
-    //                 type="number"
-    //                 defaultValue={this.state.ratio}
-    //               />
-    //             </td>
-    //           </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Diameter: </p>
-    //             </td>
-    //             <td>
-                  
-    //             <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
-    //               className="input">
-    //               <option selected value="15">15</option>
-    //               <option value="16">16</option>
-    //               <option value="17">17</option>
-    //               <option value="18">18</option>
-    //               <option value="19">19</option>
-    //               <option value="20">20</option>
-    //               <option value="21">21</option>
-    //               <option value="22">22</option>
-    //               <option value="23">23</option>
-    //             </select>
-    //             </td>
-    //           </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Condition: </p>
-    //             </td>
-    //             <td>
-    //             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
-    //               <option value="used">Used</option>
-    //               <option selected value="new">New</option>
-    //             </select>
-    //             </td>
-    //           </tr>
-    //         <tr>
-    //           <td>
-    //             <p className="inputparagraph">Type: </p>
-    //           </td>
-    //           <td>
-    //             <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
-    //               <option selected value="all season">All season</option>
-    //               <option value="racing">Racing</option>
-    //               <option value="winter">Winter</option>
-    //               <option value="regular">Regular</option>
-    //             </select>
-    //           </td>
-    //         </tr>
-    //           <tr>
-    //             <td>
-    //               <p className="inputparagraph">Description: </p>
-    //             </td>
-    //             <td>
-    //               <input
-    //                 onChange={event => this.handleChange("description", event)}
-    //                 className="input"
-    //                 defaultValue={this.state.description}
-    //               />
-    //             </td>
-    //           </tr>
-    //           <tr><td>
-    //             <div className="uploader">
-    //               <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true}>
-    //                 <button className="btn btn-warning" onClick={(event) => event.preventDefault()} >+</button>
-    //               </Dropzone>
-    //               <h4>Chosen photos</h4>
-    //               <ul>
-    //                 {this.state.files.length > 0 && this.state.files.map((e, i) => <li key={i}>{e.name} - {e.size} bytes <img src={e.preview} className="prevImg" alt={e._id} />
-    //                   <button type="button" className="btn btn-danger btn-sm" onClick={() => this.delete(e, i)} >Remove</button>
-    //                 </li>)}
-    //               </ul>
-    //             </div>
-    //           </td></tr>
-    //           <tr><td><button onClick={(event) => this.handleSubmit(event)} className="btn btn-primary input">Submit</button></td></tr>
-    //         </tbody>
-    //       </table>
-    //     </div>
-    //   }
-    // </div>
+    
     <div className="addNewTire-body" >
-    < h2 align = "center" > Add new tire </h2>
+      {this.state.formShowself && <div>
+      <h2 align = "center" > Add new tire </h2>
         <div className="row" id="addNewTire-box">
           <div className="col-md-3">
             <label>Brand : </label><input type='text' className='form-control' onChange={event => this.handleChange("brand", event)} placeholder="Brand"  />
@@ -338,6 +189,7 @@ class AddNewTire extends Component {
                  </div>
           </div>
         </div>
+        </div>}
       </div>
             );
         }

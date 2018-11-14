@@ -25,6 +25,9 @@ module.exports = {
         },
       }])
       .then(data => {
+        console.log("------------------------------");
+        console.log(data);
+        console.log("===============================")
         res.json(data);
       })
       .catch(err => {
@@ -50,11 +53,9 @@ module.exports = {
       }
     ])
       .then(data => {
-        console.log(req.body._id)
-        console.log("========")
-        console.log(data)
-        console.log("========")
+        console.log("------------------------------");
         res.json(data);
+        console.log("===============================")
       })
       .catch(err => {
         console.log(err);
