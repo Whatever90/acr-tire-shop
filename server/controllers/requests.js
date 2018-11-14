@@ -57,9 +57,9 @@ module.exports = {
               })
           }
         }
-        console.log("----------------FIND ALL REQUESTS------------------")
-        console.log(response);
-        console.log("================================================")
+        // console.log("----------------FIND ALL REQUESTS------------------")
+        // console.log(response);
+        // console.log("================================================") 
         res.json(response)});
         
    },

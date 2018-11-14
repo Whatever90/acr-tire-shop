@@ -138,6 +138,11 @@ class Admin extends Component {
   }
   dealSold(id){
     console.log("deal sold!", id)
+    axios.post('/deals/sold', {id}).then(response => {
+      console.log(response);
+      
+    })
+
   }
   cancelDeal(id){
   }

@@ -86,8 +86,8 @@ module.exports = function(app) {
 	app.post("/deals/new", (req, res, next) => {
 		deal.new(req, res);
 	});
-	app.post("/deals/delete", (req, res, next) => {
-		deal.delete(req, res);
+	app.post("/deals/sold", (req, res, next) => {
+		deal.sold(req, res);
 	})
 	app.post("/deals/edit", (req, res, next) => {
 		deal.edit(req, res);

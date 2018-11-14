@@ -25,9 +25,6 @@ module.exports = {
         },
       }])
       .then(data => {
-        console.log("------------------------------");
-        console.log(data);
-        console.log("===============================")
         res.json(data);
       })
       .catch(err => {
@@ -53,33 +50,40 @@ module.exports = {
       }
     ])
       .then(data => {
-        console.log("------------------------------");
         res.json(data);
-        console.log("===============================")
       })
       .catch(err => {
         console.log(err);
       });
   },
   new: function (req, res) {
-    var deal = new Deal({
-      tire_id: req.body.tire,
-      rim_id: req.body.rim,
-      price: req.body.price,
-      old_price: req.body.old_price,
-      description: req.body.description
-    });
-    deal.save()
-      .then(saved => {
-        res.json(saved)
-      })
-      .catch(err => {
-        res.json(false)
-      })
+    Deal.find({ $and: [{rim_id: req.body.rim}, {tire_id: req.body.tire}] })
+    .then(response => {
+      if(response.length>0){
+        res.status(404).json(response)
+      }else{
+        console.log("NO DUPES!")
+        var deal = new Deal({
+          tire_id: req.body.tire,
+          rim_id: req.body.rim,
+          price: req.body.price,
+          old_price: req.body.old_price,
+          description: req.body.description
+        });
+        deal.save()
+          .then(saved => {
+            res.status(200).json(saved)
+          })
+          .catch(err => {
+            res.status(404).json(err)
+          })
+      }
+    })
+    
   },
-  delete: function (req, res) {
+  sold: function (req, res) {
     Deal.remove({
-        _id: req.body.i
+        _id: req.body.id
       })
       .then(data => {
         res.json(true);

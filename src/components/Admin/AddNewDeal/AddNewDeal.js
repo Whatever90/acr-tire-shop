@@ -58,12 +58,16 @@ class AddNewDeal extends Component {
   handleSubmit(event) { //adding a new deal
 
   }
-  chooseTarget(id, category, diameter, product) {
-    this.setState({
+  async chooseTarget(id, category, diameter, product) {
+    await this.setState({
       selected_id: id,
       matching_diameter: diameter,
       matching_category: category,
-      selected_product1: product
+      selected_product1: product,
+      price: product.price,
+      rim: null,
+      tire: null,
+      selected_product2: null
     });
   }
   async createDeal(product){
@@ -113,8 +117,10 @@ class AddNewDeal extends Component {
     axios.post("/deals/new", obj)
     .then(response => {
       console.log(response);
+      //if(response.data)
       alert("A new deal was created!")
     })
+    .catch(err => alert("Such deal already exists"));
     this.cancel();
   }
   show_state(){
