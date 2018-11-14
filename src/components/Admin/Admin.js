@@ -7,8 +7,6 @@ import AddNewDeal from './AddNewDeal/AddNewDeal';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../redux/ducks/reducer';
-import Navbar from "./../Navbar/Navbar"
-import Uploader from "./../Uploader/Uploader";
 import { savePhotos, getPhotos } from './../../redux/ducks/reducer';
 import Dropzone from 'react-dropzone';
 import superagent from 'superagent';
@@ -49,7 +47,7 @@ class Admin extends Component {
 
     };
   }
-  /// oh boy, here we go. 
+  /// oh boy, here we go.
   componentDidMount() {
     axios.get('/user/data')
       .then(response => {
@@ -307,10 +305,7 @@ class Admin extends Component {
     })
   }
 
-  // END OF RIMSS FUNCTIONS -------------
-
-
-
+  // END OF RIMS FUNCTIONS -------------
 
   // LOCAL UPLOADER FOR TIRES AND RIMS ++++++++++++++++
   onDrop(photo) {
@@ -396,7 +391,7 @@ class Admin extends Component {
   cancelDeletion() {
     var arrRims = this.state.rims;
     for (let i = 0; i < arrRims.length; i++) {
-      if (arrRims[i]._id == this.state.container._id) {
+      if (arrRims[i]._id === this.state.container._id) {
         arrRims[i] = this.state.container;
         this.setState({
           rims: arrRims
@@ -519,8 +514,6 @@ class Admin extends Component {
       })
     }
   }
-
-
 
   render() {
     const { user } = this.props;

@@ -218,7 +218,7 @@ class AddNewTire extends Component {
                   
     //             <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}
     //               className="input">
-    //               <option selected value="15">15</option>
+    //               <option defaultValue="15">15</option>
     //               <option value="16">16</option>
     //               <option value="17">17</option>
     //               <option value="18">18</option>
@@ -237,7 +237,7 @@ class AddNewTire extends Component {
     //             <td>
     //             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
     //               <option value="used">Used</option>
-    //               <option selected value="new">New</option>
+    //               <option defaultValue="new">New</option>
     //             </select>
     //             </td>
     //           </tr>
@@ -247,7 +247,7 @@ class AddNewTire extends Component {
     //           </td>
     //           <td>
     //             <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
-    //               <option selected value="all season">All season</option>
+    //               <option defaultValue="all season">All season</option>
     //               <option value="racing">Racing</option>
     //               <option value="winter">Winter</option>
     //               <option value="regular">Regular</option>
@@ -312,12 +312,12 @@ class AddNewTire extends Component {
             < label > condition: </label>
             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
                    <option value="used">Used</option>
-                   <option selected value="new">New</option>
+                   <option defaultValue="new">New</option>
                  </select>
             <label>count :</label><input className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count"  />
            < label > type: </label>
            <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
-                   <option selected value="all season">All season</option>
+                   <option defaultValue="all season">All season</option>
                    <option value="racing">Racing</option>
                    <option value="winter">Winter</option>
                    <option value="regular">Regular</option>

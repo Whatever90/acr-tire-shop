@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import "./OneTire.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
-import {withRouter} from "react-router-dom";
 
 export default class OneTire extends Component {
   constructor(props) {
@@ -143,7 +142,7 @@ export default class OneTire extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default image of a tire" id="noImage"/>}
+                  {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default tire" id="noImage"/>}
                   {this.state.tire.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }

@@ -1,18 +1,7 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import {
-  connect
-} from "react-redux";
-// import { urlsend } from "../../../redux/ducks/reducer";
+import { connect } from "react-redux";
 import "./AddNewDeal.css";
-import Dropzone from 'react-dropzone';
-import superagent from 'superagent';
-import {
-  getPhotos,
-  savePhotos
-} from "../../../redux/ducks/reducer"
 
 class AddNewDeal extends Component {
   constructor(props) {
@@ -121,7 +110,6 @@ class AddNewDeal extends Component {
     console.log(this.state)
   }
   show_form(){
-    var bool = !this.state.show_form;
     this.setState({
       show_form: !this.state.show_form
     })

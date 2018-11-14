@@ -171,7 +171,7 @@ var listOftires
               </div>
             ) : null}
           </div>
-          <div id="main2">
+          <div>
             {listOftires}
           </div>
         </div>
