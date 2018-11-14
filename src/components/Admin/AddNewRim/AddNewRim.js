@@ -115,11 +115,11 @@ export default class AddNewRim extends Component {
       
         {this.state.formShowself && < div >
         <h2 align="center">Add new rim</h2>
-         <div className="row" id="addNewTire-box">
+        <div className="row" id="addNewTire-box">
           <div className="col-md-3">
             <label>diameter : </label>
-           <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}>
-                    <option selected value="15">15</option>
+          <select className="form-control" type="number" name="diameter" onChange={event => this.handleChange("diameter", event)}>
+                    <option defaultValue="15">15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
                     <option value="18">18</option>
@@ -135,15 +135,15 @@ export default class AddNewRim extends Component {
           </div>
           <div className="col-md-3">
             <label>Condition :</label>
-           <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
+          <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
                     <option value="used">Used</option>
-                    <option selected value="new">New</option>
+                    <option defaultValue="new">New</option>
                   </select>
             <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" />
           <button onClick={(event) => this.handleSubmit(event)} className="btn btn-primary input">Submit</button>
           </div>
           <div className="col-md-3">
-           <div className="uploader">
+          <div className="uploader">
                         <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo)=> this.onDrop(photo) } multiple={true}> 
                             <button className="btn btn-warning" onClick={(event) => event.preventDefault()} >+</button>
                         </Dropzone>

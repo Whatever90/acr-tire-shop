@@ -134,7 +134,7 @@ class AddNewTire extends Component {
 
   render() {
     return (
-    
+
     <div className="addNewTire-body" >
       {this.state.formShowself && <div>
       <h2 align = "center" > Add new tire </h2>
@@ -163,12 +163,12 @@ class AddNewTire extends Component {
             < label > condition: </label>
             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
                    <option value="used">Used</option>
-                   <option selected value="new">New</option>
+                   <option defaultValue="new">New</option>
                  </select>
             <label>count :</label><input className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count"  />
            < label > type: </label>
            <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
-                   <option selected value="all season">All season</option>
+                   <option defaultValue="all season">All season</option>
                    <option value="racing">Racing</option>
                    <option value="winter">Winter</option>
                    <option value="regular">Regular</option>

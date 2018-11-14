@@ -56,8 +56,6 @@ export default class Rims extends Component {
   }
 
   searchSubmit() { // Listens any
-    var copyRims = this.state.copyRims;
-    var tempSearchOptions = [];
     let tempRims = [];
     for (let i = 0; i < this.state.copyRims.length; i++) {
       let bool = true;
@@ -210,7 +208,7 @@ export default class Rims extends Component {
                 <div className="input-group">
                   <div className="input-group-addon"><span>Diameter:</span></div>
                   <select className="form-control" type="number" name="diameter" onChange={event => this.inputChange(event)}>
-                    <option selected value="all">All</option>
+                    <option defaultValue="all">All</option>
                     <option value="15">15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
@@ -228,7 +226,7 @@ export default class Rims extends Component {
                 <div className="input-group">
                   <div className="input-group-addon"><span>Condition:</span></div>
                   <select className="form-control" name="condition" onChange={event => this.inputChange(event)}>
-                    <option selected value="all">All</option>
+                    <option defaultValue="all">All</option>
                     <option value="used">Used</option>
                     <option value="new">New</option>
                   </select>
@@ -260,7 +258,7 @@ export default class Rims extends Component {
             </div>
           </div>
 
-          <div id="main2">
+          <div>
             {listOfRims}
           </div>
           {this.state.rims.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptyRims">

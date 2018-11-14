@@ -55,8 +55,6 @@ export default class Deals extends Component {
     });
   }
   searchSubmit() { // Listens any
-    var copyDeals = this.state.copyDeals;
-    var tempSearchOptions = [];
     let tempDeals = [];
     for (let i = 0; i < this.state.copyDeals.length; i++) {
       let bool = true;
@@ -217,7 +215,7 @@ export default class Deals extends Component {
                 <div className="input-group">
                   <div className="input-group-addon"><span>Diameter:</span></div>
                   <select className="form-control" type="number" name="diameter" onChange={event => this.inputChange(event)}>
-                    <option selected value="all">All</option>
+                    <option defaultValue="all">All</option>
                     <option value="15">15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
@@ -234,7 +232,7 @@ export default class Deals extends Component {
                 <div className="input-group">
                   <div className="input-group-addon"><span>Condition:</span></div>
                   <select className="form-control" name="condition" onChange={event => this.inputChange(event)}>
-                    <option selected value="all">All</option>
+                    <option defaultValue="all">All</option>
                     <option value="used">Used</option>
                     <option value="new">New</option>
                   </select>
@@ -244,7 +242,7 @@ export default class Deals extends Component {
                 <div className="input-group">
                   <div className="input-group-addon"><span>Type:</span></div>
                   <select className="form-control" name="type" onChange={event => this.inputChange(event)}>
-                    <option selected value="all">All</option>
+                    <option defaultValue="all">All</option>
                     <option value="all season">All season</option>
                     <option value="racing">Racing</option>
                     <option value="winter">Winter</option>
@@ -279,7 +277,7 @@ export default class Deals extends Component {
             </div>
           </div>
 
-          <div id="main2">
+          <div>
             {listOfdeals}
           </div>
           {this.state.deals.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptydeals">
