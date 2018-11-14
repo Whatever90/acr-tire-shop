@@ -57,7 +57,11 @@ module.exports = {
               })
           }
         }
+        console.log("----------------FIND ALL REQUESTS------------------")
+        console.log(response);
+        console.log("================================================")
         res.json(response)});
+        
    },
     new: async function (req, res) {
       var request = new Request({
