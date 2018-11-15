@@ -97,7 +97,6 @@ class Admin extends Component {
       .catch(error => console.log(error));
   }
 
-
   // END OF REQUESTS -------------------------------------
 
   // DEALS -----------------------------------------------
