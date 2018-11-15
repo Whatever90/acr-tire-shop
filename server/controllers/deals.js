@@ -81,36 +81,18 @@ module.exports = {
     })
     
   },
-  sold: function (req, res) {
+  sold: async function (req, res) {
     Deal.remove({
         _id: req.body.id
-      })
+      }).lean()
       .then(response => {
-        
-        Rim.remove({_id: req.body.rim_id});
-        Tire.remove({_id: req.body.tire_id});
-        Deal.aggregate([{
-            $lookup: {
-              from: "tires",
-              localField: "tire_id",
-              foreignField: "_id",
-              as: "tire"
-            }
-          }, {
-            $lookup: {
-              from: "rims",
-              localField: "rim_id",
-              foreignField: "_id",
-              as: "rim"
-            },
-          }])
-          .then(data => {
-            console.log("SOLD!!!!!!!!", data)
-            res.json(data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        var obj = {}
+        console.log(req.body)
+        Rim.remove({
+          _id: req.body.rim_id
+        }).then(r => console.log("rim sold as well"));
+        Tire.deleteOne({_id: req.body.tire_id}).then(r => console.log("tire is deleted"));
+        res.json(response)        
       })
       .catch(err => {
         res.json(false)
