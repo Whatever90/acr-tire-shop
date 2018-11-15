@@ -137,12 +137,38 @@ class Admin extends Component {
   dealSold(id, tire_id, rim_id){
     axios.post('/deals/sold', {id, tire_id, rim_id}).then(response => {
       console.log(response);
+    });
+    let tempArr = this.state.deals;
+    for (let i = 0; i < tempArr.length; i++) {
+      if (tempArr[i]._id === id) {
+        for (let k = i; k < tempArr.length; k++) {
+          tempArr[k] = tempArr[k + 1];
+        }
+        tempArr.pop();
+        break;
+      }
+    }
+    this.setState({
+      deal: tempArr
     })
 
   }
-  cancelDeal(id){
+  dealCancel(id){
     axios.post('/deals/cancel', {id}).then(response => {
       console.log(response);
+    })
+    let tempArr = this.state.deals;
+    for(let i = 0; i< tempArr.length; i++){
+      if(tempArr[i]._id===id){
+        for(let k = i; k< tempArr.length; k++){
+          tempArr[k] = tempArr[k+1];
+        }
+        tempArr.pop();
+        break;
+      }
+    }
+    this.setState({
+      deal: tempArr
     })
   }
   // END OF DEALS ----------------------------------------------
@@ -485,6 +511,21 @@ class Admin extends Component {
       type: "",
     })
   }
+  refreshLists(){
+    axios.all([
+      axios.get(`/requests/all`),
+      axios.get(`/tires/all`),
+      axios.get(`/rims/all`),
+      axios.get('/deals/all')
+    ]).then(axios.spread((requests, tires, rims, deals) => {
+      this.setState({
+        requests: requests.data,
+        tires: tires.data,
+        rims: rims.data,
+        deals: deals.data
+      })
+    })).catch(err => console.log(err));
+  }
 
   checkState() {              // Dev function.
     console.log(this.state); // Just checking this.state. Should be removed before releasing the final version
@@ -670,7 +711,8 @@ class Admin extends Component {
         <div className="admin-main-container">
           {user && <div className="mainDiv">
             <div className="admin-top" align='center'>
-              <h1>Control Panel v0.5a</h1>
+              <h1>Control Panel v0.6b</h1>
+              <button onClick={() => this.refreshLists()}>Refresh lists</button>
               <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
               {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
