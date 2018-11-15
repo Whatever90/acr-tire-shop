@@ -190,7 +190,7 @@ export default class Rims extends Component {
     return (
       <div className="main-container">
         <h1 className="page_title">List of rims</h1>
-        <div className="container" id="searchInput">
+        <div className="container searchInput">
           <div className="row">
             <div className="col-sm-3">
               <div className="input-group">

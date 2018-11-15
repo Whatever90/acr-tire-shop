@@ -35,12 +35,6 @@
   display: flex;
 }
 
-#searchInput {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
 .box {
   margin: 5px 50px;
 }
@@ -87,7 +81,7 @@
   }
 
   #title {
-    font-size:larger;
+    font-size: larger;
     margin-top:10px;
   }
 

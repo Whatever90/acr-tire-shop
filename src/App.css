@@ -45,6 +45,12 @@ img {
   background-attachment: fixed;
 }
 
+.searchInput {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
 /* SLIDER CONTAINER */
 .slider-container {
   display: flex;
