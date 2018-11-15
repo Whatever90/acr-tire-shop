@@ -134,15 +134,16 @@ class Admin extends Component {
     })
     console.log({_id, new_price})
   }
-  dealSold(id){
-    console.log("deal sold!", id)
-    axios.post('/deals/sold', {id}).then(response => {
+  dealSold(id, tire_id, rim_id){
+    axios.post('/deals/sold', {id, tire_id, rim_id}).then(response => {
       console.log(response);
-      
     })
 
   }
   cancelDeal(id){
+    axios.post('/deals/cancel', {id}).then(response => {
+      console.log(response);
+    })
   }
   // END OF DEALS ----------------------------------------------
 
@@ -645,7 +646,8 @@ class Admin extends Component {
               <span className="slider"></span>
             </label>
             Edit
-            <button className="btn btn-danger rim-btn" onClick={() => this.dealSold(deal._id)} disabled={this.state.temp_id !== deal._id}>SOLD!</button>
+            <button className="btn btn-danger rim-btn" onClick={() => this.dealCancel(deal._id)} disabled={this.state.temp_id !== deal._id}>Remove</button>
+            <button className="btn btn-danger rim-btn" onClick={() => this.dealSold(deal._id, deal.tire[0]._id, deal.rim[0]._id)} disabled={this.state.temp_id !== deal._id}>SOLD!</button>
             <button className="btn btn-primary rim-btn" onClick={(event) => this.edit_deal_submit(event, deal._id)} disabled={this.state.temp_id !== deal._id}>Submit Changes</button>
           </div>
           <div className="col-md-4">

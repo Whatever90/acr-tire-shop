@@ -85,7 +85,43 @@ module.exports = {
     Deal.remove({
         _id: req.body.id
       })
+      .then(response => {
+        
+        Rim.remove({_id: req.body.rim_id});
+        Tire.remove({_id: req.body.tire_id});
+        Deal.aggregate([{
+            $lookup: {
+              from: "tires",
+              localField: "tire_id",
+              foreignField: "_id",
+              as: "tire"
+            }
+          }, {
+            $lookup: {
+              from: "rims",
+              localField: "rim_id",
+              foreignField: "_id",
+              as: "rim"
+            },
+          }])
+          .then(data => {
+            console.log("SOLD!!!!!!!!", data)
+            res.json(data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        res.json(false)
+      })
+  },
+  cancel: function (req, res) {
+    Deal.remove({
+        _id: req.body.id
+      })
       .then(data => {
+
         res.json(true);
       })
       .catch(err => {
