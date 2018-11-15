@@ -132,13 +132,13 @@ input:checked+.slider {
 }
 
 .list_of_requests {
-   margin: auto;
-   width: 70%;
-   border: 1px solid green;
-   padding: 10px;
-   align-content: center;
-   background-color: azure;
-   border-radius: 10px;
+  margin: auto;
+  width: 70%;
+  border: 1px solid green;
+  padding: 10px;
+  align-content: center;
+  background-color: azure;
+  border-radius: 10px;
 }
 
 #rim_box {

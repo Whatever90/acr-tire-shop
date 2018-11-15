@@ -1,18 +1,10 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import {
-  connect
-} from "react-redux";
-// import { urlsend } from "../../../redux/ducks/reducer";
+import { connect } from "react-redux";
 import "./AddNewTire.css";
 import Dropzone from 'react-dropzone';
 import superagent from 'superagent';
-import {
-  getPhotos,
-  savePhotos
-} from "../../../redux/ducks/reducer"
+import { getPhotos, savePhotos } from "../../../redux/ducks/reducer"
 
 class AddNewTire extends Component {
   constructor(props) {
@@ -89,6 +81,7 @@ class AddNewTire extends Component {
       });
     })
   }
+
   onDrop(photo) {
     var tempArr = this.state.files; // Hardcode mode ON
     tempArr.push(photo[0]);
@@ -97,6 +90,7 @@ class AddNewTire extends Component {
     })
     console.log(this.state.files);
   }
+
   upload(id) {
     var counter = 0;
     console.log(id);
@@ -124,6 +118,7 @@ class AddNewTire extends Component {
       files: []
     })
   }
+
   delete(e, index) {
     var tempFiles = this.state.files;
     delete tempFiles[index];
@@ -134,7 +129,6 @@ class AddNewTire extends Component {
 
   render() {
     return (
-
     <div className="addNewTire-body" >
       {this.state.formShowself && <div>
       <h2 align = "center" > Add new tire </h2>
@@ -162,44 +156,44 @@ class AddNewTire extends Component {
                 </select>
             < label > condition: </label>
             <select className="form-control" name="condition" onChange={event => this.handleChange("condition", event)}>
-                   <option value="used">Used</option>
-                   <option defaultValue="new">New</option>
-                 </select>
+              <option value="used">Used</option>
+              <option defaultValue="new">New</option>
+            </select>
             <label>count :</label><input className='form-control' type="number" onChange={event => this.handleChange("count", event)} placeholder="count"  />
-           < label > type: </label>
-           <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
-                   <option defaultValue="all season">All season</option>
-                   <option value="racing">Racing</option>
-                   <option value="winter">Winter</option>
-                   <option value="regular">Regular</option>
-                </select>
+            < label > type: </label>
+            <select className="form-control" name="type" onChange={event => this.handleChange("type", event)}>
+              <option defaultValue="all season">All season</option>
+              <option value="racing">Racing</option>
+              <option value="winter">Winter</option>
+              <option value="regular">Regular</option>
+            </select>
             <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" />
           </div>
           <div className="col-md-3">
             <div className="uploader">
-                   <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true}>
-                     <button className="btn btn-warning" onClick={(event) => event.preventDefault()} >+</button>
-                   </Dropzone>
-                   <h4>Chosen photos</h4>
-                   <ul>
-                     {this.state.files.length > 0 && this.state.files.map((e, i) => <li key={i}>{e.name} - {e.size} bytes <img src={e.preview} className="prevImg" alt={e._id} />
-                       <button type="button" className="btn btn-danger btn-sm" onClick={() => this.delete(e, i)} >Remove</button>
-                     </li>)}
-                   </ul>
-                 </div>
+              <Dropzone className="dropzone" onClick={(event) => event.preventDefault()} onDrop={(photo) => this.onDrop(photo)} multiple={true}>
+                <button className="btn btn-warning" onClick={(event) => event.preventDefault()} >+</button>
+              </Dropzone>
+              <h4>Chosen photos</h4>
+              <ul>
+                {this.state.files.length > 0 && this.state.files.map((e, i) => <li key={i}>{e.name} - {e.size} bytes <img src={e.preview} className="prevImg" alt={e._id} />
+                  <button type="button" className="btn btn-danger btn-sm" onClick={() => this.delete(e, i)} >Remove</button>
+                </li>)}
+              </ul>
+            </div>
           </div>
         </div>
-        </div>}
-      </div>
-            );
-        }
-      }
+      </div>}
+    </div>
+    );
+  }
+}
 
-      const mapStateToProps = state => {
-        return {
-          url: state.url,
-          getPhotos: getPhotos,
-          savePhotos: savePhotos
-        };
-      };
-      export default connect(mapStateToProps, null)(AddNewTire);
+const mapStateToProps = state => {
+  return {
+    url: state.url,
+    getPhotos: getPhotos,
+    savePhotos: savePhotos
+  };
+};
+export default connect(mapStateToProps, null)(AddNewTire);
