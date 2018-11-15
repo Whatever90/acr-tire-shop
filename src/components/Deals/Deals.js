@@ -186,9 +186,9 @@ export default class Deals extends Component {
     })
 
     return (
-      <div id="body_list_deals">
+      <div className="main-container">
         <div className="rims-main-container">
-          <h1 id="page_title">List of deals</h1>
+          <h1 className="page_title">List of deals</h1>
 
           <div className="container" id="searchInput">
             <div className="row">

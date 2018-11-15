@@ -32,8 +32,20 @@ img {
   border-style: none;
 }
 
+.page_title {
+  margin: 0;
+  padding: 1rem 0 2rem 0;
+  text-align: center;
+  color: whitesmoke;
+}
 
-/* ONE RIM/ONE TIRE SLIDER CONTAINER */
+.main-container {
+  background-image:url(./components/images/repair.jpg);
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+/* SLIDER CONTAINER */
 .slider-container {
   display: flex;
   justify-content: center;

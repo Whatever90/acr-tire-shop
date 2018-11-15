@@ -1,11 +1,5 @@
-#main {
-  background-image:url(../images/repair.jpg);
-  background-size:cover;
-  background-attachment: fixed;
-}
-
 #title {
-  margin-left:25px;
+  margin-left: 25px;
   color: white;
 }
 
@@ -51,6 +45,7 @@
   margin: 5px 50px;
 }
 
+/* RIMS */
 .rims-main-container {
   min-height: 92vh;
   width: 100%;

@@ -53,6 +53,7 @@ export default class Tires extends Component {
       inputSearch: temp
     });
   }
+
   searchSubmit() { // Listens any
     let tempTires = [];
     for (let i = 0; i < this.state.copyTires.length; i++) {
@@ -218,9 +219,9 @@ export default class Tires extends Component {
     })
 
     return (
-      <div id="body_list_tires">
+      <div className="main-container">
         <div className="rims-main-container">
-          <h1 id="page_title">List of tires</h1>
+          <h1 className="page_title">List of tires</h1>
 
           <div className="container" id="searchInput">
             <div className="row">
