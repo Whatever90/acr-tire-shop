@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import { getPhotos } from '../../redux/ducks/reducer';
 import { savePhotos } from '../../redux/ducks/reducer';
 
-
-
 class Uploader extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +15,7 @@ class Uploader extends Component {
       images: []
     }
   }
-  
+
   onDrop = (photo) => {
     var tempArr = this.state.files;
     console.log(photo);
@@ -34,7 +32,7 @@ class Uploader extends Component {
         for(let i = 0; i<this.state.files.length; i++){
             superagent
                 .post('/api/upload')
-                .attach('item', this.state.files[i]) 
+                .attach('item', this.state.files[i])
                 .end((error, response) => {
                     tempArr.push(response.text)
                     console.log(tempArr);
@@ -47,19 +45,19 @@ class Uploader extends Component {
 
   delete = (element) => {
     //   console.log(element.name);
-      var tempArr = this.state.files;
-       for(let i = 0; i<tempArr.length; i++){
-           if(tempArr[i].name === element.name){
-               for(let k = i; k<tempArr.length-1; k++){
-                   tempArr[k] = tempArr[k+1]
-               }
-               tempArr.pop()
-               break;
-           }
-       }
-       this.setState({
-           files: tempArr
-       })
+    var tempArr = this.state.files;
+    for(let i = 0; i<tempArr.length; i++){
+        if(tempArr[i].name === element.name){
+            for(let k = i; k<tempArr.length-1; k++){
+                tempArr[k] = tempArr[k+1]
+            }
+            tempArr.pop()
+            break;
+        }
+    }
+    this.setState({
+        files: tempArr
+    })
   }
 
   render() {
@@ -78,7 +76,6 @@ class Uploader extends Component {
                         </ul>
                     </div>
                     <button type="button" className="btn btn-primary btn-sm" onClick={() => this.upload()}>Upload (click here first before Submit)</button>
-                    
                 </div>
                 { this.state.image && <img src={this.state.image.image_url} alt="pic"/> }
             </div>

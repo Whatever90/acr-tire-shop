@@ -258,7 +258,6 @@ class Admin extends Component {
 
   // end of tires functions ----------------------
 
-
   // Rims functions  ------------------------
   edit_rim(rim) {
     if (this.state.temp_id === rim._id) {
@@ -570,9 +569,9 @@ class Admin extends Component {
         <div>Phone: {request.phone}</div>
         <div>Category: {request.category}</div>
         <h2>{request.product_id._id}</h2>
-        {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}  
-          {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
-          {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product_id._id}`} target="_blank"> DEAL</Link></div>}
+        {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
+        {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
+        {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product_id._id}`} target="_blank"> DEAL</Link></div>}
         <div>Message: {request.message}</div>
         <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
       </div>
@@ -608,7 +607,7 @@ class Admin extends Component {
             <label>Description :</label><textarea type='text' className='form-control' onChange={event => this.handleChange("description", event)} placeholder="Description" defaultValue={tire.description} rows="4" disabled={this.state.temp_id !== tire._id} />
           </div>
           <div className="col-md-3">
-            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+            <ul>{tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
               <button type="button" className="btn btn-danger btn-xs" onClick={() => this.deletePhoto(tire._id, e)} disabled={this.state.temp_id !== tire._id}>x</button>
             </li>)}
             </ul>

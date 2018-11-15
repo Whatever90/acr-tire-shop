@@ -22,6 +22,11 @@ body {
   border-radius: 5px;
 }
 
+.prevImg {
+  max-width: 50px;
+  max-height: 50px;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
