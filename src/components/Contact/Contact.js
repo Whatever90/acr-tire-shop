@@ -55,9 +55,15 @@ export default class Contact extends Component {
             </span>
           </h1>
           <h3>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry
-          </h3>
+            We love hearing from clients and visitors.We really appreciate you taking the time to get in touch.Please fill in the form below.</h3>
+        <h6>
+        <br></br>
+              *please note: We will get back to you shortly, usually within 2 - 3 days.Also note that
+              <br></br>
+            if you send an email on a Friday, we may get back to you only on the following Monday or Tuesday.
+            <br></br>
+            If you are contacting us for a business proposal or regarding advertising please mention it in your message.
+          </h6>
         </div>
         <div className="contact-section">
           {!this.state.showPopup ? (

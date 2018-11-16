@@ -45,7 +45,7 @@ img {
 }
 
 .main-container {
-  background-image:url(./components/images/repair.jpg);
+  background-image:url(./components/images/background.jpg);
   background-size:cover;
   background-attachment: fixed;
 }
