@@ -281,14 +281,14 @@ export default class Deals extends Component {
             {listOfdeals}
           </div>
           {this.state.deals.length < 1 && this.state.filterResult && <div className="row text-center margin-b-40 emptydeals">
-            <div className="col-sm-6 col-sm-offset-3 emptydeals-box">
+            <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
               <h1>Sorry, we have nothing to sell at the moment</h1>
               <h4>Please, come back later to check new offers!</h4>
             </div>
           </div>
           }
           {!this.state.filterResult && <div className="row text-center margin-b-40 emptydeals">
-            <div className="col-sm-6 col-sm-offset-3 emptydeals-box">
+            <div className="col-sm-6 col-sm-offset-3 emptyRims-box">
               <h1>Sorry, we have nothing according filter settings</h1>
               <h4>Please, come back later to check new offers!</h4>
             </div>

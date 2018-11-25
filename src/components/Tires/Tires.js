@@ -319,7 +319,7 @@ export default class Tires extends Component {
             </div>
           </div>
           }
-          {!this.state.filterResult && <div className="row text-center margin-b-40 emptytires">
+          {!this.state.filterResult && <div className="row text-center margin-b-40 emptyTires">
             <div className="col-sm-6 col-sm-offset-3 emptyTires-box">
               <h1>Sorry, we have nothing according filter settings</h1>
               <h4>Please, come back later to check new offers!</h4>
