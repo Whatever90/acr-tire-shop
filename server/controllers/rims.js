@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs')
 var Tire = mongoose.model("Tire");
+var Deal = mongoose.model("Deal");
 
 var Rim = mongoose.model('Rim');
 module.exports = {
@@ -54,20 +55,22 @@ module.exports = {
     });
   },
   delete: function (req, res) {
-    // console.log('req.body ---->', req.body);
-    // console.log('req.body.id ---->', req.body.id);
-    Rim.remove({ _id: req.body.id })
+    Rim.remove({
+        _id: req.body.id
+      })
       .then(data => {
+        console.log("removeing =--------------------")
         Deal.remove({
           "rim_id": req.body.id
-        }).then(rim => {
+        }).then(deal => {
           console.log("DELETED!!")
           res.status(200).json(true);
         })
+
       })
       .catch(err => {
-        res.json(false)
-      })
+        res.status(500).json(false);
+      });
   },
   edit: function (req, res) {
     Rim.findByIdAndUpdate({ _id: req.body.temp_id }, {
