@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
 var Rim = mongoose.model('Rim');
 var Deal = mongoose.model('Deal');
-var Requests = mongoose.model("Requests");
+var Request = mongoose.model("Request");
 
 var Tire = mongoose.model("Tire");
 module.exports = {
