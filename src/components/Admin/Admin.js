@@ -74,6 +74,22 @@ class Admin extends Component {
     })).catch(err => console.log(err));
 
   }
+
+  content_refresh(){
+     axios.all([
+       axios.get(`/requests/all`),
+       axios.get(`/tires/all`),
+       axios.get(`/rims/all`),
+       axios.get('/deals/all')
+     ]).then(axios.spread((requests, tires, rims, deals) => {
+       this.setState({
+         requests: requests.data,
+         tires: tires.data,
+         rims: rims.data,
+         deals: deals.data
+       })
+     })).catch(err => console.log(err));
+  }
     handleChange(property, event) {
       event.preventDefault();
       this.setState({
@@ -86,13 +102,7 @@ class Admin extends Component {
   handleRequestDelete(i) {
     axios.post('/requests/delete', { i })
       .then(res => {
-        if (res.data) {
-          axios.get('/requests/all')
-            .then(res => {
-              this.setState({ requests: res.data })
-            })
-            .catch(error => console.log(error));
-        }
+        this.content_refresh();
       })
       .catch(error => console.log(error));
   }
@@ -103,13 +113,14 @@ class Admin extends Component {
   handleDealDelete(i) {
     axios.post('/deals/delete', { i })
       .then(res => {
-        if (res.data) {
-          axios.get('/deals/all')
-            .then(res => {
-              this.setState({ deals: res.data })
-            })
-            .catch(error => console.log(error));
-        }
+        // if (res.data) {
+        //   axios.get('/deals/all')
+        //     .then(res => {
+        //       this.setState({ deals: res.data })
+        //     })
+        //     .catch(error => console.log(error));
+        // }
+        this.content_refresh();
       })
       .catch(error => console.log(error));
   }
@@ -136,39 +147,41 @@ class Admin extends Component {
   dealSold(id, tire_id, rim_id){
     axios.post('/deals/sold', {id, tire_id, rim_id}).then(response => {
       console.log(response);
+      this.content_refresh();
     });
-    let tempArr = this.state.deals;
-    for (let i = 0; i < tempArr.length; i++) {
-      if (tempArr[i]._id === id) {
-        for (let k = i; k < tempArr.length; k++) {
-          tempArr[k] = tempArr[k + 1];
-        }
-        tempArr.pop();
-        break;
-      }
-    }
-    this.setState({
-      deal: tempArr
-    })
+    // let tempArr = this.state.deals;
+    // for (let i = 0; i < tempArr.length; i++) {
+    //   if (tempArr[i]._id === id) {
+    //     for (let k = i; k < tempArr.length; k++) {
+    //       tempArr[k] = tempArr[k + 1];
+    //     }
+    //     tempArr.pop();
+    //     break;
+    //   }
+    // }
+    // this.setState({
+    //   deal: tempArr
+    // })
 
   }
   dealCancel(id){
     axios.post('/deals/cancel', {id}).then(response => {
       console.log(response);
+      this.content_refresh();
     })
-    let tempArr = this.state.deals;
-    for(let i = 0; i< tempArr.length; i++){
-      if(tempArr[i]._id===id){
-        for(let k = i; k< tempArr.length; k++){
-          tempArr[k] = tempArr[k+1];
-        }
-        tempArr.pop();
-        break;
-      }
-    }
-    this.setState({
-      deal: tempArr
-    })
+    // let tempArr = this.state.deals;
+    // for(let i = 0; i< tempArr.length; i++){
+    //   if(tempArr[i]._id===id){
+    //     for(let k = i; k< tempArr.length; k++){
+    //       tempArr[k] = tempArr[k+1];
+    //     }
+    //     tempArr.pop();
+    //     break;
+    //   }
+    // }
+    // this.setState({
+    //   deal: tempArr
+    // })
   }
   // END OF DEALS ----------------------------------------------
 
@@ -211,6 +224,7 @@ class Admin extends Component {
           this.upload(this.state.temp_id, "tires");
           this.photos_deletion_submitted("tires", temp_id);
           this.edit_cancel();
+          this.content_refresh();
           alert("the tire was updated");
         } else {
           alert("can't update this tire");

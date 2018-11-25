@@ -54,12 +54,16 @@ module.exports = {
     });
   },
   delete: function (req, res) {
-    console.log('req.body ---->', req.body);
-    console.log('req.body.id ---->', req.body.id);
+    // console.log('req.body ---->', req.body);
+    // console.log('req.body.id ---->', req.body.id);
     Rim.remove({ _id: req.body.id })
       .then(data => {
-        // console.log(req.body);
-        res.status(200).json(true);
+        Deal.remove({
+          "rim_id": req.body.id
+        }).then(rim => {
+          console.log("DELETED!!")
+          res.status(200).json(true);
+        })
       })
       .catch(err => {
         res.json(false)
