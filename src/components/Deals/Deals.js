@@ -190,7 +190,7 @@ export default class Deals extends Component {
         <div className="rims-main-container">
           <h1 className="page_title">List of deals</h1>
 
-          <div className="container searchInput">
+          {/* <div className="container searchInput">
             <div className="row">
               <div className="col-sm-3">
                 <div className="input-group">
@@ -275,7 +275,7 @@ export default class Deals extends Component {
                 <button className="btn btn-danger" onClick={() => this.searchCancel()}>Reset</button>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div>
             {listOfdeals}

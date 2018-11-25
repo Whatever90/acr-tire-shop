@@ -42,6 +42,7 @@ class Login extends Component {
       this.props.login(response.data.username)
       this.props.history.push('/admin');
     }).catch(error => {
+      alert("Wrong email or password");
       console.log(error);
       console.log(error.response)
     })

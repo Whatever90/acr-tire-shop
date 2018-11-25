@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
 var Rim = mongoose.model('Rim');
+var Deal = mongoose.model('Deal');
 
 var Tire = mongoose.model("Tire");
 module.exports = {
@@ -62,7 +63,14 @@ module.exports = {
   delete: function (req, res) {
     Tire.remove({ _id: req.body.id })
       .then(data => {
-        res.status(200).json(true);
+        console.log("removeing =--------------------")
+        Deal.find({
+          tire_id: ObjectId(req.body.id)
+        }).then(tire => {
+          console.log("TIRE!!!")
+          console.log(tire);
+        })
+        Deal.delete({tire_id: mongoose.Types.ObjectId(req.body.id)}).then(d => {console.log(d);res.json(data)})
       })
       .catch(err => {
         res.status(500).json(false);
