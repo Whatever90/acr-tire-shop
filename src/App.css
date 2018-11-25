@@ -45,7 +45,7 @@ img {
 }
 
 .main-container {
-  background-image:url(./components/images/repair.jpg);
+  background-image:url(./components/images/background.jpg);
   background-size:cover;
   background-attachment: fixed;
 }
@@ -54,7 +54,6 @@ img {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   margin-top: 5px;
-  margin-bottom: 1.5rem;
 }
 
 /* SLIDER CONTAINER */
