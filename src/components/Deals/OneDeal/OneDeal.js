@@ -105,7 +105,7 @@ export default class OneDeal extends Component {
 
     return (
       <div>
-        {this.state. deal && <div id="main">
+        {this.state. deal && <div className="main-container">
           <div id="oneDeal">
             <div className="container" id="deal">
               <div className="row">

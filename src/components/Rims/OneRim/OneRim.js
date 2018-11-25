@@ -131,7 +131,7 @@ var listOftires
 
     return (
       <div>
-        <div id="main">
+        <div className="main-container">
           <div id="oneCar">
             <div className="container" id="rim">
               <div className="row">
@@ -171,7 +171,8 @@ var listOftires
               </div>
             ) : null}
           </div>
-          <div>
+          <div className="one-tire-matching-container">
+            <h1 className="one-tire-matching-header">List of matching tires</h1>
             {listOftires}
           </div>
         </div>

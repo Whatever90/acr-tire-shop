@@ -71,8 +71,7 @@
 
 @media (max-width: 991px) {
   .box {
-    margin:0px 0px;
-    border:1px solid silver;
+    margin: 0px 0px;
   }
 
   #top {
