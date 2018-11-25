@@ -15,6 +15,7 @@
 #rim {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 #price {
@@ -70,8 +71,7 @@
 
 @media (max-width: 991px) {
   .box {
-    margin:0px 0px;
-    border:1px solid silver;
+    margin: 0px 0px;
   }
 
   #top {

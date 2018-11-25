@@ -132,7 +132,7 @@ export default class OneTire extends Component {
 
     return (
       <div>
-        <div id="main">
+        <div className="main-container">
           <div id="oneTire">
             <div className="container" id="tire">
               <div className="row">
@@ -172,7 +172,7 @@ export default class OneTire extends Component {
               </div>
             ) : null}
           </div>
-          <div id="one-tire-matching-container">
+          <div className="one-tire-matching-container">
             <h1 className="one-tire-matching-header">List of matching rims</h1>
             {listOfRims}
           </div>
