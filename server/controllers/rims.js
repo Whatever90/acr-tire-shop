@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs')
 var Tire = mongoose.model("Tire");
 var Deal = mongoose.model("Deal");
-
+var Request = mongoose.model("Request")
 var Rim = mongoose.model('Rim');
 module.exports = {
   all: function (req, res) {
@@ -64,7 +64,12 @@ module.exports = {
           "rim_id": req.body.id
         }).then(deal => {
           console.log("DELETED!!")
-          res.status(200).json(true);
+          Request.remove({
+            "rim_id": req.body.id
+          }).then(deal => {
+            console.log("DELETED!!")
+            res.status(200).json(true);
+          })
         })
 
       })
