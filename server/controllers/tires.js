@@ -70,7 +70,7 @@ module.exports = {
         }).then(deal => {
           console.log("DELETED!!")
           Request.remove({
-            "tire_id": req.body.id
+            "product_id": req.body.id
           }).then(deal => {
             console.log("DELETED!!")
             res.status(200).json(true);
