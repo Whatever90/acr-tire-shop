@@ -3,8 +3,6 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import "./OneDeal.css";
 import aws from '../../images/aws.png';
-import { Link } from 'react-router-dom';
-import {withRouter} from "react-router-dom";
 
 export default class OneDeal extends Component {
   constructor(props) {

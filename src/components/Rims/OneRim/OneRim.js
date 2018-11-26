@@ -5,7 +5,7 @@ import Navbar from "../../Navbar/Navbar";
 import Slider from 'react-slick';
 import "./OneRim.css";
 import { Link } from 'react-router-dom';
-import Popup from "../../Contact/Popup/Popup";
+import Popup from "../../Contact/PopupOneProduct/PopupOneProduct";
 
 export default class OneRim extends Component {
   constructor(props) {
@@ -170,6 +170,16 @@ var listOftires
                 </form>
               </div>
             ) : null}
+            <div className="contact-section">
+              <div className="popup-container">
+                {this.state.showPopup ? (
+                  <Popup
+                    className="popup-element"
+                    closePopup={this.togglePopup.bind(this)}
+                  />
+                ) : null}
+              </div>
+            </div>
           </div>
           <div className="one-tire-matching-container">
             <h1 className="one-tire-matching-header">List of matching tires</h1>
