@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Popup.css';
+import './PopupOneProduct.css';
 
-export default class Popup extends Component {
+export default class PopupOneProduct extends Component {
   render() {
     return (
       <div className="popup bd-white">

@@ -581,7 +581,7 @@ class Admin extends Component {
         <div>Name: {request.name}</div>
         <div>Phone: {request.phone}</div>
         <div>Category: {request.category}</div>
-        <h2>{request.product_id._id}</h2>
+        {request.product_id && <h2>{request.product_id._id}</h2>}
         {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
         {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
         {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product_id._id}`} target="_blank"> DEAL</Link></div>}

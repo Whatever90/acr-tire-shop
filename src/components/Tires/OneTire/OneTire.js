@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "./OneTire.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
+import Popup from "../../Contact/Popup/Popup";
 
 export default class OneTire extends Component {
   constructor(props) {
@@ -131,51 +132,59 @@ export default class OneTire extends Component {
     }
 
     return (
-      <div>
-        <div className="main-container">
-          <div id="oneTire">
-            <div className="container" id="tire">
-              <div className="row">
-                <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.tire.brand} {this.state.tire.ration} {this.state.tire.width} {this.state.tire.diameter}</h1>
-                </div>
+      <div className="main-container">
+        <div id="oneTire">
+          <div className="container" id="tire">
+            <div className="row">
+              <div className="col-md-12" id="top" >
+                <h1 id="title">{this.state.tire.brand} {this.state.tire.ration} {this.state.tire.width} {this.state.tire.diameter}</h1>
               </div>
-              <div className="row">
-                <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default tire" id="noImage"/>}
-                  {this.state.tire.photos && <Slider className="slider-component" {...settings}>
-                    { display }
-                    </Slider> }
-                </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12 slider-parent-container">
+                {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default tire" id="noImage"/>}
+                {this.state.tire.photos && <Slider className="slider-component" {...settings}>
+                  { display }
+                  </Slider> }
               </div>
-              <div className="row">
-                <div className="col-md-7">
-                  <p id="model">Count: {this.state.tire.count}, Type: {this.state.tire.type}, Condition: {this.state.tire.condition}</p>
-                  <p id="condition">{this.state.tire.description}</p>
-                </div>
-                <div className="col-md-5">
-                  <p id="price">${this.state.tire.price}</p>
-                </div>
+            </div>
+            <div className="row">
+              <div className="col-md-7">
+                <p id="model">Count: {this.state.tire.count}, Type: {this.state.tire.type}, Condition: {this.state.tire.condition}</p>
+                <p id="condition">{this.state.tire.description}</p>
+              </div>
+              <div className="col-md-5">
+                <p id="price">${this.state.tire.price}</p>
               </div>
             </div>
           </div>
-          <div className="one-tire-contact-section">
-            {!this.state.showPopup ? (
-              <div className="one-tire-contact-container">
-                <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
-                <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
-                  Name: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("name", event)}/>
-                  Phone: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("phone", event)}/>
-                  Message:<textarea className="form-control one-tire-contact-input" onChange={event => this.handleChange("message", event)}/>
-                  <button className="one-tire-contact-button btn btn-default submit">Send</button>
-                </form>
-              </div>
-            ) : null}
+        </div>
+        <div className="one-tire-contact-section">
+          {!this.state.showPopup ? (
+            <div className="one-tire-contact-container">
+              <h1 className="one-tire-contact-header">Here you can ask any question related to this product</h1>
+              <form className="one-tire-contact-form" onSubmit={(event) => this.handleSubmit(event)}>
+                Name: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("name", event)}/>
+                Phone: <input className="form-control one-tire-contact-input" onChange={event => this.handleChange("phone", event)}/>
+                Message:<textarea className="form-control one-tire-contact-input" onChange={event => this.handleChange("message", event)}/>
+                <button className="one-tire-contact-button btn btn-default submit">Send</button>
+              </form>
+            </div>
+          ) : null}
+          <div className="contact-section">
+            <div className="popup-container">
+              {this.state.showPopup ? (
+                <Popup
+                  className="popup-element"
+                  closePopup={this.togglePopup.bind(this)}
+                />
+              ) : null}
+            </div>
           </div>
-          <div className="one-tire-matching-container">
-            <h1 className="one-tire-matching-header">List of matching rims</h1>
-            {listOfRims}
-          </div>
+        </div>
+        <div className="one-tire-matching-container bd-white">
+          <h1 className="one-tire-matching-header">List of matching rims</h1>
+          {listOfRims}
         </div>
       </div>
     );

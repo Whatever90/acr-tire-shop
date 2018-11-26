@@ -12,6 +12,7 @@
 }
 
 .one-tire-contact-section {
+  min-height: 425px;
   display: flex;
   justify-content: center;
   color: #fff;

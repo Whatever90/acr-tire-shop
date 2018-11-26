@@ -11,6 +11,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 #_contact {
   /* font-family: 'Teko', sans-serif; */
   padding-top: 60px;
@@ -30,6 +31,7 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
 }
+
 .contact-section {
   padding-top: 40px;
 }
@@ -37,15 +39,18 @@
 .form-group {
   margin-top: 10px;
 }
+
 label {
   font-size: 1.3em;
   line-height: 1em;
   font-weight: normal;
 }
+
 .form-control {
   font-size: 1.3em;
   color: #080808;
 }
+
 textarea.form-control {
   height: 135px;
   /* margin-top: px;*/
@@ -60,7 +65,6 @@ textarea.form-control {
 }
 
 .popup-container {
-  position: absolute;
   width: 100%;
   display: flex;
   justify-content: center;

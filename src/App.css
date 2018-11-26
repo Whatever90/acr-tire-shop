@@ -51,7 +51,7 @@ img {
 }
 
 .searchInput {
-  background: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   margin: 10px 0;
 }
@@ -92,6 +92,15 @@ img {
 
 .slick-slider {
   width: 100%;
+}
+
+/* COLORS */
+.bd-white {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bd-black {
+  background-color: #282d32;
 }
 
 @media (max-width: 991px) {
