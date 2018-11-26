@@ -181,7 +181,7 @@ export default class Tires extends Component {
                 <div className="container" id="tire">
                   <div className="row">
                     <div className="col-md-12" id="top" >
-                      <h1 id="title">{tire.brand} {tire.ratio} {tire.width} {tire.diameter}</h1>
+                      <h1 className="title">{tire.brand} {tire.ratio} {tire.width} {tire.diameter}</h1>
                     </div>
                   </div>
                   <div className="row">

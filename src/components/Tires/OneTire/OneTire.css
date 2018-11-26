@@ -2,8 +2,9 @@
   width: 80%;
 }
 
-#oneTire {
+.oneTire {
   margin: 0 50px 5px 50px;
+  padding-top: 10px;
 }
 
 #tire {

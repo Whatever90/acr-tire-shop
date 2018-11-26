@@ -105,7 +105,7 @@ export default class OneTire extends Component {
                 <div className="container" id="rim">
                   <div className="row">
                     <div className="col-md-12" id="top" >
-                      <h1 id="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
+                      <h1 idclassName="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
                     </div>
                   </div>
                   <div className="row">
@@ -133,11 +133,11 @@ export default class OneTire extends Component {
 
     return (
       <div className="main-container">
-        <div id="oneTire">
+        <div className="oneTire">
           <div className="container" id="tire">
             <div className="row">
               <div className="col-md-12" id="top" >
-                <h1 id="title">{this.state.tire.brand} {this.state.tire.ration} {this.state.tire.width} {this.state.tire.diameter}</h1>
+                <h1 className="title">{this.state.tire.brand} {this.state.tire.ration} {this.state.tire.width} {this.state.tire.diameter}</h1>
               </div>
             </div>
             <div className="row">

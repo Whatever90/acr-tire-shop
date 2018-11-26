@@ -103,7 +103,7 @@ var listOftires
                 <div className="container" id="tire">
                   <div className="row">
                     <div className="col-md-12" id="top" >
-                      <h1 id="title">{tire.brand} {tire.ratio} {tire.width} {tire.diameter}</h1>
+                      <h1 iclassNamed="title">{tire.brand} {tire.ratio} {tire.width} {tire.diameter}</h1>
                     </div>
                   </div>
                   <div className="row">
@@ -132,11 +132,11 @@ var listOftires
     return (
       <div>
         <div className="main-container">
-          <div id="oneCar">
+          <div className="oneRim">
             <div className="container" id="rim">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.rim.brand} {this.state.rim.diameter} {this.state.rim.ratio} {this.state.rim.width}</h1>
+                  <h1 className="title">{this.state.rim.brand} {this.state.rim.diameter} {this.state.rim.ratio} {this.state.rim.width}</h1>
                 </div>
               </div>
               <div className="row">

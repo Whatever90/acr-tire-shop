@@ -149,7 +149,7 @@ export default class Deals extends Component {
                 <div className="container" id="deal">
                   <div className="row">
                     <div className="col-md-12" id="top" >
-                      <h1 id="title">{deal.rim[0].brand} {deal.rim[0].diameter} + {deal.tire[0].brand} {deal.tire[0].ratio}x{deal.tire[0].width}x{deal.tire[0].diameter}</h1>
+                      <h1 className="title">{deal.rim[0].brand} {deal.rim[0].diameter} + {deal.tire[0].brand} {deal.tire[0].ratio}x{deal.tire[0].width}x{deal.tire[0].diameter}</h1>
                     </div>
                   </div>
                   <div className="row">

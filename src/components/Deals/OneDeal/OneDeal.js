@@ -108,7 +108,7 @@ export default class OneDeal extends Component {
             <div className="container" id="deal">
               <div className="row">
                 <div className="col-md-12" id="top" >
-                  <h1 id="title">{this.state.deal.rim[0].diameter}' {this.state.deal.rim[0].brand} + {this.state.deal.tire[0].brand} {this.state.deal.tire[0].ratio} {this.state.deal.tire[0].width} {this.state.deal.tire[0].diameter}</h1>
+                  <h1 className="title">{this.state.deal.rim[0].diameter}' {this.state.deal.rim[0].brand} + {this.state.deal.tire[0].brand} {this.state.deal.tire[0].ratio} {this.state.deal.tire[0].width} {this.state.deal.tire[0].diameter}</h1>
                 </div>
               </div>
               <div className="row">

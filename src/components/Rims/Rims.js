@@ -150,7 +150,7 @@ export default class Rims extends Component {
                 <div className="container" id="rim">
                   <div className="row">
                     <div className="col-md-12" id="top" >
-                      <h1 id="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
+                      <h1 className="title">{rim.brand} {rim.diameter} {rim.ratio} {rim.width}</h1>
                     </div>
                   </div>
                   <div className="row">
