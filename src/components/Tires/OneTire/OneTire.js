@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import "./OneTire.css";
 import aws from '../../images/aws.png';
 import { Link } from 'react-router-dom';
-import Popup from "../../Contact/Popup/Popup";
+import Popup from "../../Contact/PopupOneProduct/PopupOneProduct";
 
 export default class OneTire extends Component {
   constructor(props) {
@@ -182,7 +182,7 @@ export default class OneTire extends Component {
             </div>
           </div>
         </div>
-        <div className="one-tire-matching-container bd-white">
+        <div className="one-tire-matching-container">
           <h1 className="one-tire-matching-header">List of matching rims</h1>
           {listOfRims}
         </div>
