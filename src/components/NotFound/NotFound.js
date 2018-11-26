@@ -1,11 +1,8 @@
 import React from "react";
 import "./NotFound.css";
 import { Link } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
-
 const NotFound = () => (
   <div>
-    <Navbar />
     <div className="error-404" id="body">
       <div id="cont">
         <div className="error-code m-b-10 m-t-20">

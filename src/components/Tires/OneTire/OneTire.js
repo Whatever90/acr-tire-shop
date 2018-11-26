@@ -142,7 +142,7 @@ export default class OneTire extends Component {
             </div>
             <div className="row">
               <div className="col-md-12 slider-parent-container">
-                {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default tire" id="noImage"/>}
+                {this.state.photos.length === 0 && <img className="empty-tire-img" src={aws} alt="default tire" className="noImage"/>}
                 {this.state.tire.photos && <Slider className="slider-component" {...settings}>
                   { display }
                   </Slider> }

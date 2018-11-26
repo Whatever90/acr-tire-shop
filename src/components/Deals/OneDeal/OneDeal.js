@@ -113,7 +113,7 @@ export default class OneDeal extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-deal-img" src={aws} alt="default image of a deal" id="noImage"/>}
+                  {this.state.photos.length === 0 && <img className="empty-deal-img" src={aws} alt="default image of a deal" className="noImage"/>}
                   {this.state.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }

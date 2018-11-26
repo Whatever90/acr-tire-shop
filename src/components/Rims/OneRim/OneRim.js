@@ -141,7 +141,7 @@ var listOftires
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-rim-img" src={aws} alt="default image of a car" id="noImage"/>}
+                  {this.state.photos.length === 0 && <img className="empty-rim-img" src={aws} alt="default image of a car" className="noImage"/>}
                   {this.state.rim.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }
