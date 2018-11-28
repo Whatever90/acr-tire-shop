@@ -1,33 +1,33 @@
 .addNewDealRim {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .addNewDealRimSelected {
-    background: azure;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 100%;
+  background: azure;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .addNewDealRimMatched {
-    background: gold;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 100%;
+  background: gold;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .addNewDealProductsContainer{
-    width: 40%;
+  width: 40%;
 }
 
 .addNewDealProductsSeparator{
-    display: inline-flex;
-    width: 100%;
+  display: inline-flex;
+  width: 100%;
 }
 
 .addNewDealProductsMiddleContainer{
