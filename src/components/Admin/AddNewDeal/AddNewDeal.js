@@ -131,17 +131,19 @@ class AddNewDeal extends Component {
           }.bind(this)
         }>
         <h1>{rim.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {rim.diameter}</p>
-            <p>Count: {rim.count}</p>
-            <p>Price: ${rim.price}</p>
-            <p>Condition: {rim.condition}</p>
-            <p>Description: {rim.description}</p>
-          </div>
-          <div className="col-md-3">
-            <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+        <div className="addNewDealItem">
+            <div className="col-md-3">
+              <p>Diameter: {rim.diameter}</p>
+              <p>Count: {rim.count}</p>
+              <p>Price: ${rim.price}</p>
+              <p>Condition: {rim.condition}</p>
+              <p>Description: {rim.description}</p>
+            </div>
+            <div className="col-md-3">
+              <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
         {
@@ -150,35 +152,39 @@ class AddNewDeal extends Component {
           }.bind(this)
         }>
         <h1>{rim.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {rim.diameter}</p>
-            <p>Count: {rim.count}</p>
-            <p>Price: ${rim.price}</p>
-            <p>Condition: {rim.condition}</p>
-            <p>Description: {rim.description}</p>
-          </div>
-          <div className="col-md-3">
-            <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+        <div className="addNewDealItem">
+            <div className="col-md-3">
+              <p>Diameter: {rim.diameter}</p>
+              <p>Count: {rim.count}</p>
+              <p>Price: ${rim.price}</p>
+              <p>Condition: {rim.condition}</p>
+              <p>Description: {rim.description}</p>
+            </div>
+            <div className="col-md-3">
+              <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
         {this.state.matching_diameter === rim.diameter && this.state.matching_category==="rim" && <div className = "addNewDealRimMatched"  onClick={ function(){
           this.createDeal(rim)
           }.bind(this)
         }>
-        <h1>{rim.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {rim.diameter}</p>
-            <p>Count: {rim.count}</p>
-            <p>Price: ${rim.price}</p>
-            <p>Condition: {rim.condition}</p>
-            <p>Description: {rim.description}</p>
-          </div>
-          <div className="col-md-3">
-            <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+          <h1>{rim.brand}</h1>
+          <div className="addNewDealItem">
+            <div className="col-md-3">
+              <p>Diameter: {rim.diameter}</p>
+              <p>Count: {rim.count}</p>
+              <p>Price: ${rim.price}</p>
+              <p>Condition: {rim.condition}</p>
+              <p>Description: {rim.description}</p>
+            </div>
+            <div className="col-md-3">
+              <ul>  {rim.photos && rim.photos.length > 0 && rim.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
       </div>
@@ -193,19 +199,23 @@ class AddNewDeal extends Component {
           }.bind(this)
         }>
         <h1>{tire.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {tire.diameter}</p>
-            <p>Width: {tire.width}</p>
-            <p>Ratio: {tire.ratio}</p>
-            <p>Count: {tire.count}</p>
-            <p>Price: ${tire.price}</p>
-            <p>Condition: {tire.condition}</p>
-            <p>Description: {tire.description}</p>
+        <div className="addNewDealItem">
+          <div>
+            <div className="col-md-3">
+              <p>Diameter: {tire.diameter}</p>
+              <p>Width: {tire.width}</p>
+              <p>Ratio: {tire.ratio}</p>
+              <p>Count: {tire.count}</p>
+              <p>Price: ${tire.price}</p>
+              <p>Condition: {tire.condition}</p>
+              <p>Description: {tire.description}</p>
+            </div>
           </div>
-          <div className="col-md-3">
-            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+            <div className="col-md-3">
+              <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
         {
@@ -213,20 +223,25 @@ class AddNewDeal extends Component {
           this.chooseTarget(tire._id, "rim", tire.diameter, tire)
           }.bind(this)
         }>
+        
         <h1>{tire.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {tire.diameter}</p>
-            <p>Width: {tire.width}</p>
-            <p>Ratio: {tire.ratio}</p>
-            <p>Count: {tire.count}</p>
-            <p>Price: ${tire.price}</p>
-            <p>Condition: {tire.condition}</p>
-            <p>Description: {tire.description}</p>
+        <div className="addNewDealItem">
+          <div>
+            <div className="col-md-3">
+              <p>Diameter: {tire.diameter}</p>
+              <p>Width: {tire.width}</p>
+              <p>Ratio: {tire.ratio}</p>
+              <p>Count: {tire.count}</p>
+              <p>Price: ${tire.price}</p>
+              <p>Condition: {tire.condition}</p>
+              <p>Description: {tire.description}</p>
+            </div>
           </div>
-          <div className="col-md-3">
-            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+            <div className="col-md-3">
+              <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
         {
@@ -235,30 +250,34 @@ class AddNewDeal extends Component {
           }.bind(this)
         }>
         <h1>{tire.brand}</h1>
-          <div className="col-md-3">
-            <p>Diameter: {tire.diameter}</p>
-            <p>Width: {tire.width}</p>
-            <p>Ratio: {tire.ratio}</p>
-            <p>Count: {tire.count}</p>
-            <p>Price: ${tire.price}</p>
-            <p>Condition: {tire.condition}</p>
-            <p>Description: {tire.description}</p>
+        <div className="addNewDealItem">
+          <div>
+            <div className="col-md-3">
+              <p>Diameter: {tire.diameter}</p>
+              <p>Width: {tire.width}</p>
+              <p>Ratio: {tire.ratio}</p>
+              <p>Count: {tire.count}</p>
+              <p>Price: ${tire.price}</p>
+              <p>Condition: {tire.condition}</p>
+              <p>Description: {tire.description}</p>
+            </div>
           </div>
-          <div className="col-md-3">
-            <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
-            </li>)}
-            </ul>
+            <div className="col-md-3">
+              <ul>  {tire.photos && tire.photos.length > 0 && tire.photos.map((e, i) => <li key={i}><img src={e} alt="img" className="prevImg" />
+              </li>)}
+              </ul>
+            </div>
           </div>
         </div>}
       </div>
     ));
     }
     return (
-    <div className="addNewTire-body" >
-    <button onClick={() => this.show_state()}>Show state</button>
+    <div className="addNewTire-body">
+    {/* <button onClick={() => this.show_state()}>Show state</button> */}
     <button onClick={() => this.show_form()}>Show Form</button>
       {this.state.show_form && <div>
-        <h1>Here you can create a new deal</h1>
+        <h1 align="center">Here you can create a new deal</h1>
       <div className="addNewDealProductsSeparator">
         <div className="addNewDealProductsContainer">
         <h2 align="center">List of rims</h2>
@@ -277,7 +296,7 @@ class AddNewDeal extends Component {
                 <button onClick={() => this.cancel()}>Cancel</button>
               </div>
             </div>}
-            {!this.state.selected_product2 && <h3>Create a deal</h3>}
+            {!this.state.selected_product2 && <h3 align="center">Create a deal</h3>}
         </div>
         <div className="addNewDealProductsContainer">
             <h2 align="center">List of tires</h2>

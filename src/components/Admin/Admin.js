@@ -723,9 +723,9 @@ class Admin extends Component {
         <div className="admin-main-container">
           {user && <div className="mainDiv">
             <div className="admin-top" align='center'>
-              <h1>Control Panel v0.6b</h1>
-              <button onClick={() => this.refreshLists()}>Refresh lists</button>
-              <button type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
+              <h1>Control Panel v0.9a</h1>
+              
+              
               {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {!this.state.page_tires && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_tires")}>Tires</button>}
@@ -735,6 +735,10 @@ class Admin extends Component {
 
               {!this.state.page_deals && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_deals")}>deals</button>}
               {this.state.page_deals && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_deals")}>deals</button>}
+            </div>
+            <div className="admin-top" align='center'>
+              <button class='btn btn-lg btn-warning' onClick={() => this.refreshLists()}>Refresh lists</button>
+              <button align='center' type="button" className="btn btn-outline-danger" onClick={() => this.logout()}>Log out</button>
             </div>
             {this.state.page_requests && <div>
               <h2 align="center">Messages</h2>
