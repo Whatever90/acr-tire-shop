@@ -261,6 +261,7 @@ class AddNewDeal extends Component {
         <h1>Here you can create a new deal</h1>
       <div className="addNewDealProductsSeparator">
         <div className="addNewDealProductsContainer">
+        <h2 align="center">List of rims</h2>
           {listOfRims}
         </div>
         <div className="addNewDealProductsMiddleContainer">
@@ -279,6 +280,7 @@ class AddNewDeal extends Component {
             {!this.state.selected_product2 && <h3>Create a deal</h3>}
         </div>
         <div className="addNewDealProductsContainer">
+            <h2 align="center">List of tires</h2>
           {listOfTires}
         </div>
       </div>

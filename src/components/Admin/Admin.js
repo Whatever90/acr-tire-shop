@@ -708,8 +708,8 @@ class Admin extends Component {
         </div>
         <div className="row" >
           <div className="col-md-3">
-            <label>Rim brand: <Link to={`/rim/${deal.rim[0]._id}`} target="_blank">{deal.rim[0].brand}</Link></label>
-            <label>Tire brand: <Link to={`/tire/${deal.tire[0]._id}`} target="_blank">{deal.tire[0].brand}</Link></label>
+            {deal.rim[0] && <label>Rim brand: <Link to={`/rim/${deal.rim[0]._id}`} target="_blank">{deal.rim[0].brand}</Link></label>}
+            {deal.tire[0] && <label>Tire brand: <Link to={`/tire/${deal.tire[0]._id}`} target="_blank">{deal.tire[0].brand}</Link></label>}
             <label>Rim and tire diameter: {deal.rim[0].diameter}</label>
             <label>Count: {deal.rim[0].count}</label>
             <label>Price : </label><input type='number' className='form-control' onChange={event => this.handleChange("price", event)} placeholder="Price" defaultValue={deal.price} disabled={this.state.temp_id !== deal._id} />
