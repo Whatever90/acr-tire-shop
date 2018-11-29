@@ -6,6 +6,15 @@ export default class Location extends Component {
     return (
       <div className="location">
         <div className="intro">
+          <h2 className="text-center">Phone number</h2>
+          <p className="text-center" style={{ color: "black" }}>
+          (206) 367-8473
+          </p>
+          <h2 className="text-center">Office hours</h2>
+          <p className="text-center" style={{ color: "black" }}>
+          Monday - Saturday
+          9:30 AM - 6:00 PM
+          </p>
           <h2 className="text-center">Location </h2>
           <p className="text-center" style={{ color: "black" }}>
             We are located in Seattle at 14038 Lake City Way NE, WA 98107
