@@ -34,9 +34,7 @@ export default class Services extends Component {
                 <img className="img-fluid" src={tires} alt="service-2" />
                 <h3 className="name">Infinite number of different tires</h3>
                 <p className="services-item-description">
-                  Aenean tortor est, vulputate quis leo in, vehicula rhoncus
-                  lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
-                  finibus est, interdum justo suscipit id.
+                We carry snow, racing, all-season, summer tires and much more. If you are wondering about a tire size fitting on your vehicle, please don’t hesitate to call us at 206-367-8473. Our wheel and tire experts have over 100 years of combined experience and they are ready to help you out with any question. We also guarantee fitment or your money back.
                 </p>
               </div>
             </Link>
@@ -48,9 +46,7 @@ export default class Services extends Component {
                 <img className="img-fluid" src={rims} alt="service-3" />
                 <h3 className="name">Various Rims</h3>
                 <p className="services-item-description">
-                  Aenean tortor est, vulputate quis leo in, vehicula rhoncus
-                  lacus. Praesent aliquam in tellus eu gravida. Aliquam varius
-                  finibus est, interdum justo suscipit id.
+               Buy wheels, tires and accessories from a company YOU CAN TRUST. If you find a price that beats ours, call us. We have some of the lowest prices in the wheel and tire industry so you can get what you want at the lowest possible cost.
                 </p>
               </div>
             </Link>
