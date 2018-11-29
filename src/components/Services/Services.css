@@ -1,5 +1,5 @@
 .services-main-container {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,14 +13,16 @@
 }
 
 .services-title {
+  margin-top: 30px;
   color: #fff;
 }
 
 .services-inner-container {
   width: 90%;
-  padding: 3rem 1rem;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 30px;
+  padding: 3rem 1rem;
   border-radius: 50px;
   background-color: rgba(255,255,255,0.8);
 }
@@ -59,4 +61,17 @@
 
 a.subnav_link:active {
   color: black;
+}
+
+@media only screen and (max-width: 500px) {
+  .services-inner-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .services-item {
+    width: 80%;
+    padding: 10px 0;
+  }
 }

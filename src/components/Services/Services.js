@@ -46,7 +46,7 @@ export default class Services extends Component {
                 <img className="img-fluid" src={rims} alt="service-3" />
                 <h3 className="name">Various Rims</h3>
                 <p className="services-item-description">
-               Buy wheels, tires and accessories from a company YOU CAN TRUST. If you find a price that beats ours, call us. We have some of the lowest prices in the wheel and tire industry so you can get what you want at the lowest possible cogitst.
+                  Buy wheels, tires and accessories from a company YOU CAN TRUST. If you find a price that beats ours, call us. We have some of the lowest prices in the wheel and tire industry so you can get what you want at the lowest possible cogitst.
                 </p>
               </div>
             </Link>

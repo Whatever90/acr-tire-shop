@@ -48,11 +48,11 @@ class Uploader extends Component {
     var tempArr = this.state.files;
     for(let i = 0; i<tempArr.length; i++){
         if(tempArr[i].name === element.name){
-            for(let k = i; k<tempArr.length-1; k++){
-                tempArr[k] = tempArr[k+1]
-            }
-            tempArr.pop()
-            break;
+          for(let k = i; k<tempArr.length-1; k++){
+              tempArr[k] = tempArr[k+1]
+          }
+          tempArr.pop()
+          break;
         }
     }
     this.setState({
@@ -62,25 +62,24 @@ class Uploader extends Component {
 
   render() {
     return(
-            <div>
-                <div>
-                    <div className="uploader">
-                        <Dropzone className="dropzone" onDrop={this.onDrop} multiple={false}>
-                            <button className="btn btn-warning">+</button>
-                        </Dropzone>
-                        <h4>Chosen photos</h4>
-                        <ul>
-                            {this.state.files.length>0 && this.state.files.map((e, i) => <li key={i}>{e.name} - {e.size} bytes <img src={e.preview} className="prevImg" alt="pic"/>
-                            <button type="button" className="btn btn-danger btn-sm" onClick={() => this.delete(e)}>Remove</button>
-                            </li>) }
-                        </ul>
-                    </div>
-                    <button type="button" className="btn btn-primary btn-sm" onClick={() => this.upload()}>Upload (click here first before Submit)</button>
-                </div>
-                { this.state.image && <img src={this.state.image.image_url} alt="pic"/> }
-            </div>
-        )
-    }
+      <div>
+        <div>
+          <div className="uploader">
+              <Dropzone className="dropzone" onDrop={this.onDrop} multiple={false}>
+                  <button className="btn btn-warning">+</button>
+              </Dropzone>
+              <h4>Chosen photos</h4>
+              <ul>
+                {this.state.files.length>0 && this.state.files.map((e, i) => <li key={i}>{e.name} - {e.size} bytes <img src={e.preview} className="prevImg" alt="pic"/>
+                <button type="button" className="btn btn-danger btn-sm" onClick={() => this.delete(e)}>Remove</button>
+                </li>) }
+              </ul>
+          </div>
+          <button type="button" className="btn btn-primary btn-sm" onClick={() => this.upload()}>Upload (click here first before Submit)</button>
+        </div>
+        { this.state.image && <img src={this.state.image.image_url} alt="pic"/> }
+      </div>)
+  }
 }
 
 const mapDispatchToProps = {

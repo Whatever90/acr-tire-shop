@@ -76,19 +76,19 @@ class Admin extends Component {
   }
 
   content_refresh(){
-     axios.all([
-       axios.get(`/requests/all`),
-       axios.get(`/tires/all`),
-       axios.get(`/rims/all`),
-       axios.get('/deals/all')
-     ]).then(axios.spread((requests, tires, rims, deals) => {
-       this.setState({
-         requests: requests.data,
-         tires: tires.data,
-         rims: rims.data,
-         deals: deals.data
-       })
-     })).catch(err => console.log(err));
+    axios.all([
+      axios.get(`/requests/all`),
+      axios.get(`/tires/all`),
+      axios.get(`/rims/all`),
+      axios.get('/deals/all')
+    ]).then(axios.spread((requests, tires, rims, deals) => {
+      this.setState({
+        requests: requests.data,
+        tires: tires.data,
+        rims: rims.data,
+        deals: deals.data
+      })
+    })).catch(err => console.log(err));
   }
     handleChange(property, event) {
       event.preventDefault();
@@ -690,8 +690,6 @@ class Admin extends Component {
           {user && <div className="mainDiv">
             <div className="admin-top" align='center'>
               <h1>Control Panel v0.9a</h1>
-              
-              
               {!this.state.page_requests && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {this.state.page_requests && <button type="button" className="btn btn-success" onClick={() => this.page_switcher("page_requests")}>Requests</button>}
               {!this.state.page_tires && <button type="button" className="btn btn-info" onClick={() => this.page_switcher("page_tires")}>Tires</button>}
