@@ -55,7 +55,7 @@ class Admin extends Component {
           this.props.login(response.data.user); // adding admin to session
         }
       })
-      .catch(error => console.log(error))
+      .catch()
   }
 
   componentWillMount() {
@@ -71,11 +71,12 @@ class Admin extends Component {
         rims: rims.data,
         deals: deals.data
       })
-    })).catch(err => console.log(err));
+    })).catch();
 
   }
 
   content_refresh(){
+<<<<<<< HEAD
     axios.all([
       axios.get(`/requests/all`),
       axios.get(`/tires/all`),
@@ -89,6 +90,21 @@ class Admin extends Component {
         deals: deals.data
       })
     })).catch(err => console.log(err));
+=======
+     axios.all([
+       axios.get(`/requests/all`),
+       axios.get(`/tires/all`),
+       axios.get(`/rims/all`),
+       axios.get('/deals/all')
+     ]).then(axios.spread((requests, tires, rims, deals) => {
+       this.setState({
+         requests: requests.data,
+         tires: tires.data,
+         rims: rims.data,
+         deals: deals.data
+       })
+     })).catch();
+>>>>>>> 2d45435fab1f7443d9b88ca281529297fe0b1a10
   }
     handleChange(property, event) {
       event.preventDefault();
@@ -104,7 +120,7 @@ class Admin extends Component {
       .then(res => {
         this.content_refresh();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   // END OF REQUESTS -------------------------------------
@@ -115,7 +131,7 @@ class Admin extends Component {
       .then(res => {
         this.content_refresh();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
   edit_deal(deal){
     if(this.state.temp_id === deal._id){
@@ -129,24 +145,21 @@ class Admin extends Component {
   }
   edit_deal_submit(event, index) {
     event.preventDefault();
-    let new_price = this.state.price;
-    let _id = this.state.temp_id;
+    // let new_price = this.state.price;
+    // let _id = this.state.temp_id;
     this.setState({
       temp_id: null,
       price: null
     })
-    console.log({_id, new_price})
   }
   dealSold(id, tire_id, rim_id){
     axios.post('/deals/sold', {id, tire_id, rim_id}).then(response => {
-      console.log(response);
       this.content_refresh();
     });
 
   }
   dealCancel(id){
     axios.post('/deals/cancel', {id}).then(response => {
-      console.log(response);
       this.content_refresh();
     })
   }
@@ -197,13 +210,13 @@ class Admin extends Component {
           alert("can't update this tire");
         }
       })
-      .catch(error => console.log("BLYAAAD'", error)); /// ++++++++++++++++++ ADD A MESSAGE!
+      .catch(); /// ++++++++++++++++++ ADD A MESSAGE!
 
   }
 
-  refreshTireById(id) {
+  refreshTireById(i) {
     var id = {
-      _id: id
+      _id: i
     }
     var tempArr = this.state.tires;
     axios.post('/tires/find/', id)
@@ -279,11 +292,11 @@ class Admin extends Component {
           alert("can't update this rim");
         }
       })
-      .catch(error => console.log("BLYAAAD'", error));  /// ++++++++++++++++++ ADD A MESSAGE!
+      .catch();  /// ++++++++++++++++++ ADD A MESSAGE!
   }
-  refreshRimById(id) {
+  refreshRimById(i) {
     var id = {
-      _id: id
+      _id: i
     }
     var tempArr = this.state.rims;
     axios.post('/rims/find/', id)
@@ -344,7 +357,6 @@ class Admin extends Component {
         .post(`/api/upload/${x}/${id}`)
         .attach('item', filesToUpload[i])
         .end((error, response) => {
-          if (error) console.log(error);
           counter++;
           if (counter === filesToUpload.length) {
             if (x === "tires") {
@@ -394,10 +406,9 @@ class Admin extends Component {
             this.rims_list_remove(i)
           }
         } else {
-          console.log("can't delete this one of", x)
         }
       })
-      .catch(error => console.log(error));
+      .catch();
   }
   cancelDeletion() {
     var arrRims = this.state.rims;
@@ -442,9 +453,7 @@ class Admin extends Component {
       const fileName = url[url.length - 1];
       counter++;
       axios.delete(`/api/delete/${fileName}`)
-        .then(res => {
-          console.log(arrToDelete[i], "is deleted");
-        }).catch(err => console.log(err));
+        .then().catch();
       if (counter === arrToDelete.length) {
         if (x === "tires") {
           this.refreshTireById(id)
@@ -458,14 +467,10 @@ class Admin extends Component {
   logout() {
     axios.post('/user/logout')
       .then(response => {
-        console.log('you are out');
         this.props.login(null)
         this.props.history.push('/login');
-        console.log('you are logged out'); /// ++++++++++++++++++ ADD A MESSAGE!
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch()
   }
 
   clearState() {
@@ -503,7 +508,7 @@ class Admin extends Component {
         rims: rims.data,
         deals: deals.data
       })
-    })).catch(err => console.log(err));
+    })).catch();
   }
 
   checkState() {              // Dev function.
@@ -520,7 +525,6 @@ class Admin extends Component {
         page_deals: false
       }, function () {
         if (target === "page_requests") {
-          console.log(this.state.requests);
           this.setState({
             page_requests: true
           });

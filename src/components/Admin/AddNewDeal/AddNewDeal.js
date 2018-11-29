@@ -34,8 +34,7 @@ class AddNewDeal extends Component {
         tires: tires.data,
         rims: rims.data
       })
-    })).catch(err => console.log(err));
-    console.log(this.state)
+    })).catch();
   }
   handleChange(property, event) {
     event.preventDefault();
@@ -60,7 +59,6 @@ class AddNewDeal extends Component {
     });
   }
   async createDeal(product){
-    console.log("CREATING A NEW DEAL!", product)
     var rim;
     var tire;
     var price = this.state.selected_product1.price + product.price;
@@ -72,7 +70,6 @@ class AddNewDeal extends Component {
       tire = this.state.selected_product1;
     }
     var deal = {"rim": rim, "tire": tire}
-    console.log("that's deal! => ", deal)
     this.setState({
       rim: rim,
       tire: tire,
@@ -80,7 +77,6 @@ class AddNewDeal extends Component {
       price: price,
       selected_product2: product
     })
-    console.log(this.state)
   }
   cancel(){
     this.setState({
@@ -94,7 +90,6 @@ class AddNewDeal extends Component {
     })
   }
   confirmCreatingDeal(){
-    console.log("confirming")
     var obj = {
       rim: this.state.deal.rim._id,
       tire: this.state.deal.tire._id,
@@ -102,10 +97,8 @@ class AddNewDeal extends Component {
       old_price: this.state.deal.tire.price + this.state.deal.rim.price,
       description: this.state.description
     }
-    console.log(obj)
     axios.post("/deals/new", obj)
     .then(response => {
-      console.log(response);
       //if(response.data)
       alert("A new deal was created!")
     })

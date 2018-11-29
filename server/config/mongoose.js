@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var fs = require('fs');
 var path = require('path');
-console.log('HEY, this is mongo')
+console.log('MongoDB is lock and loaded')
 
 mongoose.connect('mongodb://localhost/garage', { useMongoClient: true })
     ///.then(() => require('./db-init')(server))

@@ -22,7 +22,7 @@ class Login extends Component {
           this.props.login(response.data.user);
         }
       })
-      .catch(error => console.log(error))
+      .catch()
 
     if (this.props.user!=null) { // Checking for admin in session
       if(this.props.user.username!=null){
@@ -43,8 +43,6 @@ class Login extends Component {
       this.props.history.push('/admin');
     }).catch(error => {
       alert("Wrong email or password");
-      console.log(error);
-      console.log(error.response)
     })
   }
 

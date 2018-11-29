@@ -29,10 +29,9 @@ export default class Tires extends Component {
   componentWillMount() {
     axios.get('/tires/all')
       .then(res => {
-        console.log(res);
         this.setState({ tires: res.data, copyTires: res.data })
       })
-      .catch(error => console.log(error));
+      .catch();
   }
   searchClicked() {
     let status = this.state.search;
@@ -60,19 +59,16 @@ export default class Tires extends Component {
       let bool = true;
       for (let k in this.state.inputSearch) {
         if (!bool) {
-          console.log("pizda");
           break;
         }
         if (this.state.inputSearch[k]) {
           if (k === "priceMin") {
             if (this.state.copyTires[i].price < this.state.inputSearch[k]) {
-              console.log("too cheap!");
               bool = false;
             }
             continue;
           } else if (k === "priceMax") {
             if (this.state.copyTires[i].price > this.state.inputSearch[k]) {
-              console.log("too expensive!");
               bool = false
             }
             continue;
@@ -81,14 +77,11 @@ export default class Tires extends Component {
             continue;
           }
           if (this.state.copyTires[i][k] !== this.state.inputSearch[k]) {
-            console.log("nea suka", this.state.copyTires[i][k])
-            console.log(typeof (this.state.copyTires[i][k]), typeof (this.state.inputSearch[k]))
             bool = false;
           }
         }
       }
       if (bool) {
-        console.log("found!")
         tempTires.push(this.state.copyTires[i]);
       } else {
         bool = true;
@@ -125,35 +118,7 @@ export default class Tires extends Component {
     })
   }
   searchFilterByBrand(brand) {
-    // if (brand === "All") {
-    //   var tempSearch = this.state.inputSearch;
-    //   tempSearch.brand = null;
-    //   tempSearch.tires = [];
-    //   tempSearch.listOfModels = [];
-    //   this.setState({
-    //     inputChange: tempSearch //ATTENTION! MIGHT BE A MISTAKE!
-    //   })
-    //   return;
-    // }
-    // var tires = [];
-    // var temp = this.state.inputSearch;
-    // temp.brand = brand;
-    // this.state.copytires.forEach(function (tire) {
-    //   if (tire.brand === brand) {
-    //     tires.push(tire)
-    //   }
-    // })
-    // var tempModels = tires.filter(function (item, pos, self) {
-    //   return self.indexOf(item) === pos;
-    // }).sort().map((c, index) => {
-    //   return (
-    //     <option key={index}>{c.model}</option>
-    //   )
-    // })
-    // temp.listOfModels = tempModels;
-    // this.setState({
-    //   inputSearch: temp
-    // })
+    
   }
 
   changeState(x, y, val) {
@@ -166,8 +131,6 @@ export default class Tires extends Component {
     this.setState({
       x: temp
     })
-    // console.log(this.state);
-    // console.log(this.state.inputSearch.yearMax-this.state.inputSearch.yearMin)
   }
 
   render() {

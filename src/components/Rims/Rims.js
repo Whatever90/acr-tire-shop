@@ -28,10 +28,9 @@ export default class Rims extends Component {
   componentWillMount() {
     axios.get('/rims/all')
       .then(res => {
-        console.log(res);
         this.setState({ rims: res.data, copyRims: res.data })
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   searchClicked() {
@@ -61,19 +60,16 @@ export default class Rims extends Component {
       let bool = true;
       for (let k in this.state.inputSearch) {
         if (!bool) {
-          console.log("pizda");
           break;
         }
         if (this.state.inputSearch[k]) {
           if (k === "priceMin") {
             if (this.state.copyRims[i].price < this.state.inputSearch[k]) {
-              console.log("too cheap!");
               bool = false;
             }
             continue;
           } else if (k === "priceMax") {
             if (this.state.copyRims[i].price > this.state.inputSearch[k]) {
-              console.log("too expensive!");
               bool = false
             }
             continue;
@@ -82,14 +78,11 @@ export default class Rims extends Component {
             continue;
           }
           if (this.state.copyRims[i][k] !== this.state.inputSearch[k]) {
-            console.log("nea suka", this.state.copyRims[i][k])
-            console.log(typeof (this.state.copyRims[i][k]), typeof (this.state.inputSearch[k]))
             bool = false;
           }
         }
       }
       if (bool) {
-        console.log("found!")
         tempRims.push(this.state.copyRims[i]);
       } else {
         bool = true;
@@ -135,8 +128,6 @@ export default class Rims extends Component {
     this.setState({
       x: temp
     })
-    console.log(this.state);
-    console.log(this.state.inputSearch.yearMax - this.state.inputSearch.yearMin)
   }
 
   render() {

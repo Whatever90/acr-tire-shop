@@ -27,9 +27,7 @@ module.exports = {
       .then(data => {
         res.json(data);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch();
   },
   find: function (req, res) {
     Deal.aggregate([ { $match : { _id : mongoose.Types.ObjectId(req.body._id) } },
@@ -52,9 +50,7 @@ module.exports = {
       .then(data => {
         res.json(data);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch();
   },
   new: function (req, res) {
     Deal.find({ $and: [{rim_id: req.body.rim}, {tire_id: req.body.tire}] })
@@ -62,7 +58,6 @@ module.exports = {
       if(response.length>0){
         res.status(404).json(response)
       }else{
-        console.log("NO DUPES!")
         var deal = new Deal({
           tire_id: req.body.tire,
           rim_id: req.body.rim,
@@ -86,8 +81,7 @@ module.exports = {
         _id: req.body.id
       }).lean()
       .then(response => {
-        var obj = {}
-        console.log(req.body)
+        //var obj = {}
         Rim.remove({
           _id: req.body.rim_id
         }).then(r => console.log("rim sold as well"));

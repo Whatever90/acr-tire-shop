@@ -45,7 +45,6 @@ export default class AddNewRim extends Component {
         description
       })
       .then(response => {
-        console.log(response);
         this.upload(response.data._id);
         alert("New rim was created!");
         this.setState({ //clearing state
@@ -65,7 +64,7 @@ export default class AddNewRim extends Component {
           })
         })
       })
-      .catch(error => console.log(error));
+      .catch();
   }
   onDrop(photo) {
     var tempArr = this.state.files; // Hardcode mode ON
@@ -73,25 +72,20 @@ export default class AddNewRim extends Component {
     this.setState({
       files: tempArr  // here we store pics in this.state
     })
-    console.log(this.state.files);
   }
   upload(id) {
     var counter = 0;
-    console.log(id);
-    console.log(this.state.files);
     for (let i = 0; i < this.state.files.length; i++) {
       if (this.state.files[i]) {
         superagent
           .post(`/api/upload/rims/${id}`)
           .attach('item', this.state.files[i])
           .end((error, response) => {
-            if (error) console.log(error);
             counter++;
             if (counter === this.state.files.length) {
-              console.log("DAAAAAAAAA");
               this.clearPhotos();
             }
-            console.log('File Uploaded Succesfully'); // Just taking all pics from this.state.files and send them on the back-end and then to s3
+            // console.log('File Uploaded Succesfully'); // Just taking all pics from this.state.files and send them on the back-end and then to s3
           })
       }
       // and getting back urls to those pics

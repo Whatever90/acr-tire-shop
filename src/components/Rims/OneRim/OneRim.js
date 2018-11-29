@@ -45,10 +45,9 @@ export default class OneRim extends Component {
         product_id
       })
       .then(response => {
-        console.log("response!",response);
         this.togglePopup();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   togglePopup() {
@@ -57,7 +56,6 @@ export default class OneRim extends Component {
     });
   }
   componentWillMount() {
-    // console.log("ONE PART!")
     let id = {
       _id: this.props.match.params._id
     }
@@ -66,7 +64,6 @@ export default class OneRim extends Component {
         this.setState({ rim: res.data, photos: res.data.photos, matches: res.data.matches })
       })
       .catch(error => {
-        console.log("===========================", error)
         this.props.history.push("/notfound");
       });
   }
