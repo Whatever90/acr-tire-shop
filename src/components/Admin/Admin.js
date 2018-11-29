@@ -76,7 +76,6 @@ class Admin extends Component {
   }
 
   content_refresh(){
-<<<<<<< HEAD
     axios.all([
       axios.get(`/requests/all`),
       axios.get(`/tires/all`),
@@ -90,21 +89,6 @@ class Admin extends Component {
         deals: deals.data
       })
     })).catch(err => console.log(err));
-=======
-     axios.all([
-       axios.get(`/requests/all`),
-       axios.get(`/tires/all`),
-       axios.get(`/rims/all`),
-       axios.get('/deals/all')
-     ]).then(axios.spread((requests, tires, rims, deals) => {
-       this.setState({
-         requests: requests.data,
-         tires: tires.data,
-         rims: rims.data,
-         deals: deals.data
-       })
-     })).catch();
->>>>>>> 2d45435fab1f7443d9b88ca281529297fe0b1a10
   }
     handleChange(property, event) {
       event.preventDefault();
