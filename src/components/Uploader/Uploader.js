@@ -18,7 +18,6 @@ class Uploader extends Component {
 
   onDrop = (photo) => {
     var tempArr = this.state.files;
-    console.log(photo);
     tempArr.push(photo[0]);
     this.setState({
         files: tempArr
@@ -35,9 +34,7 @@ class Uploader extends Component {
                 .attach('item', this.state.files[i])
                 .end((error, response) => {
                     tempArr.push(response.text)
-                    console.log(tempArr);
                     if (error) console.log(error);
-                    console.log('File Uploaded Succesfully');
                 })
         }
         this.props.savePhotos(tempArr)

@@ -42,10 +42,9 @@ export default class OneDeal extends Component {
         product_id
       })
       .then(response => {
-        console.log("response!", response);
         this.togglePopup();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   togglePopup() {
@@ -59,7 +58,6 @@ export default class OneDeal extends Component {
     }
     axios.post('/deals/find/', id)
       .then(res => {
-        console.log("RESPONSE!!!")
         var photos = [];
         for (let i = 0; i < res.data[0].rim[0].photos.length; i++){
           photos.push(res.data[0].rim[0].photos[i]);
@@ -68,11 +66,8 @@ export default class OneDeal extends Component {
           photos.push(res.data[0].tire[0].photos[i])
         }
         this.setState({ deal: res.data[0], photos: photos })
-        console.log(this.state);
       })
-      //.catch(error => console.log(error));
       .catch(error => {
-        console.log("===========================",error)
         this.props.history.push("/notfound");
       });
   }
@@ -99,11 +94,11 @@ export default class OneDeal extends Component {
         </div>
       )
     });
-    let listOfRims = null;
+    //let listOfRims = null;
 
     return (
       <div>
-        {this.state. deal && <div className="main-container">
+        {this.state.deal && <div className="main-container">
           <div id="oneDeal">
             <div className="container" id="deal">
               <div className="row">
@@ -113,7 +108,7 @@ export default class OneDeal extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12 slider-parent-container">
-                  {this.state.photos.length === 0 && <img className="empty-deal-img" src={aws} alt="default image of a deal" className="noImage"/>}
+                  {this.state.photos.length === 0 && <img className="empty-deal-img" src={aws} alt="default img of a deal" className="noImage"/>}
                   {this.state.photos && <Slider className="slider-component" {...settings}>
                     { display }
                     </Slider> }

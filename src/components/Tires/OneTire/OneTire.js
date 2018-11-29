@@ -44,10 +44,9 @@ export default class OneTire extends Component {
         product_id
       })
       .then(response => {
-        console.log("response!", response);
         this.togglePopup();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   togglePopup() {
@@ -56,18 +55,14 @@ export default class OneTire extends Component {
     });
   }
   componentWillMount(){
-    // console.log("ONE tire!")
     let id = {
       _id: this.props.match.params._id
     }
     axios.post('/tires/find/', id)
       .then(res => {
         this.setState({ tire: res.data, photos: res.data.photos, matches: res.data.matches })
-        console.log(this.state.tire);
-        console.log(this.state.tire.photos);
       })
       .catch(error => {
-        console.log("===========================", error)
         this.props.history.push("/notfound");
       });
   }

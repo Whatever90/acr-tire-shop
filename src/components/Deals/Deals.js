@@ -29,11 +29,10 @@ export default class Deals extends Component {
   componentWillMount() {
     axios.get('/deals/all')
       .then(res => {
-        console.log(res.data);
-        var data = res.data;
+        // var data = res.data;
         this.setState({ deals: res.data, copyDeals: res.data })
       })
-      .catch(error => console.log(error));
+      .catch();
   }
   searchClicked() {
     let status = this.state.search;
@@ -60,19 +59,16 @@ export default class Deals extends Component {
       let bool = true;
       for (let k in this.state.inputSearch) {
         if (!bool) {
-          console.log("pizda");
           break;
         }
         if (this.state.inputSearch[k]) {
           if (k === "priceMin") {
             if (this.state.copyDeals[i].price < this.state.inputSearch[k]) {
-              console.log("too cheap!");
               bool = false;
             }
             continue;
           } else if (k === "priceMax") {
             if (this.state.copyDeals[i].price > this.state.inputSearch[k]) {
-              console.log("too expensive!");
               bool = false
             }
             continue;
@@ -81,14 +77,11 @@ export default class Deals extends Component {
             continue;
           }
           if (this.state.copyDeals[i][k] !== this.state.inputSearch[k]) {
-            console.log("nea suka", this.state.copyDeals[i][k])
-            console.log(typeof (this.state.copyDeals[i][k]), typeof (this.state.inputSearch[k]))
             bool = false;
           }
         }
       }
       if (bool) {
-        console.log("found!")
         tempDeals.push(this.state.copyDeals[i]);
       } else {
         bool = true;

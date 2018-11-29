@@ -22,15 +22,13 @@ export default class Contact extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event);
     let { name, phone, message } = this.state;
     axios
       .post("/requests/new", { name, phone, message })
       .then(response => {
-        console.log(response);
         this.togglePopup();
       })
-      .catch(error => console.log(error));
+      .catch();
   }
 
   togglePopup() {

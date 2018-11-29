@@ -119,7 +119,7 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/upload/:x/:id', upload.single('item'), (req, res) => {
-		console.log(req.file);
+		// console.log(req.file);
 		var params = {
 			Bucket: process.env.BUCKET,
 			Key: req.file.originalname, 
@@ -139,7 +139,7 @@ module.exports = function(app) {
 			id: req.params.id,
 			imageUrl: imageUrl
 		}
-		console.log("+++++++++++++++++++++++++");
+		//console.log("+++++++++++++++++++++++++");
 		// console.log(req.params);
 		if(req.params.x=="tires"){
 			tire.addPhoto(send);
