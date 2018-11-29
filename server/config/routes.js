@@ -71,6 +71,7 @@ module.exports = function(app) {
 		request.all(req, res)
 	});
 	app.post("/requests/new", (req, res, next) =>{
+		// console.log("ROUTES REQUEST")
 		request.new(req, res);
 	});
 	app.post("/requests/delete", (req, res, next) =>{

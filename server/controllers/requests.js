@@ -64,6 +64,7 @@ module.exports = {
         
    },
     new: async function (req, res) {
+      // console.log("A NEW REQUEST", req.body)
       var request = new Request({
         name: req.body.name,
         message: req.body.message,

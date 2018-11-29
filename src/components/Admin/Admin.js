@@ -113,13 +113,6 @@ class Admin extends Component {
   handleDealDelete(i) {
     axios.post('/deals/delete', { i })
       .then(res => {
-        // if (res.data) {
-        //   axios.get('/deals/all')
-        //     .then(res => {
-        //       this.setState({ deals: res.data })
-        //     })
-        //     .catch(error => console.log(error));
-        // }
         this.content_refresh();
       })
       .catch(error => console.log(error));
@@ -149,19 +142,6 @@ class Admin extends Component {
       console.log(response);
       this.content_refresh();
     });
-    // let tempArr = this.state.deals;
-    // for (let i = 0; i < tempArr.length; i++) {
-    //   if (tempArr[i]._id === id) {
-    //     for (let k = i; k < tempArr.length; k++) {
-    //       tempArr[k] = tempArr[k + 1];
-    //     }
-    //     tempArr.pop();
-    //     break;
-    //   }
-    // }
-    // this.setState({
-    //   deal: tempArr
-    // })
 
   }
   dealCancel(id){
@@ -169,19 +149,6 @@ class Admin extends Component {
       console.log(response);
       this.content_refresh();
     })
-    // let tempArr = this.state.deals;
-    // for(let i = 0; i< tempArr.length; i++){
-    //   if(tempArr[i]._id===id){
-    //     for(let k = i; k< tempArr.length; k++){
-    //       tempArr[k] = tempArr[k+1];
-    //     }
-    //     tempArr.pop();
-    //     break;
-    //   }
-    // }
-    // this.setState({
-    //   deal: tempArr
-    // })
   }
   // END OF DEALS ----------------------------------------------
 
@@ -581,10 +548,9 @@ class Admin extends Component {
         <div>Name: {request.name}</div>
         <div>Phone: {request.phone}</div>
         <div>Category: {request.category}</div>
-        {request.product_id && <h2>{request.product_id._id}</h2>}
-        {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
-        {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product_id._id}`} target="_blank">{request.product_id.brand}</Link></div>}
-        {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product_id._id}`} target="_blank"> DEAL</Link></div>}
+        {request.category === 'tires' && <div>Product:<Link to={`/tire/${request.product._id}`} target="_blank">{request.product.brand}</Link></div>}
+        {request.category === 'rims' && <div>Product:<Link to={`/rim/${request.product._id}`} target="_blank">{request.product.brand}</Link></div>}
+        {request.category === 'deals' && <div>Product:<Link to={`/deal/${request.product._id}`} target="_blank"> DEAL</Link></div>}
         <div>Message: {request.message}</div>
         <button className="btn btn-danger" onClick={() => this.handleRequestDelete(request._id)}>Delete</button>
       </div>
