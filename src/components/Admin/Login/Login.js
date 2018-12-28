@@ -45,6 +45,20 @@ class Login extends Component {
       alert("Wrong email or password");
     })
   }
+  createAdmin = () => {
+    console.log("fool")
+    const username = 'admin2';
+    const password = '1';
+    axios.post('/register', {
+      username,
+      password
+    }).then(response => {
+      this.props.login(response.data.username)
+      this.props.history.push('/admin');
+    }).catch(error => {
+      alert("Wrong email or password");
+    })
+  }
 
   render() {
     return (
@@ -61,6 +75,7 @@ class Login extends Component {
             <button className="submit-btn" onClick={ this.login }>sign in</button>
             <div className="login-info-container">{this.state.errorMessage}</div>
           </div>
+          <button type='button' onClick={this.createAdmin}>SOOQA BLYAD'</button>
       </div>
     );
   }

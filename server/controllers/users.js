@@ -7,9 +7,6 @@ const saltRound = 12;
 const User = mongoose.model("User");
 module.exports = {
   register: (req, res) => {
-    // console.log("++++++++++++++++++++++++++++++++++++")
-    // console.log('req.body ---->', req.body)
-    // console.log('+++++++++++++++++++')
     const { username, password } = req.body;
     bcrypt.hash(password, saltRound)
     .then(hashedPassword => {
@@ -17,9 +14,10 @@ module.exports = {
         username: username,
         password: hashedPassword
       });
+      console.log(hashedPassword)
       req.session.user = { username };
-      user
-        .save()
+      console.log(user)
+      user.save()
         .then(saved => {
           console.log("saved!");
           res.status(200).json({ user: req.session.user });
