@@ -1,0 +1,12 @@
+[0;1;32m●[0m mongod.service - High-performance, schema-free document-oriented database
+   Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled)
+   Active: [0;1;32mactive (running)[0m since Sat 2018-12-29 21:36:14 UTC; 5s ago
+     Docs: https://docs.mongodb.org/manual
+ Main PID: 12524 (mongod)
+    Tasks: 19
+   Memory: 28.6M
+      CPU: 99ms
+   CGroup: /system.slice/mongod.service
+           └─12524 /usr/bin/mongod --quiet --config /etc/mongod.conf
+
+Dec 29 21:36:14 acr systemd[1]: Started High-performance, schema-free document-oriented database.
