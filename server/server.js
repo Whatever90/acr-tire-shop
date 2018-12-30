@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 const mongoose = require('mongoose');
 
 require('dotenv').config();
+console.log('-------->>>>>', process.env.SECRET);
 
 require('./config/mongoose.js');
 
@@ -15,8 +16,8 @@ const checkForSession = require('./middlewares/checkForSession');
 const session = require('express-session');
 app.use( session({
   secret: process.env.SECRET,
-  saveUninitialized: false,
-  resave: false,
+  saveUninitialized: true,
+  resave: true,
   cookie: {
     maxAge: 200 * 1000
   }
