@@ -52,6 +52,7 @@ module.exports = function(app) {
 
 	// rims functions
 	app.get("/rims/all", (req, res, next)=>{
+		console.log("asdsadasdasd-=-=-==-=-=-")
 		rim.all(req, res)
 	});
 	app.post("/rims/new", (req, res, next) => {

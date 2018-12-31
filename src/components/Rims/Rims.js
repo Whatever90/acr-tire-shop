@@ -133,6 +133,8 @@ export default class Rims extends Component {
   render() {
     let listOfRims = null;
     if (this.state.rims.length > 0) {
+	console.log("SOOOKA!")
+      console.log(this.state.rims)
       listOfRims = this.state.rims.map((rim, index) => {
         return (
           <Link to={`/rim/${rim._id}`} key={index}>
