@@ -29,6 +29,11 @@ var user = require('./../controllers/users.js');
 var deal = require('./../controllers/deals.js')
 
 module.exports = function (app) {
+	app.use((req, res, next) => {
+		res.header('Access-Control-Allow-Origin', '*');
+		next();
+	});
+
 	// tires functions
 	app.get("/tires/all", (req, res) => {
 		tire.all(req, res)
@@ -166,9 +171,6 @@ module.exports = function (app) {
 		});
 	});
 
-	app.use((req, res, next) => {
-		res.header('Access-Control-Allow-Origin', '*');
-		next();
-	});
+	
 }
 
