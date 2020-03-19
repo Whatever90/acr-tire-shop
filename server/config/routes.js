@@ -30,6 +30,7 @@ var deal = require('./../controllers/deals.js')
 
 module.exports = function (app) {
 	app.use((req, res, next) => {
+		console.log('123');
 		res.header('Access-Control-Allow-Origin', '*');
 		next();
 	});
