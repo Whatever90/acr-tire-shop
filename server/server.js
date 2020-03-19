@@ -10,6 +10,9 @@ console.log('-------->>>>>', process.env.SECRET);
 
 require('./config/mongoose.js');
 
+const routes_setter = require('./config/routes.js');
+routes_setter(app);
+
 // Middlewares
 const checkForSession = require('./middlewares/checkForSession');
 
@@ -27,8 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const path = require('path');
 // app.use(express.static(path.join(__dirname, '/client/dist')));
 app.use(express.static(`${__dirname}/../build`));
-const routes_setter = require('./config/routes.js');
-routes_setter(app);
+
 mongoose.connect('mongodb://localhost/garage');
 
 app.get('*', (req, res)=>{
