@@ -29,7 +29,7 @@
     "react-dropzone": "^4.2.9",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^3.4.0",
+    "react-scripts": "^5.0.1",
     "react-scroll-to-element": "^0.2.0",
     "react-slick": "^0.23.1",
     "redux": "^4.0.0",
